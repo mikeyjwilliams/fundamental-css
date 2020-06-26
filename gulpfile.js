@@ -42,12 +42,12 @@ const paths = {
     map: './',
   },
   dest: {
-    sassDest: './builds/sass-build/',
+    sassDest: './builds/build/',
     buildMap: './',
     buildDest: './builds/build/',
+    buildSrc: './builds/build/*.css',
     miniDest: './public/mini/',
     miniMap: './',
-    buildSrc: './public/build/*.css',
     exportBuild: './css-build/',
     compressDest: './compressed-css/',
     uncompressDest: './uncompressed-css/',
@@ -212,8 +212,8 @@ function production() {
     .pipe(filter('**/*.css'))
     .pipe(stripComments())
     .pipe(crass())
-    .pipe(gulp.dest(paths.dest.optimized))
-    .pipe(gulp.dest(paths.dest.exportCss))
+    .pipe(gulp.dest(paths.dest.optimized)) // /optimized/
+    .pipe(gulp.dest(paths.dest.buildDest)) // /public/build/
     .pipe(bytediff.start())
     .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
