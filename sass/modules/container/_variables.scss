@@ -1,0 +1,28 @@
+/** @format */
+
+//************************************************
+//**** container import variables
+//************************************************
+
+//****************************************************
+//* Breakpoints section
+//* to customize change break points here.
+//* or add or subtract breakpoints for preference.
+//****************************************************
+//** customization note: you must have a key and a point
+//** for it to be a valid break point.
+//******************************************************|
+
+$break-key--none: none !default;
+$break-key--xs: xs !default;
+$break-key--sm: sm !default;
+$break-key--md: md !default;
+$break-key--lg: lg !default;
+$break-key--xl: xl !default;
+
+$break-point--none: 100% !default; // full width
+$break-point--xs: 31.25rem !default; //500px
+$break-point--sm: 40rem !default; //640px
+$break-point--md: 48rem !default; //768px
+$break-point--lg: 64rem !default; //1024px
+$break-point--xl: 80rem !default; //1280px

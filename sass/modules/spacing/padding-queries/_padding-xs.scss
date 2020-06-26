@@ -1,0 +1,166 @@
+/** @format */
+
+//*****************************************************************
+//*** @name: padding-xs
+//*** @screen-size: 31.25rem || 500px
+//*** @TLDR: padding All, X axis, Y axis, Left, Right, Top, Bottom
+//*** including negatives for screen size 31.25rem || 500px.
+//*****************************************************************
+//*** @description: Padding-default, contains the classes for padding
+//*** including negatives for screen width extra small.
+//*** They are produced by @each loops through $spacing-sizes from
+//*** the paddings maps partial. Which is based on the variables in
+//*** the paddings variables partial.
+//*** go to https://sassy-util-library.vercel.app
+//*** or follow the README.md to run the  repo on your computer
+//*** to view how to customize this.
+//*******************************************************************
+
+//*******************Media Query ********************/
+@media (min-width: 31.25rem) /* 500px */ {
+  // xs:p--{size} padding all extra small
+  /************* .xs:p--{size} ************************/
+  @each $padding, $pad in $spacing-sizes {
+    .xs\:p--#{$padding} {
+      padding: $pad;
+    }
+  }
+  /****** xs:p-neg--{size} negative padding ********/
+  @each $padding, $pad in $spacing-sizes {
+    @if $pad == auto {
+      .xs\:p-neg--#{$padding} {
+        padding: $pad;
+      }
+    } @else {
+      .xs\:p-neg--#{$padding} {
+        padding: -$pad;
+      }
+    }
+  }
+  //xs:px--{size} padding x axis <----> extra small
+  /******************* .xs:px--{size} **************/
+  @each $padding, $pad in $spacing-sizes {
+    .xs\:px--#{$padding} {
+      padding-top: $pad;
+      padding-bottom: $pad;
+    }
+  }
+  /*** xs:px-neg--{size} negative padding x axis <--> L & R ***/
+  @each $padding, $pad in $spacing-sizes {
+    @if $pad == auto {
+      .xs\:px-neg--#{$padding} {
+        padding-left: $pad;
+        padding-right: $pad;
+      }
+    } @else {
+      .xs\:px-neg--#{$padding} {
+        padding-left: -$pad;
+        padding-right: -$pad;
+      }
+    }
+  }
+  /********* .xs:px-neg--{size} negative padding X axis <--->
+
+  // xs:py--{size} padding y axis top | bottom extra small
+  /********************* .xs:py--{size} *****************/
+  @each $padding, $pad in $spacing-sizes {
+    .xs\:py--#{$padding} {
+      padding-left: $pad;
+      padding-right: $pad;
+    }
+  }
+  /***** xs:py-neg--{size} negative vertical padding ******/
+  @each $padding, $pad in $spacing-sizes {
+    @if $pad == auto {
+      .xs\:py-neg--#{$padding} {
+        padding-left: $pad;
+        padding-right: $pad;
+      }
+    } @else {
+      .xs\:py-neg--#{$padding} {
+        padding-left: -$pad;
+        padding-right: -$pad;
+      }
+    }
+  }
+
+  // xs:pt--{size} padding top extra small
+  /*************** .xs:pt--{size} ***************/
+  @each $padding, $pad in $spacing-sizes {
+    .xs\:pt--#{$padding} {
+      padding-top: $pad;
+    }
+  }
+  /***************** xs:pt-neg--{size} negative padding top ***************/
+  @each $padding, $pad in $spacing-sizes {
+    @if $pad == auto {
+      .xs\:pt-neg--#{$padding} {
+        padding-top: $pad;
+      }
+    } @else {
+      .xs\:pt-neg--#{$padding} {
+        padding-top: -$pad;
+      }
+    }
+  }
+
+  // xs:pr--{size} padding right extra small
+  /******************* .xs:pr--{size} ******************/
+  @each $padding, $pad in $spacing-sizes {
+    .xs\:pr--#{$padding} {
+      padding-right: $pad;
+    }
+  }
+  /******** xs:p-neg--{size} negative padding right *******/
+  @each $padding, $pad in $spacing-sizes {
+    @if $pad == auto {
+      .xs\:pr-neg--#{$padding} {
+        padding-right: $pad;
+      }
+    } @else {
+      .xs\:pr-neg--#{$padding} {
+        padding-right: -$pad;
+      }
+    }
+  }
+
+  // xs:pb--{size} padding bottom extra small
+  /**************** .xs:pb--{size} ***************/
+  @each $padding, $pad in $spacing-sizes {
+    .xs\:pb--#{$padding} {
+      padding-bottom: $pad;
+    }
+  }
+  /****** xs:p-neg--{size} negative padding bottom ********/
+  @each $padding, $pad in $spacing-sizes {
+    @if $pad == auto {
+      .xs\:pb-neg--#{$padding} {
+        padding-bottom: $pad;
+      }
+    } @else {
+      .xs\:pb-neg--#{$padding} {
+        padding-bottom: -$pad;
+      }
+    }
+  }
+
+  // xs:pl--{size} padding left extra small
+  /**************** .xs:pl--{size} **********************/
+  @each $padding, $pad in $spacing-sizes {
+    .xs\:pl--#{$padding} {
+      padding-left: $pad;
+    }
+  }
+}
+/******* xs:p-neg--{size} negative padding left ********/
+@each $padding, $pad in $spacing-sizes {
+  @if $pad == auto {
+    .xs\:pl-neg--#{$padding} {
+      padding-left: $pad;
+    }
+  } @else {
+    .xs\:pl-neg--#{$padding} {
+      padding-left: -$pad;
+    }
+  }
+}

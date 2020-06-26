@@ -1,0 +1,40 @@
+//*****************************************************************
+//*** @name: code
+//*** @screen-size: 100%
+//*** @TLDR: holds classes for displaying code snippets
+//*** in a delightful manner
+//*****************************************************************
+//*** @description: classes for displaying the code snippets
+//*** in a delightful manner. From boxes around entire thing
+//*** down to other parts.
+//*** go to https://sassy-util-library.vercel.app
+//*** or follow the README.md to run the  repo on your computer
+//*** to view how to customize this.
+//*******************************************************************
+
+.display {
+	border-radius: 0.75rem 0.75rem 0 0;
+	padding: 0.75rem 1.75rem;
+
+	.example-top {
+		border: 1px solid palette($black, black-dark--300);
+		border-radius: 0.75rem 0.75rem 0 0;
+		padding: 0.75rem 1.75rem;
+	}
+
+	pre {
+		// @include pre();
+		border: 1px solid black;
+		border-radius: 0 0 0.75rem 0.75rem;
+		padding: 0.75rem 1.75rem;
+		background-color: palette($white, white-dark--300);
+
+		code {
+			background-color: palette($white, white-light--300);
+		}
+	}
+}
+
+// code {
+// 	@include code();
+// }

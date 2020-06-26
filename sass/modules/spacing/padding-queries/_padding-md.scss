@@ -1,0 +1,74 @@
+/** @format */
+//*****************************************************************
+//*** @name: padding-md
+//*** @TLDR: padding for the media query medium 768px or 48rem.
+//*****************************************************************
+//*** @description: Padding-md holds the padding within the media
+//*** query of 768px or 48rem. with the prefix .md: attached.
+//*** will only effect specified breakpoint and above.
+//*** go to https://sassy-util-library.vercel.app
+//*** or follow the README.md to run the  repo on your computer
+//*** to view how to customize this.
+//*******************************************************************
+
+//********************* Media query *******************/
+@media (min-width: 48rem) /* 768px */ {
+  // .md:p--{size} padding all medium
+  /********************* .md:p--{size}  ****************/
+  @each $padding, $pad in $spacing-sizes {
+    .md\:p--#{$padding} {
+      padding: $pad;
+    }
+  }
+  /********* .md:p--{size} padding all medium screen ********/
+
+  // .md:px--{size} padding x axis <---> medium
+  /********************** .md:px--{size} ***************/
+  @each $padding, $pad in $spacing-sizes {
+    .md\:px--#{$padding} {
+      padding-top: $pad;
+      padding-bottom: $pad;
+    }
+  }
+
+  // .md:py--{size} padding Y axis top | bottom med
+  /**************** .md:py--{size} ******************/
+  @each $padding, $pad in $spacing-sizes {
+    .md\:py--#{$padding} {
+      padding-left: $pad;
+      padding-right: $pad;
+    }
+  }
+
+  // .md:pt--{size} padding top med
+  /***************** .md:pt--{size} ****************/
+  @each $padding, $pad in $spacing-sizes {
+    .md\:pt--#{$padding} {
+      padding-top: $pad;
+    }
+  }
+
+  // .md:pr--{size} padding right med
+  /********************* .md:pr--{size} **************/
+  @each $padding, $pad in $spacing-sizes {
+    .md\:pr--#{$padding} {
+      padding-right: $pad;
+    }
+  }
+
+  //.md:pb--{size} padding bottom med
+  /*************** .md:pb--{size} *************/
+  @each $padding, $pad in $spacing-sizes {
+    .md\:pb--#{$padding} {
+      padding-bottom: $pad;
+    }
+  }
+
+  // .md:pl--{size} padding left med
+  /******************** .md:pl--{size} ****************/
+  @each $padding, $pad in $spacing-sizes {
+    .md\:pl--#{$padding} {
+      padding-left: $pad;
+    }
+  }
+}

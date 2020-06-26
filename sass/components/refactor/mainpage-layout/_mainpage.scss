@@ -1,0 +1,15 @@
+//********************************
+//*********** mainpage.scss
+//** temporary style class for
+//** MainPageLayout.jsx providing
+//** custom sizing for layout
+//**********************************
+
+.main-page-layout {
+	@include flex-row;
+	width: 100%;
+}
+
+.homepage {
+	width: 75%;
+}

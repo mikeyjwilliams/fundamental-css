@@ -1,0 +1,114 @@
+/** @format */
+
+//*********************************************
+//***** Typography Mixins
+//*********************************************
+//**
+//** mixins available to you to customize the
+//** font, CSS property is a shorthand for font-style, font-variant
+//** font-weight, font-stretch, font-size, line-height,
+//** and font-family.
+//******************************************************************
+
+//********************************************
+//******** @name font-stack ******************
+//******* passes font families back **********
+//********************************************
+@mixin font-stack($style: verdana) {
+  @if $style == sans {
+    font-family: $font-stack--sans-serif;
+  }
+
+  @if $style == serif {
+    font-family: $font-stack--serif;
+  }
+
+  @if $style == neue {
+    font-family: $font-stack--helvetica-neue;
+  }
+
+  @if $style == helvetica {
+    font-family: $font-stack--helvetica;
+  }
+
+  @if $style == georgia {
+    font-family: $font-stack--georgia;
+  }
+
+  @if $style == lucid {
+    font-family: $font-stack-lucidia-grande;
+  }
+
+  @if $style == verdana {
+    font-family: $font-stack--verdana;
+  }
+  @if $style == mono {
+    font-family: $font-stack--mono;
+  }
+}
+
+//*************************************************************************
+//************ @name text-size mixin **************************************|
+//** these mixins are built so, if you need to change any text for a
+//** custom class you can change the font sizing quickly if needed.
+//**
+
+@mixin text--title($font-size: $font-size--title) {
+  font-size: $font-size;
+}
+
+@mixin text--lead($font-size: $font-size--lead) {
+  font-size: $font-size;
+}
+
+@mixin text--h1($font-size: $font-size--h1) {
+  font-size: $font-size;
+}
+
+@mixin text--h2($font-size: $font-size--h2) {
+  font-size: $font-size;
+}
+
+@mixin text--h3($font-size: $font-size--h3) {
+  font-size: $font-size;
+}
+
+@mixin text--h4($font-size: $font-size--h4) {
+  font-size: $font-size;
+}
+
+@mixin text--h5($font-size: $font-size--h5) {
+  font-size: $font-size;
+}
+
+@mixin text--h6($font-size: $font-size--h6) {
+  font-size: $font-size;
+}
+
+@mixin text--p($font-size: $font-size--p) {
+  font-size: $font-size;
+}
+
+@mixin text--code($font-size: $font-size--p) {
+  font-size: $font-size;
+}
+
+@mixin pre($color: purple, $bg: #e1e1e8) {
+  display: block;
+  padding: 7px;
+  background-color: palette($black, dark-black--300);
+  border: 1px solid $bg;
+  border-radius: 3px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  @include font-stack($style: mono);
+  line-height: 160%;
+}
+
+@mixin code($color: purple, $bg: #f5f5f5, $border: #e1e1e8) {
+  padding: 3px 4px;
+  color: $color;
+  background-color: #f5f5f5;
+  border: 1px solid #e1e1e8;
+  @include font-stack($style: mono);
+}

@@ -1,0 +1,62 @@
+/** @format */
+
+//********************* Media query *******************/
+@media (min-width: 48rem) /* 768px */ {
+  // .md:m--{size} margin all medium
+  /********************* .md:m--{size}  ****************/
+  @each $sizing, $size in $spacing-sizes {
+    .md\:m--#{$sizing} {
+      margin: $size;
+    }
+  }
+
+  // .md:mx--{size} margin x axis <---> medium
+  /********************** .md:mx--{size} ***************/
+  @each $sizing, $size in $spacing-sizes {
+    .md\:mx--#{$sizing} {
+      margin-top: $size;
+      margin-bottom: $size;
+    }
+  }
+
+  // .md:my--{size} margin Y axis top | bottom med
+  /**************** .md:my--{size} ******************/
+  @each $sizing, $size in $spacing-sizes {
+    .md\:my--#{$sizing} {
+      margin-left: $size;
+      margin-right: $size;
+    }
+  }
+
+  // .md:mt--{size} margin top med
+  /***************** .md:mt--{size} ****************/
+  @each $sizing, $size in $spacing-sizes {
+    .md\:mt--#{$sizing} {
+      margin-top: $size;
+    }
+  }
+
+  // .md:mr--{size} margin right med
+  /********************* .md:mr--{size} **************/
+  @each $sizing, $size in $spacing-sizes {
+    .md\:mr--#{$sizing} {
+      margin-right: $size;
+    }
+  }
+
+  //.md:mb--{size} margin bottom med
+  /*************** .md:mb--{size} *************/
+  @each $sizing, $size in $spacing-sizes {
+    .md\:mb--#{$sizing} {
+      margin-bottom: $size;
+    }
+  }
+
+  // .md:ml--{size} margin left med
+  /******************** .md:ml--{size} ****************/
+  @each $sizing, $size in $spacing-sizes {
+    .md\:ml--#{$sizing} {
+      margin-left: $size;
+    }
+  }
+}
