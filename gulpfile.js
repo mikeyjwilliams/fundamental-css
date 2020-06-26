@@ -28,25 +28,25 @@ sass.compiler = require('node-sass');
 
 const paths = {
 	styles: {
-		tBase: './styles/base/tail-base.css',
-		tComponent: './styles/base/tail-components.css',
-		tUtilities: './styles/base/tailwind-utilities.css',
-		baseScss: './styles/*.scss',
+		tBase: './builds/base/tail-base.css',
+		tComponent: './builds/base/tail-components.css',
+		tUtilities: './builds/base/tailwind-utilities.css',
+		baseScss: './sass/*.scss',
 		baseCss: './styles/sass-build/*.css',
-		buildCss: './styles/build/*.css',
-		renameCss: './styles/build.css',
+		buildCss: './builds/build/*.css',
+		renameCss: './builds/build/build.css',
 		map: './'
 	},
 	dest: {
-		sassBuild: './styles/sass-build/',
+		sassDest: './builds/sass-build/',
 		buildMap: './',
-		buildFile: './styles/build/',
-		miniBuild: './styles/build/minibuild/',
+		buildDest: './builds/build/',
+		miniDest: './public/mini/',
 		miniMap: './',
-		finalBuild: './styles/build/*.css',
+		buildSrc: './public/build/*.css',
 		exportBuild: './css-build/',
-		exportMiniBuild: './compressed-css/',
-		exportCss: './uncompressed-css/'
+		compressDest: './compressed-css/',
+		uncompressDest: './uncompressed-css/'
 	}
 };
 
@@ -61,7 +61,7 @@ function sassy() {
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(sourcemaps.write(paths.dest.buildMap))
-		.pipe(gulp.dest(paths.dest.sassBuild));
+		.pipe(gulp.dest(paths.dest.sassDest));
 }
 
 /**
@@ -89,7 +89,7 @@ function mdDoc() {
  */
 function stats() {
 	return gulp
-		.src(paths.dest.finalBuild)
+		.src(paths.dest.buildSrc)
 		.pipe(
 			stylestats({
 				type: 'json',
@@ -121,8 +121,8 @@ function pixeltorem() {
 	return gulp
 		.src(paths.styles.baseCss)
 		.pipe(postcss(processors))
-		.pipe(gulp.dest(paths.dest.buildFile))
-		.pipe(gulp.dest(paths.dest.exportCss));
+		.pipe(gulp.dest(paths.dest.buildDest))
+		.pipe(gulp.dest(paths.dest.uncompressDest));
 }
 
 /**
@@ -138,7 +138,7 @@ function renameMini() {
 				path.extname = '.mini.css';
 			})
 		)
-		.pipe(gulp.dest(paths.dest.exportMiniBuild));
+		.pipe(gulp.dest(paths.dest.exportbuildDest));
 }
 
 /**
@@ -152,11 +152,11 @@ function compact() {
 		.pipe(sourcemaps.init())
 		.pipe(cssnano())
 		.pipe(sourcemaps.write(paths.dest.miniMap))
-		.pipe(gulp.dest(paths.dest.exportMiniBuild))
-		.pipe(gulp.dest(paths.dest.exportCss));
+		.pipe(gulp.dest(paths.dest.compressDest))
+		.pipe(gulp.dest(paths.dest.uncompressDest));
 }
 function check() {
-	return gulp.src(paths.dest.miniBuild + '/').pipe(csscss());
+	return gulp.src(paths.dest.buildDest + '/').pipe(csscss());
 }
 
 const build = gulp.series(sassy, pixeltorem, compact);
