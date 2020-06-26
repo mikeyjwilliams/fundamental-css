@@ -1,0 +1,52 @@
+{
+  "name": "fundamental-css",
+  "version": "0.0.1",
+  "description": "sass based utility library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "cross-env NODE_ENV=dev concurrently",
+    "production": "cross-env NOD_ENV=production ",
+    "start": "npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikeyjwilliams/fundamental-css.git"
+  },
+  "keywords": [
+    "scss",
+    "css",
+    "utility-library"
+  ],
+  "author": "Michael Williams",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikeyjwilliams/fundamental-css/issues"
+  },
+  "homepage": "https://github.com/mikeyjwilliams/fundamental-css#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.8.4",
+    "concurrently": "^5.2.0",
+    "cross-env": "^7.0.2",
+    "cssnano": "^4.1.10",
+    "live-server": "^1.2.1",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.4.6"
+  },
+  "dependencies": {
+    "highlight.js": "^10.1.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "last 1 ie version"
+    ]
+  }
+}

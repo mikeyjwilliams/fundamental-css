@@ -1,2 +1,5 @@
+<!-- @format -->
+
 # fundamental-css
-sass based utility library
+
+> A Sass based utility library.
