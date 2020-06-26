@@ -1,0 +1,21 @@
+/** @format */
+
+//*******************************************************
+//** placeholder import file
+//*******************************************************
+//** imports all files from placeholders folder
+//** so all placeholders are well structured and easy to follow.
+//** I will repeat my self from the docs and read me.
+//** using something like `ctrl + shift + F` in vs code will
+//** let you do a global search and you can just search the
+//** extended version of that class or component.
+//** which starts with a percent sign %.
+//*****************************************************************
+
+@import './placeholders/margin/margin-a-placeholder'; // margin all
+@import './placeholders/margin/margin-b-placeholder'; // margin bottom
+@import './placeholders/margin/margin-l-placeholder'; // margin left
+@import './placeholders/margin/margin-r-placeholder'; // margin right
+@import './placeholders/margin/margin-t-placeholder'; // margin top
+@import './placeholders/margin/margin-x-placeholder'; // margin x axis < ---- >
+@import './placeholders/margin/margin-y-placeholder'; // margin y axis -> top -> bottom

@@ -1,0 +1,31 @@
+/** @format */
+
+//******************** .containers **************/
+@each $name, $point in $breakpoints {
+	@media (min-width: $point) {
+		.container-#{$name} {
+			@if $point == 'none' {
+				width: 100%;
+			} @else {
+				max-width: $point;
+			}
+		}
+	}
+}
+//******************* CONTAINERS END **************/
+// @each $name, $break in $breakpoints {
+//   @if $break == 'none' {
+//     @media (max-width: $break) {
+//       .container-#{$name}-v {
+//         display: ;
+
+//       }
+//     }
+//   } @else {
+//     @media (min-width: $break) {
+//       .contain-#{name}-v {
+//         max-width: $break;
+//       }
+//     }
+//   }
+// }

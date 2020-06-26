@@ -1,0 +1,61 @@
+/** @format */
+
+//****************** Media Query *******************/
+@media (min-width: 40rem) /* 640px */ {
+  // .sm:m--{size} margin all around. small media query
+  /******************** .sm:m--{size} ***************/
+  @each $sizing, $size in $spacing-sizes {
+    .sm\:m--#{$sizing} {
+      margin: $size;
+    }
+  }
+  // .sm:mx--{size} margin top, bottom
+  /****************** .sm:mx--{size} *****************/
+  @each $sizing, $size in $spacing-sizes {
+    .sm\:mx--#{$sizing} {
+      margin-top: $size;
+      margin-bottom: $size;
+    }
+  }
+
+  // .sm:my--{size} margin left, right
+  /******************* .sm:my--{size} *******************/
+  @each $sizing, $size in $spacing-sizes {
+    .sm\:my--#{$sizing} {
+      margin-left: $size;
+      margin-right: $size;
+    }
+  }
+
+  // .sm:mt--{size} margin top
+  /**************** .sm:mt--{size} *********************/
+  @each $sizing, $size in $spacing-sizes {
+    .sm\:mt--#{$sizing} {
+      margin-top: $size;
+    }
+  }
+
+  // .sm:mr--{size} margin right
+  /************************ .sm:mr--{size} **************/
+  @each $sizing, $size in $spacing-sizes {
+    .sm\:mr--#{$sizing} {
+      margin-right: $size;
+    }
+  }
+
+  // .sm:mb--{size} margin bottom
+  /********************* .sm:mb--{size} *****************/
+  @each $sizing, $size in $spacing-sizes {
+    .sm\:mb--#{$sizing} {
+      margin-bottom: $size;
+    }
+  }
+
+  // .sm:ml--{size} margin left
+  /********************* .sm:ml--{size} ****************/
+  @each $sizing, $size in $spacing-sizes {
+    .sm\:ml--#{$sizing} {
+      margin-left: $size;
+    }
+  }
+} //

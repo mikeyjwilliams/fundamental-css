@@ -1,0 +1,92 @@
+/** @format */
+//*************************************************
+//********* Typography Main File  *****************|
+//*************************************************|
+
+//****** variables used in typography module *****
+//@import './variables';
+// @import './mixins';
+
+//**************************************
+
+//**************************************
+//** to alter other fonts to these sizes
+//** if you need them too for semantic
+//** issues but to have the sizing how you
+//** want use the classes other wise.
+//***************************************
+//***************************************
+
+.font--neue {
+	@include font-stack($style: neue);
+}
+
+.font--helvetica {
+	@include font-stack($style: helvetica);
+}
+
+.font--verdana {
+	@include font-stack($style: verdana);
+}
+
+.font--mono {
+	@include font-stack($style: mono);
+}
+
+.font--lucidia {
+	@include font-stack($style: lucid);
+}
+
+.font--serif {
+	@include font-stack($style: serif);
+}
+
+.font--georgia {
+	@include font-stack($style: georgia);
+}
+
+.font--sans {
+	@include font-stack($style: sans);
+}
+
+code,
+.font--code {
+	@include font-stack($style: mono);
+	// color: lighten(purple, 5%);
+}
+
+//********************
+//** loops $font-els
+//********************
+
+@each $el, $text-el in $font-els {
+	.text--#{$el} {
+		font-size: $text-el;
+	}
+}
+//*****************************
+//**
+
+//************************************
+//* text alignment
+//************************************
+/**** text alignment ****************/
+.text--center {
+	text-align: center;
+}
+.text--left {
+	text-align: left;
+}
+.text--right {
+	text-align: right;
+}
+.text--justify {
+	text-align: justify;
+}
+.text--end {
+	text-align: end;
+}
+.text--start {
+	text-align: start;
+}
+/********* end text alignment *************/

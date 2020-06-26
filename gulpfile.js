@@ -2,19 +2,15 @@
 
 // const { series, parallel, src, dest, watch } = require('gulp');
 const gulp = require('gulp');
-
+const { watch } = require('gulp');
 const autoprefixer = require('autoprefixer');
 const chalk = require('chalk');
 const cssStats = require('cssstats');
 const bytediff = require('gulp-bytediff');
 const cssnano = require('gulp-cssnano');
-const filter = require('gulp-filter');
-const flatten = require('gulp-flatten');
-const postcss = require('gulp-postcss');
+const cssStats = require('cssstats');
+const csscss = require('gulp-csscss');
 const rename = require('gulp-rename');
-const sass = require('gulp-sass');
-const sizereport = require('gulp-sizereport');
-const stripComments = require('gulp-strip-css-comments');
 const stylestats = require('gulp-stylestats');
 const sourcemaps = require('gulp-sourcemaps');
 
@@ -27,6 +23,9 @@ const pixrem = require('pixrem')({
 const pxtorem = require('postcss-pxtorem');
 
 const { watch } = require('gulp');
+const postcss = require('gulp-postcss');
+const dartSass = require('gulp-dart-sass'); // will refactor in in another branch feature.
+const sass = require('gulp-sass');
 
 //** if you use dart-sass there will be breaking changes in a future release I will be converting to this. */
 sass.compiler = require('node-sass');
@@ -104,6 +103,24 @@ function sassy() {
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write(paths.dest.buildMap))
     .pipe(gulp.dest(paths.dest.sassBuild));
+}
+
+/**
+ * @name mdDoc
+ * @description documents comments into a file from special comment syntax in css
+ * @implements gulp-postcss, mdcss
+ */
+function mdDoc() {
+  return gulp
+    .src(paths.styles.buildCss)
+    .pipe(
+      postcss([
+        require('mdcss')({
+          /* options */
+        }),
+      ])
+    )
+    .pipe(gulp.dest('./src/styles/sass-build/'));
 }
 
 /**
@@ -281,4 +298,4 @@ exports.qa = qa;
 exports.default = build;
 // stats is not in the series run yourself
 exports.stats = stats;
-//** update */
+exports.check = check;

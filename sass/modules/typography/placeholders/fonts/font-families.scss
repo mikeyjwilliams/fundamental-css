@@ -1,0 +1,41 @@
+/** @format */
+
+//**************************************************
+//** font placeholders for building custom classes
+//** any placeholder can be added to a custom class
+//** to give the font that typography style easily
+//** so you can style high-level with low-level
+//** utilities.
+//**************************************************
+
+%font-sans {
+  @include font-stack($style: sans);
+}
+
+%font-serif {
+  @include font-stack($style: serif);
+}
+
+%font-neue {
+  @include font-stack($style: neue);
+}
+
+%font-helvetica {
+  @include font-stack($style: helvetica);
+}
+
+%font-georgia {
+  @include font-stack($style: georgia);
+}
+
+%font-lucid {
+  @include font-stack($style: lucid);
+}
+
+%font-verdana {
+  @include font-stack($style: verdana);
+}
+
+%font-mono {
+  @include font-stack($style: mono);
+}

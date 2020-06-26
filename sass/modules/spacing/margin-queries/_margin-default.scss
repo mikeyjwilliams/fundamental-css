@@ -1,0 +1,154 @@
+/** @format */
+
+//*****************************************************************
+//*** @name: margin-default
+//*** @screen-size: 100%
+//*** @TLDR: margin All, X axis, Y axis, Left, Right, Top, Bottom
+//*** including negatives for screen size 100%.
+//*****************************************************************
+//*** @description: margin-default, contains the generic base
+//*** classes for margin including negatives for screen width 100%.
+//*** They are produced by @each loops through $spacing-sizes from
+//*** the margins maps partial. Which is based on the variables in
+//*** the margins variables partial.
+//*** go to https://sassy-util-library.vercel.app
+//*** or follow the README.md to run the  repo on your computer
+//*** to view how to customize this.
+//*******************************************************************
+
+// Margin all around.
+@each $sizing, $size in $spacing-sizes {
+  .m--#{$sizing} {
+    margin: $size;
+  }
+}
+// margin negative
+@each $sizing, $size in $spacing-sizes {
+  @if $size == auto {
+    .m-neg--#{$sizing} {
+      margin: $size;
+    }
+  } @else {
+    .m-neg--#{$sizing} {
+      margin: -$size;
+    }
+  }
+}
+/**************** margins left | right ********/
+// Margin top | bottom
+@each $sizing, $size in $spacing-sizes {
+  .mx--#{$sizing} {
+    margin-left: $size;
+    margin-right: $size;
+  }
+}
+/****** margin negative left & right *********/
+@each $sizing, $size in $spacing-sizes {
+  @if $size == auto {
+    .mx-neg--#{$sizing} {
+      margin-left: $size;
+      margin-right: $size;
+    }
+  } @else {
+    .mx-neg--#{$sizing} {
+      margin-left: -$size;
+      margin-right: -$size;
+    }
+  }
+}
+/************ margins top | bottom ************/
+@each $sizing, $size in $spacing-sizes {
+  .my--#{$sizing} {
+    margin-top: $size;
+    margin-bottom: $size;
+  }
+}
+/******** margin negative top & bottom ***********/
+@each $sizing, $size in $spacing-sizes {
+  @if $size == auto {
+    .my-neg--#{$sizing} {
+      margin-top: $size;
+      margin-bottom: $size;
+    }
+  } @else {
+    .my-neg--#{$sizing} {
+      margin-top: -$size;
+      margin-bottom: -$size;
+    }
+  }
+}
+
+/************* margin top only *****************/
+@each $sizing, $size in $spacing-sizes {
+  .mt--#{$sizing} {
+    margin-top: $size;
+  }
+}
+/****************** margin negative top ***********************/
+@each $sizing, $size in $spacing-sizes {
+  @if $size == auto {
+    .mt-neg--#{$sizing} {
+      margin-top: $size;
+    }
+  } @else {
+    .mt-neg--#{$sizing} {
+      margin-top: -$size;
+    }
+  }
+}
+
+/************ margin right only ******************/
+@each $sizing, $size in $spacing-sizes {
+  .mr--#{$sizing} {
+    margin-right: $size;
+  }
+}
+/******************* margin negative right ********************/
+@each $sizing, $size in $spacing-sizes {
+  @if $size == auto {
+    .mr-neg--#{$sizing} {
+      margin-right: $size;
+    }
+  } @else {
+    .mr-neg--#{$sizing} {
+      margin-right: -$size;
+    }
+  }
+}
+
+/************ margin bottom only *****************/
+@each $sizing, $size in $spacing-sizes {
+  .mb--#{$sizing} {
+    margin-bottom: $size;
+  }
+}
+/******************* margin negative bottom *********************/
+@each $sizing, $size in $spacing-sizes {
+  @if $size == auto {
+    .mb-neg--#{$sizing} {
+      margin-bottom: $size;
+    }
+  } @else {
+    .mb-neg--#{$sizing} {
+      margin-bottom: -$size;
+    }
+  }
+}
+/************* margin left only *******************/
+@each $sizing, $size in $spacing-sizes {
+  .ml--#{$sizing} {
+    margin-left: $size;
+  }
+}
+/*********** margin negative left ***************/
+@each $sizing, $size in $spacing-sizes {
+  @if $size == auto {
+    .ml-neg--#{$sizing} {
+      margin-left: $size;
+    }
+  } @else {
+    .ml-neg--#{$sizing} {
+      margin-left: -$size;
+    }
+  }
+}

@@ -1,0 +1,164 @@
+/** @format */
+//*****************************************************************
+//*** @name: padding-default
+//*** @screen-size: 100%
+//*** @TLDR: padding All, X axis, Y axis, Left, Right, Top, Bottom
+//*** including negatives for screen size 100%.
+//*****************************************************************
+//*** @description: Padding-default, contains the generic base
+//*** classes for padding including negatives for screen width 100%.
+//*** They are produced by @each loops through $spacing-sizes from
+//*** the paddings maps partial. Which is based on the variables in
+//*** the paddings variables partial.
+//*** go to https://sassy-util-library.vercel.app
+//*** or follow the README.md to run the  repo on your computer
+//*** to view how to customize this.
+//*******************************************************************
+
+// padding all around.
+/**** padding positive all around *****/
+// .p--{size}
+@each $padding, $pad in $spacing-sizes {
+  .p--#{$padding} {
+    padding: $pad;
+  }
+}
+// padding negative all around
+/**** negative padding all around ****/
+// .p-neg--{size}
+@each $padding, $pad in $spacing-sizes {
+  @if $pad == auto {
+    .p-neg--#{$padding} {
+      padding: $pad;
+    }
+  } @else {
+    .p-neg--#{$padding} {
+      padding: -$pad;
+    }
+  }
+}
+
+/**************** paddings top | bottom ********/
+// padding top | bottom
+// .px--{size}
+@each $padding, $pad in $spacing-sizes {
+  .px--#{$padding} {
+    padding-top: $pad;
+    padding-bottom: $pad;
+  }
+}
+/****** negative padding top | bottom ********/
+// .px-neg--{size}
+@each $padding, $pad in $spacing-sizes {
+  @if $pad == auto {
+    .px-neg--#{$padding} {
+      padding-top: $pad;
+      padding-bottom: $pad;
+    }
+  } @else {
+    .px-neg--#{$padding} {
+      padding-top: -$pad;
+      padding-bottom: -$pad;
+    }
+  }
+}
+/************ padding left | right ************/
+// .py--{size}
+@each $padding, $pad in $spacing-sizes {
+  .py--#{$padding} {
+    padding-left: $pad;
+    padding-right: $pad;
+  }
+}
+/****** negative padding Y axis <---> left | right *******/
+// .py-neg--{size}
+@each $padding, $pad in $spacing-sizes {
+  @if $pad == auto {
+    .py-neg--#{$padding} {
+      padding-right: $pad;
+      padding-left: $pad;
+    }
+  } @else {
+    .py-neg--#{$padding} {
+      padding-right: -$pad;
+      padding-left: -$pad;
+    }
+  }
+}
+
+/************* padding top only *****************/
+// .pt--{size}
+@each $padding, $pad in $spacing-sizes {
+  .pt--#{$padding} {
+    padding-top: $pad;
+  }
+}
+/****************** padding negative top ***********************/
+@each $padding, $pad in $spacing-sizes {
+  @if $pad == auto {
+    .pt-neg--#{$padding} {
+      padding-top: $pad;
+    }
+  } @else {
+    .pt-neg--#{$padding} {
+      padding-top: -$pad;
+    }
+  }
+}
+/************ padding right only ******************/
+// .pr--{size}
+@each $padding, $pad in $spacing-sizes {
+  .pr--#{$padding} {
+    padding-right: $pad;
+  }
+}
+/******************* padding negative right ********************/
+@each $padding, $pad in $spacing-sizes {
+  @if $pad == auto {
+    .pr-neg--#{$padding} {
+      padding-right: $pad;
+    }
+  } @else {
+    .pr-neg--#{$padding} {
+      padding-right: -$pad;
+    }
+  }
+}
+/************ padding bottom only *****************/
+// .pb--{size}
+@each $padding, $pad in $spacing-sizes {
+  .pb--#{$padding} {
+    padding-bottom: $pad;
+  }
+}
+/******************* padding negative bottom *********************/
+@each $padding, $pad in $spacing-sizes {
+  @if $pad == auto {
+    .pb-neg--#{$padding} {
+      padding-bottom: $pad;
+    }
+  } @else {
+    .pb-neg--#{$padding} {
+      padding-bottom: -$pad;
+    }
+  }
+}
+/************* padding left only *******************/
+// .pl--{size}
+@each $padding, $pad in $spacing-sizes {
+  .pl--#{$padding} {
+    padding-left: $pad;
+  }
+}
+/******************** padding negative left ***********************/
+@each $padding, $pad in $spacing-sizes {
+  @if $pad == auto {
+    .pl-neg--#{$padding} {
+      padding-left: $pad;
+    }
+  } @else {
+    .pl-neg--#{$padding} {
+      padding-left: -$pad;
+    }
+  }
+}

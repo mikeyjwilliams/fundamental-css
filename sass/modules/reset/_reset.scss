@@ -1,0 +1,6 @@
+/** @format */
+@import './reset-placeholder';
+
+* {
+  @extend %normalize--reset;
+}

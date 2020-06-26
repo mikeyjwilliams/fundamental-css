@@ -1,0 +1,39 @@
+/** @format */
+
+// abstract sass files
+
+@import './abstract/functions';
+@import './abstract/mixins';
+@import './abstract/placeholders';
+
+// base files
+@import './modules/reset/reset';
+
+// component files
+@import './modules/index'; // base for holding all separate modules.
+@import './components/index'; // all component files.
+
+@import './components/code'; // code section
+// @import './components/buttons';
+// @import './components/carousel';
+// @import './components/cover';
+// @import './components/dropdown';
+
+// // layout files
+// @import './sass/layout/navigation';
+// @import './sass/layout/grid';
+// @import './sass/layout/header';
+// @import './sass/layout/footer';
+// @import './sass/layout/sidebar';
+// @import './sass/layout/forms';
+
+// Pages
+/**
+specific to the certain page
+**/
+
+// themes
+/**
+theme.scss
+admin.scss
+**/
