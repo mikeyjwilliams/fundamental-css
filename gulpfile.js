@@ -7,7 +7,6 @@ const autoprefixer = require('autoprefixer');
 const chalk = require('chalk');
 const cssStats = require('cssstats');
 const bytediff = require('gulp-bytediff');
-const crass = require('gulp-crass');
 const cssnano = require('gulp-cssnano');
 const filter = require('gulp-filter');
 const flatten = require('gulp-flatten');
@@ -18,7 +17,7 @@ const sizereport = require('gulp-sizereport');
 const stripComments = require('gulp-strip-css-comments');
 const stylestats = require('gulp-stylestats');
 const sourcemaps = require('gulp-sourcemaps');
-// const mdcss = require('mdcss');
+
 const pixrem = require('pixrem')({
   rootValue: 16,
   replace: false,
@@ -27,7 +26,6 @@ const pixrem = require('pixrem')({
 });
 const pxtorem = require('postcss-pxtorem');
 
-const mdcss = require('mdcss');
 const { watch } = require('gulp');
 
 //** if you use dart-sass there will be breaking changes in a future release I will be converting to this. */
@@ -35,26 +33,24 @@ sass.compiler = require('node-sass');
 
 const paths = {
   styles: {
-    tBase: './src/styles/base/tail-base.css',
-    tComponent: './src/styles/base/tail-components.css',
-    tUtilities: './src/styles/base/tailwind-utilities.css',
-    baseScss: './src/styles/base.scss',
-    baseCss: './src/styles/sass-build/base.css',
-    buildCss: './src/styles/final/',
+    tBase: './styles/base/tail-base.css',
+    tComponent: './styles/base/tail-components.css',
+    tUtilities: './styles/base/tailwind-utilities.css',
+    baseScss: './styles/base.scss',
+    baseCss: './styles/sass-build/base.css',
+    buildCss: './styles/final/',
     map: './',
   },
   dest: {
-    sassBuild: './src/styles/sass-build/',
+    sassBuild: './styles/sass-build/',
     buildMap: './',
-    buildFile: './src/styles/final/',
-    miniBuild: './src/styles/final/minibuild/',
+    buildFile: './styles/final/',
+    miniBuild: './styles/final/minibuild/',
     miniMap: './',
-    finalBuild: './src/styles/final/*.css',
+    finalBuild: './styles/final/*.css',
     exportBuild: './css-build/',
-    compact: './compact/',
-    optimized: './optimized/',
-    exportCss: './src/styles/uncompressed-css/',
-    data: './data/',
+    exportMiniBuild: './compact/',
+    exportCss: './styles/uncompressed-css/',
   },
 };
 
@@ -74,7 +70,7 @@ function humanFileSize(size) {
 function formatByteMessage(source, data) {
   const prettyStartSize = humanFileSize(data.startSize);
   let message = '';
-
+  console.log('D ', data);
   if (data.startSize !== data.endSize) {
     const change = data.savings > 0 ? 'saved' : 'gained';
     const prettySavings = humanFileSize(Math.abs(data.savings));
@@ -127,34 +123,13 @@ function stats() {
     .pipe(gulp.dest('./stats/'));
 }
 
-/**
- * @name pixeltorem
- * @description puts fallbacks for specific rem cases in px
- * @implements gulp-postcss, gulp-autoprefixer, postcss-pxtorem
- */
-function pixeltorem() {
-  const processors = [
-    pxtorem({
-      exclude: /node_modules/i,
-      rootValue: 16,
-      unitPrecision: 5,
-      propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
-      mediaQuery: true,
-      minPixelValue: 0,
-      replace: true,
-    }),
-    autoprefixer(),
-  ];
-
-  return gulp
-    .src(paths.styles.baseCss)
-    .pipe(postcss(processors))
-    .pipe(gulp.dest(paths.dest.buildFile))
-    .pipe(gulp.dest(paths.dest.compact));
-}
+// function check() {
+// 	return gulp.src(paths.dest.)
+// }
 
 function production() {
   const processors = [
+    autoprefixer(),
     pxtorem({
       exclude: /node_modules/i,
       rootValue: 16,
@@ -164,7 +139,6 @@ function production() {
       minPixelValue: 0,
       replace: true,
     }),
-    autoprefixer(),
   ];
 
   return gulp
@@ -180,19 +154,18 @@ function production() {
     .pipe(gulp.dest(paths.dest.buildFile))
     .pipe(filter('**/*.css'))
     .pipe(stripComments())
-    .pipe(crass())
-    .pipe(gulp.dest(paths.dest.optimized))
     .pipe(gulp.dest(paths.dest.exportCss))
     .pipe(bytediff.start())
     .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
-    .pipe(gulp.dest(paths.dest.miniBuild))
-    .pipe(gulp.dest(paths.dest.compact))
+    .pipe(gulp.dest('./styles/final/minibuild/'))
+    .pipe(gulp.dest('./compact'))
     .pipe(sizereport({ gzip: true, total: false, title: 'SIZE REPORT' }));
 }
 
 function dev() {
   const processors = [
+    autoprefixer(),
     pxtorem({
       exclude: /node_modules/i,
       rootValue: 16,
@@ -202,7 +175,6 @@ function dev() {
       minPixelValue: 0,
       replace: true,
     }),
-    autoprefixer(),
   ];
 
   return gulp
@@ -214,16 +186,14 @@ function dev() {
     .pipe(sourcemaps.write(paths.styles.map))
     .pipe(flatten())
     .pipe(gulp.dest(paths.dest.exportCss))
+    .pipe(gulp.dest(paths.dest.buildFile))
     .pipe(filter('**/*.css'))
     .pipe(stripComments())
-    .pipe(crass())
-    .pipe(gulp.dest(paths.dest.optimized))
-    .pipe(gulp.dest(paths.dest.buildFile))
 
     .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
     .pipe(gulp.dest(paths.dest.miniBuild))
-    .pipe(gulp.dest(paths.dest.compact));
+    .pipe(gulp.dest('./compact'));
 }
 
 function test() {
@@ -240,30 +210,22 @@ function test() {
     }),
   ];
 
-  return (
-    gulp
-      .src(paths.styles.baseScss)
-      .pipe(sourcemaps.init())
-      .pipe(sass().on('error', sass.logError))
-      .pipe(postcss(processors))
-      .pipe(bytediff.start())
-      .pipe(filter('**/*.css'))
-      .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
-      .pipe(sourcemaps.write(paths.styles.map))
-      .pipe(flatten())
-      .pipe(gulp.dest(paths.dest.buildFile))
-      .pipe(filter('**/*.css'))
-      .pipe(stripComments())
-      .pipe(crass())
-      .pipe(gulp.dest(paths.dest.optimized))
-      // .pipe(gulp.dest(paths.dest.exportCss)
-      .pipe(bytediff.start())
-      .pipe(rename({ suffix: '.min' }))
-      .pipe(cssnano())
-      .pipe(gulp.dest(paths.dest.miniBuild))
-      .pipe(gulp.dest(paths.dest.compact))
-      .pipe(sizereport({ gzip: true, total: false, title: 'SIZE REPORT' }))
-  );
+  return gulp
+    .src(paths.styles.baseScss)
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss(processors))
+    .pipe(filter('**/*.css'))
+    .pipe(sourcemaps.write(paths.styles.map))
+    .pipe(flatten())
+    .pipe(gulp.dest(paths.dest.exportCss))
+    .pipe(gulp.dest(paths.dest.buildFile))
+    .pipe(filter('**/*.css'))
+    .pipe(stripComments())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(cssnano())
+    .pipe(gulp.dest(paths.dest.miniBuild))
+    .pipe(gulp.dest('./compact'));
 }
 
 function qa() {
@@ -295,7 +257,7 @@ function qa() {
     .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
     .pipe(gulp.dest(paths.dest.miniBuild))
-    .pipe(gulp.dest(paths.dest.compact));
+    .pipe(gulp.dest('./compact'));
 }
 
 // if (process.env.NODE_ENV === 'production') {
@@ -304,14 +266,12 @@ function qa() {
 // 	exports.build = series('sassWatch');
 // }
 const build = function () {
-  watch('./src/styles/base.scss', sassy);
+  watch('./src/styles/base.scss', dev);
 };
 // exports.sassy = sassy;
 // exports.docCss = docCss;
 exports.build = build;
 exports.sassy = sassy;
-
-exports.pixeltorem = pixeltorem;
 
 exports.production = production;
 exports.dev = dev;
