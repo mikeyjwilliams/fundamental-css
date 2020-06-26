@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "cross-env NODE_ENV=dev concurrently",
+    "serve": "cross-env NODE_ENV=dev concurrently \"npm run scss:watch\" \"live-server ./public\"",
+    "scss:watch": "gulp "
     "production": "cross-env NOD_ENV=production ",
     "start": "npm run serve"
   },
