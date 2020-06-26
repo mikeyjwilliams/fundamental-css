@@ -4,13 +4,16 @@
 const gulp = require('gulp');
 const { watch } = require('gulp');
 const autoprefixer = require('autoprefixer');
+const chalk = require('chalk');
+const cssStats = require('cssstats');
+const bytediff = require('gulp-bytediff');
 const cssnano = require('gulp-cssnano');
 const cssStats = require('cssstats');
 const csscss = require('gulp-csscss');
 const rename = require('gulp-rename');
 const stylestats = require('gulp-stylestats');
 const sourcemaps = require('gulp-sourcemaps');
-// const mdcss = require('mdcss');
+
 const pixrem = require('pixrem')({
 	rootValue: 16,
 	replace: false,
@@ -18,10 +21,11 @@ const pixrem = require('pixrem')({
 	unitPrecision: 3
 });
 const pxtorem = require('postcss-pxtorem');
+
+const { watch } = require('gulp');
 const postcss = require('gulp-postcss');
 const dartSass = require('gulp-dart-sass'); // will refactor in in another branch feature.
 const sass = require('gulp-sass');
-const mdcss = require('mdcss');
 
 //** if you use dart-sass there will be breaking changes in a future release I will be converting to this. */
 sass.compiler = require('node-sass');
@@ -49,6 +53,44 @@ const paths = {
 		uncompressDest: './uncompressed-css/'
 	}
 };
+
+/**
+ * @name humanFileSize
+ * @description reports back a file size of the css data.
+ */
+function humanFileSize(size) {
+	let i = Math.floor(Math.log(size) / Math.log(1024));
+	return (
+		(size / Math.pow(1024, i)).toFixed(2) * 1 +
+		'' +
+		['B', 'kB', 'MB', 'GB', 'TB'][i]
+	);
+}
+
+function formatByteMessage(source, data) {
+	const prettyStartSize = humanFileSize(data.startSize);
+	let message = '';
+	console.log('D ', data);
+	if (data.startSize !== data.endSize) {
+		const change = data.savings > 0 ? 'saved' : 'gained';
+		const prettySavings = humanFileSize(Math.abs(data.savings));
+		let prettyEndSize = humanFileSize(data.endSize);
+
+		if (data.endSize > data.startSize) {
+			prettyEndSize = chalk.yellow(prettyEndSize);
+		}
+		if (data.endSize < data.startSize) {
+			prettyEndSize = chalk.green(prettyEndSize);
+		}
+
+		message = chalk`${change} ${prettySavings} (${prettyStartSize} -> {bold ${prettyEndSize}})`;
+	} else {
+		message = chalk`kept original filesize. ({bold ${prettyStartSize}})`;
+	}
+	return chalk`{cyan ${source.padStart(12, ' ')}}: {bold ${
+		data.fileName
+	}} ${message}`;
+}
 
 /**
  * @name sassy
@@ -159,15 +201,24 @@ function check() {
 	return gulp.src(paths.dest.buildDest + '/').pipe(csscss());
 }
 
-const build = gulp.series(sassy, pixeltorem, compact);
+// if (process.env.NODE_ENV === 'production') {
+// 	exports.build = series(sassy);
+// } else {
+// 	exports.build = series('sassWatch');
+// }
+const build = function () {
+	watch('./src/styles/base.scss', dev);
+};
 // exports.sassy = sassy;
 // exports.docCss = docCss;
 exports.build = build;
 exports.sassy = sassy;
-exports.mdDoc = mdDoc;
-exports.renameMini = renameMini;
-exports.pixeltorem = pixeltorem;
-exports.compact = compact;
+
+exports.production = production;
+exports.dev = dev;
+exports.test = test;
+exports.qa = qa;
+
 exports.default = build;
 // stats is not in the series run yourself
 exports.stats = stats;
