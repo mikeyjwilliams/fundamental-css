@@ -6,20 +6,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./base.css" />
+    <link rel="stylesheet" href="./build.css" />
+   <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
+     
     <title>Fundamental.Css</title>
   </head>
   <body>
-    <header>
-      <h1>Pattern Css</h1>
-      <p>A customizable component based library</p>
+    <header class="bg--svg box">
+      <h1 class='text--center font-gray-l--300 text--7xl font--verdana'>Pattern Css</h1>
+      <p class='text--center font-gray-l--500 text--5xl font--luicia'>A customizable component based library</p>
     </header>
     <main>
-      <section className="home__header">
-        <div className="home__side bg-l-blue--900">
-          <h2 className=" header--margin-bottom header__font">
-            <span className="font-d-red--600">Sassy Util Library</span>,<br /> come build a library with us.
+      <section class="home__header">
+        <div class="home__side bg-l-blue--900">
+          <h2 class=" header--margin-bottom header__font">
+            <span class="font-d-red--600">Sassy Util Library</span>,<br /> come build a library with us.
           </h2>
-          <p className="font-d-black--200">
+          <p class="font-d-black--200">
             Sassy Util Library is a customizable sass driven project. As a free
             free open source library. It is always in progress, and can always
             be contributed too if asked how. Sassy Util Css builds off of
@@ -32,7 +37,7 @@
             0.5.0 or so it it will be useable but till then it will just be a
             project in progress.
           </p>
-          <p className="font-d-black--200">
+          <p class="font-d-black--200">
             This project has a lot of inspiration from many other frameworks and
             libraries. To help create ideas on what direction to go in, learning
             more advanced skills from, and to help create user stories. Any
@@ -41,11 +46,11 @@
             included in the MIT license with their work and email.
           </p>
         </div>
-        <div className="home__side bg-l-blue--900">
-          <h2 className="font-d-red--700 header__font header--margin-bottom">
+        <div class="home__side bg-l-blue--900">
+          <h2 class="font-d-red--700 header__font header--margin-bottom">
             Why Sassy Util Library...
           </h2>
-          <p className="font-d-black--200">The PVD goal is to provide</p>
+          <p class="font-d-black--200">The PVD goal is to provide</p>
           <ol>
 
             <li>a low level utility library</li>
@@ -56,7 +61,7 @@
             <li>it has enough documentation to customize it</li>
           </ol>
 
-          <p className="font-d-black--200">
+          <p class="font-d-black--200">
             With this project, I am exploring new sass functions, build tools,
             exploring css styles I have not thought about for a long while, and
             much more. I wanted a fun side project so I thought this would be an
@@ -67,9 +72,9 @@
           </p>
         </div>
       </section>
-      <section className="homepage">
-        <div className="bg-blue-l--900 homepage__top">
-          <h2 className="text--xl" id="hp-utility-first">
+      <section class="homepage">
+        <div class="bg-blue-l--900 homepage__top">
+          <h2 class="text--xl" id="hp-utility-first">
             Most CSS Frameworks work too hard
           </h2>
           <p>
@@ -100,7 +105,7 @@
           </p>
         </div>
         <div>
-          <h2 className="text--xxl" id="hp-built-for-customization">
+          <h2 class="text--xxl" id="hp-built-for-customization">
             Built for your customization pleasure
           </h2>
           <p>
@@ -114,64 +119,48 @@
             Sassy Util Css is more than a library, it is built to help create
             design systems.
           </p>
-          <div className="display">
-            <header className="example-top">
-              <h3 className="text--3xl">Font colors example</h3>
+          <div class="display">
+            <header class="example-top">
+              <h3 class="text--3xl">Font colors example</h3>
             </header>
-            <pre id="hp-example-block" className="mb--3">
-              <code className='language-html'>
-                &lt;p className='font-l-gray--200'&gt;variables.scss; &lt;/p&gt;
-                <br />
-                &lt;p className='font-base-green'&gt;$bright-green: #5be206;
-                &lt;/p&gt;
-                <br />
-                &lt;p className='font-base-blue'&gt; $robins-egg-blue: #04c4d9;
-                &lt;/p&gt;
-                <br />
-                &lt;p className='font-base-yellow'&gt;$corn: #f2b705;&lt;/p&gt;
-                <br />
-                &lt;p className='font-base-orange'&gt;$trinidad:
-                #f25c05;&lt;/p&gt;
-                <br />
-                &lt;p className='font-base-red'&gt;$milano-red:
-                #bf0a0a;&lt;/p&gt;
-                <br />
-                &lt;p className='font-base-white'&gt;$sugar-cane:
-                #fdfffc;&lt;/p&gt;
-                <br />
-                &lt;p className='font-base-white'&gt;$swamp: #00171f;&lt;/p&gt;
-                <br />
-                &lt;p className='font-base-gray'&gt;$bali-hai: #8d99ae;
-                &lt;/p&gt;
-                <br />
-                &lt;p className='font-l-gray--200'&gt; colors made go into
-                $color-name variable &lt;/p&gt;
-                <br />
-                &lt;p className='font-base-green'&gt; $color-green:
-                $bright-green; &lt;/p&gt;
-                <br />
-                &lt;p className='font-base-blue'&gt; $color-blue:
-                $robins-egg-blue; &lt;/p&gt;
-                <br />
-                &lt;p className='font-base-yellow'&gt; $color-yellow:
-                $corn;&lt;/p&gt;
-                <br />
-                &lt;p className='font-base-orange'&gt; $color-orange: $trinidad;
-                &lt;/p&gt;
-                <br />
-                &lt;p className='font-base-red'&gt;$color-red:
-                $milano-red;&lt;/p&gt;
-                <br />
-                &lt;p className='font-base-white'&gt;$color-black:
-                $swamp;&lt;/p&gt;
-                <br />
-                &lt;p className='font-base-gray'&gt;$color-gray:
-                $bali-hai;&lt;/p&gt;
-                <br />
-                &lt;p className='font-base-white'&gt; $color-white: $sugar-cane;
-                &lt;/p&gt;
-                <br />
-              </code>
+            <pre id="hp-example-block" class="mb--3">
+<code class='language-html'>&lt;p class='font-l-gray--200'&gt;variables.scss; &lt;/p&gt;<br/>
+
+&lt;p class='color-green'&gt;$bright-green: #5be206;&lt;/p&gt;
+<br/>
+&lt;p class='color-blue'&gt; $robins-egg-blue: #04c4d9;&lt;/p&gt;
+<br />
+&lt;p class='color-yellow'&gt;$corn: #f2b705;&lt;/p&gt;
+<br/>
+&lt;p class='color-orange'&gt;$trinidad: #f25c05;&lt;/p&gt;
+<br/>
+&lt;p class='color-red' &gt;$milano-red: #bf0a0a;&lt;/p&gt;
+<br/>
+&lt;p class='color-white'&gt;$sugar-cane: #fdfffc;&lt;/p&gt;
+<br/>
+&lt;p class='color-black'&gt;$swamp: #00171f;&lt;/p&gt;
+<br/>
+&lt;p class='color-gray'&gt;$bali-hai: #8d99ae;&lt;/p&gt;
+<br/>
+<br/>
+&lt;p class='font-l-gray--200'&gt; colors made go into $color-name variables &lt;/p&gt;
+<br/>
+&lt;p class='font-green'&gt; $color-green: $bright-green; &lt;/p&gt;
+<br/>
+&lt;p class='font-blue'&gt; $color-blue: $robins-egg-blue; &lt;/p&gt;
+<br/>
+&lt;p class='font-yellow'&gt; $color-yellow $corn;&lt;/p&gt;
+<br/>
+&lt;p class='font-orange'&gt; $color-orange: $trinidad;&lt;/p&gt;
+<br/>
+&lt;p class='font-red'&gt;$color-red: $milano-red;&lt;/p&gt;
+<br/>
+&lt;p class='font-black'&gt;$color-black: $swamp;&lt;/p&gt;
+<br/>
+&lt;p class='font-gray'&gt;$color-gray: $bali-hai;&lt;/p&gt;
+<br/>
+&lt;p class='font-white'&gt; $color-white: $sugar-cane;&lt;/p&gt;
+</code>
             </pre>
           </div>
           <p>
@@ -182,8 +171,8 @@
           </p>
         </div>
       </section>
-      <asidhref className="sidebar">
-        <h3 className="text--lg font-gray-l--200 sidebar__title">ON PAGE</h3>
+      <asidhref class="sidebar">
+        <h3 class="text--lg font-gray-l--200 sidebar__title">ON PAGE</h3>
         <ul>
           <li>
             <a href="#hp-utility-first">Utility First</a>
@@ -197,4 +186,12 @@
         </ul>
     </main>
   </body>
+  <script>
+    hljs.configure({useBR: true});
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+      });
+    });
+  </script>
 </html>

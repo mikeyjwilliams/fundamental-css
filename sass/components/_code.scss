@@ -1,3 +1,5 @@
+/** @format */
+
 //*****************************************************************
 //*** @name: code
 //*** @screen-size: 100%
@@ -13,26 +15,34 @@
 //*******************************************************************
 
 .display {
-	border-radius: 0.75rem 0.75rem 0 0;
-	padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem 0.75rem 0 0;
+  padding: 0.75rem 1.75rem;
 
-	.example-top {
-		border: 1px solid palette($black, black-dark--300);
-		border-radius: 0.75rem 0.75rem 0 0;
-		padding: 0.75rem 1.75rem;
-	}
+  .example-top {
+    border: 1px solid palette($black, black-dark--300);
+    border-radius: 0.75rem 0.75rem 0 0;
+    padding: 0.75rem 1.75rem;
+  }
 
-	pre {
-		// @include pre();
-		border: 1px solid black;
-		border-radius: 0 0 0.75rem 0.75rem;
-		padding: 0.75rem 1.75rem;
-		background-color: palette($white, white-dark--300);
+  .example-bottom {
+    border: 1px solid palette($black, black-dark--300);
+    border-radius: 0.75rem 0.75rem 0 0;
+    padding: 0.75rem 1.75rem;
+    background-color: rgba(palette($black, black-light--200), 15%);
+  }
 
-		code {
-			background-color: palette($white, white-light--300);
-		}
-	}
+  pre {
+    // @include pre();
+    border: 1px solid black;
+    border-radius: 0 0 0.75rem 0.75rem;
+    padding: 0.75rem 1.75rem;
+    background-color: palette($black, black-dark--300);
+
+    code {
+      background-color: palette($white, white-light--300);
+      padding: 0.5rem 0.75rem;
+    }
+  }
 }
 
 // code {
