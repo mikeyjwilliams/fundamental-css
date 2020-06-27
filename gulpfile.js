@@ -2,16 +2,19 @@
 
 // const { series, parallel, src, dest, watch } = require('gulp');
 const gulp = require('gulp');
-const { watch } = require('gulp');
 const autoprefixer = require('autoprefixer');
 const chalk = require('chalk');
 const cssStats = require('cssstats');
 const bytediff = require('gulp-bytediff');
+const crass = require('gulp-crass');
 const cssnano = require('gulp-cssnano');
-const cssStats = require('cssstats');
 const csscss = require('gulp-csscss');
+const flatten = require('gulp-flatten');
+const filter = require('gulp-filter');
 const gls = require('gulp-live-server');
 const rename = require('gulp-rename');
+const sizereport = require('gulp-sizereport');
+const stripComments = require('gulp-strip-css-comments');
 const stylestats = require('gulp-stylestats');
 const sourcemaps = require('gulp-sourcemaps');
 
@@ -54,7 +57,7 @@ const paths = {
 		unoptimized: './unoptimized/',
 		optimized: './optimized/',
 		uncompressedOptimized: 'uncompressed-optimized/',
-		compressededOptimized: 'compressed-optimized/',
+		compressedOptimized: 'compressed-optimized/',
 
 		stats: './stats/'
 	}
@@ -213,18 +216,20 @@ function production() {
 		.pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
 		.pipe(sourcemaps.write(paths.styles.map))
 		.pipe(flatten())
-		.pipe(gulp.dest(paths.dest.unoptimized)) //unoptimized
-		.pipe(filter('**/*.css'))
+		.pipe(filter('/**/*.css'))
+		.pipe(gulp.dest(paths.dest.unoptimized))
 		.pipe(stripComments())
 		.pipe(crass())
-		.pipe(gulp.dest(paths.dest.uncompressedOptimized)) //uncompressed-optimized/
+		.pipe(filter('/**/*.css'), console.log('pass crass'))
+		.pipe(gulp.dest(paths.dest.uncompressedOptimized))
 		.pipe(gulp.dest(paths.dest.public)) //public/
-		.pipe(bytediff.start())
-		.pipe(rename({ suffix: '.min' }))
+		.pipe(rename({ suffix: '.min' }), console.log('rename'))
+		.pipe(stripComments())
 		.pipe(cssnano())
-		.pipe(gulp.dest(paths.dest.publicMini))
-		.pipe(gulp.dest(paths.dest.compact))
-		.pipe(sizereport({ gzip: true, total: false, title: 'SIZE REPORT' }));
+		.pipe(bytediff.start())
+		.pipe(gulp.dest(paths.dest.publicMini), console.log('publicmini'))
+		.pipe(gulp.dest(paths.dest.compressedOptimized))
+		.pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }));
 }
 
 function dev() {
@@ -253,13 +258,14 @@ function dev() {
 		.pipe(filter('**/*.css'))
 		.pipe(stripComments())
 		.pipe(crass())
+		.pipe(gulp.dest(paths.dest.uncompressedOptimized))
+		.pipe(rename({ suffix: '.min' }))
+		.pipe(cssnano())
 		.pipe(gulp.dest(paths.dest.optimized))
 		.pipe(gulp.dest(paths.dest.public))
 
-		.pipe(rename({ suffix: '.min' }))
-		.pipe(cssnano())
 		.pipe(gulp.dest(paths.dest.publicMini))
-		.pipe(gulp.dest(paths.dest.compact));
+		.pipe(gulp.dest(paths.dest.compressedOptimized));
 }
 
 function test() {
@@ -289,15 +295,17 @@ function test() {
 			.pipe(flatten())
 			.pipe(stripComments())
 			.pipe(crass())
+			// .pipe(filter('./**/*.css'))
 			.pipe(gulp.dest(paths.dest.public))
 			.pipe(gulp.dest(paths.dest.optimized))
-			// .pipe(gulp.dest(paths.dest.exportCss)
-			.pipe(bytediff.start())
+			.pipe(filter('./**/*.css'))
+			.pipe(stripComments())
 			.pipe(rename({ suffix: '.min' }))
 			.pipe(cssnano())
+			.pipe(bytediff.start())
 			.pipe(gulp.dest(paths.dest.publicMini))
-			.pipe(gulp.dest(paths.dest.optimized))
-			.pipe(sizereport({ gzip: true, total: false, title: 'SIZE REPORT' }))
+			.pipe(gulp.dest(paths.dest.compressedOptimized))
+			.pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
 	);
 }
 
@@ -330,26 +338,26 @@ function qa() {
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(cssnano())
 		.pipe(gulp.dest(paths.dest.publicMini))
-		.pipe(gulp.dest(paths.dest.compact));
+		.pipe(gulp.dest(paths.dest.compressedOptimized));
 }
 
-function liveReload() {
-	//1. serve with default settings
-	var server = gls.static(); //equals to gls.static('public', 3000);
-	server.start();
+// function liveReload() {
+// 	//1. serve with default settings
+// 	var server = gls.static(); //equals to gls.static('public', 3000);
+// 	server.start();
 
-	//2. serve at custom port
-	// var server = gls.static('dist', 8888);
-	// server.start();
+// 	//2. serve at custom port
+// 	// var server = gls.static('dist', 8888);
+// 	// server.start();
 
-	//3. serve multi folders
-	var server = gls.static(['dist', '.tmp']);
-	server.start();
+// 	//3. serve multi folders
+// 	// var server = gls.static(['dist', '.tmp']);
+// 	// server.start();
 
-	//use gulp.watch to trigger server actions(notify, start or stop)
-	// gulp.watch(['static/**/*.css', 'static/**/*.html'], function (file) {
-	//   server.notify.apply(server, [file]);
-}
+// 	//use gulp.watch to trigger server actions(notify, start or stop)
+// 	// gulp.watch(['static/**/*.css', 'static/**/*.html'], function (file) {
+// 	//   server.notify.apply(server, [file]);
+// }
 
 // if (process.env.NODE_ENV === 'production') {
 // 	exports.build = series(sassy);
@@ -357,7 +365,7 @@ function liveReload() {
 // 	exports.build = series('sassWatch');
 // }
 const build = function () {
-	watch('public/**/*', liveReload);
+	watch('./sass/base.scss', sassy);
 };
 // exports.sassy = sassy;
 // exports.docCss = docCss;
@@ -375,7 +383,7 @@ exports.dev = dev;
 exports.test = test;
 exports.qa = qa;
 
-exports.liveReload = liveReload; // reloads pages when things in public folder change.
+// exports.liveReload = liveReload; // reloads pages when things in public folder change.
 exports.default = build;
 // stats is not in the series run yourself
 exports.stats = stats;

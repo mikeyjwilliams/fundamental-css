@@ -13,146 +13,146 @@
 
 //****************** Media Query 640px or 40rem *******************/
 @media (min-width: 40rem) /* 640px */ {
-  // .sm:p--{size} padding all around. small media query
-  /******************** .sm:p--{size} ***************/
-  @each $padding, $pad in $spacing-sizes {
-    .sm\:p--#{$padding} {
-      padding: $pad;
-    }
-  }
-  /******* .sm:p-neg--{size} negative padding around *******/
-  @each $padding, $pad in $spacing-sizes {
-    @if $pad == auto {
-      .sm\:p-neg--#{$padding} {
-        padding: $pad;
-      }
-    } @else {
-      .sm\:p-neg--#{$padding} {
-        padding: -$pad;
-      }
-    }
-  }
-  // .sm:px--{size} padding top, bottom
-  /****************** .sm:px--{size} *****************/
-  @each $padding, $pad in $spacing-sizes {
-    .sm\:px--#{$padding} {
-      padding-top: $pad;
-      padding-bottom: $pad;
-    }
-  }
-  /******* .sm:px-neg--{size} negative x axis <----> ******/
-  @each $padding, $pad in $spacing-sizes {
-    @if $pad == auto {
-      .sm\:px-neg--#{$padding} {
-        padding: $pad;
-      }
-    } @else {
-      .sm\:px-neg--#{$padding} {
-        padding: -$pad;
-      }
-    }
-  }
+	// .sm:p--{size} padding all around. small media query
+	/******************** .sm:p--{size} ***************/
+	@each $padding, $pad in $spacing-sizes {
+		.sm\:p--#{$padding} {
+			padding: $pad;
+		}
+	}
+	/******* .sm:p-neg--{size} negative padding around *******/
+	@each $padding, $pad in $spacing-sizes {
+		@if $pad == auto {
+			.sm\:p-neg--#{$padding} {
+				padding: $pad;
+			}
+		} @else {
+			.sm\:p-neg--#{$padding} {
+				padding: -$pad;
+			}
+		}
+	}
+	// .sm:px--{size} padding top, bottom
+	/****************** .sm:px--{size} *****************/
+	@each $padding, $pad in $spacing-sizes {
+		.sm\:px--#{$padding} {
+			padding-top: $pad;
+			padding-bottom: $pad;
+		}
+	}
+	/******* .sm:px-neg--{size} negative x axis <----> ******/
+	@each $padding, $pad in $spacing-sizes {
+		@if $pad == auto {
+			.sm\:px-neg--#{$padding} {
+				padding: $pad;
+			}
+		} @else {
+			.sm\:px-neg--#{$padding} {
+				padding: -$pad;
+			}
+		}
+	}
 
-  // .sm:py--{size} padding left, right
-  /******************* .sm:py--{size} *******************/
-  @each $padding, $pad in $spacing-sizes {
-    .sm\:py--#{$padding} {
-      padding-left: $pad;
-      padding-right: $pad;
-    }
-  }
-  /******** .sm:py--{size} negative padding left | right *****/
-  @each $padding, $pad in $spacing-sizes {
-    @if $pad == auto {
-      .sm\:py-neg--#{$padding} {
-        padding-left: $pad;
-        padding-right: $pad;
-      }
-    } @else {
-      .sm\:py-neg--#{$padding} {
-        padding-left: -$pad;
-        padding-right: -$pad;
-      }
-    }
-  }
+	// .sm:py--{size} padding left, right
+	/******************* .sm:py--{size} *******************/
+	@each $padding, $pad in $spacing-sizes {
+		.sm\:py--#{$padding} {
+			padding-left: $pad;
+			padding-right: $pad;
+		}
+	}
+	/******** .sm:py--{size} negative padding left | right *****/
+	@each $padding, $pad in $spacing-sizes {
+		@if $pad == auto {
+			.sm\:py-neg--#{$padding} {
+				padding-left: $pad;
+				padding-right: $pad;
+			}
+		} @else {
+			.sm\:py-neg--#{$padding} {
+				padding-left: -$pad;
+				padding-right: -$pad;
+			}
+		}
+	}
 
-  // .sm:pt--{size} padding top
-  /**************** .sm:pt--{size} *********************/
-  @each $padding, $pad in $spacing-sizes {
-    .sm\:pt--#{$padding} {
-      padding-top: $pad;
-    }
-  }
-  /********* .sm:pt--{size} negative padding top sm media *******/
-  @each $padding, $pad in $spacing-sizes {
-    @if $pad == auto {
-      .sm\:pt-neg--#{$padding} {
-        padding-top: $pad;
-      }
-    } @else {
-      .sm\:pt-neg--#{$padding} {
-        padding-top: -$pad;
-      }
-    }
-  }
+	// .sm:pt--{size} padding top
+	/**************** .sm:pt--{size} *********************/
+	@each $padding, $pad in $spacing-sizes {
+		.sm\:pt--#{$padding} {
+			padding-top: $pad;
+		}
+	}
+	/********* .sm:pt--{size} negative padding top sm media *******/
+	@each $padding, $pad in $spacing-sizes {
+		@if $pad == auto {
+			.sm\:pt-neg--#{$padding} {
+				padding-top: $pad;
+			}
+		} @else {
+			.sm\:pt-neg--#{$padding} {
+				padding-top: -$pad;
+			}
+		}
+	}
 
-  // .sm:pr--{size} padding right
-  /************************ .sm:pr--{size} **************/
-  @each $padding, $pad in $spacing-sizes {
-    .sm\:pr--#{$padding} {
-      padding-right: $pad;
-    }
-  }
-  /********** .sm:pr--{size} negative padding right sm media ******/
-  @each $padding, $pad in $spacing-sizes {
-    @if $pad == auto {
-      .sm\:pr-neg--#{$padding} {
-        padding-right: $pad;
-      }
-    } @else {
-      .sm\:pr-neg--#{$padding} {
-        padding-right: -$pad;
-      }
-    }
-  }
+	// .sm:pr--{size} padding right
+	/************************ .sm:pr--{size} **************/
+	@each $padding, $pad in $spacing-sizes {
+		.sm\:pr--#{$padding} {
+			padding-right: $pad;
+		}
+	}
+	/********** .sm:pr--{size} negative padding right sm media ******/
+	@each $padding, $pad in $spacing-sizes {
+		@if $pad == auto {
+			.sm\:pr-neg--#{$padding} {
+				padding-right: $pad;
+			}
+		} @else {
+			.sm\:pr-neg--#{$padding} {
+				padding-right: -$pad;
+			}
+		}
+	}
 
-  // .sm:pb--{size} padding bottom
-  /********************* .sm:pb--{size} *****************/
-  @each $padding, $pad in $spacing-sizes {
-    .sm\:pb--#{$padding} {
-      padding-bottom: $pad;
-    }
-  }
-  /*************** .sm:pb--{size} negative padding bottom sm media **********/
-  @each $padding, $pad in $spacing-sizes {
-    @if $pad == auto {
-      .sm\:pb-neg--#{$padding} {
-        padding-bottom: $pad;
-      }
-    } @else {
-      .sm\:pb-neg--#{$padding} {
-        padding-bottom: -$pad;
-      }
-    }
-  }
+	// .sm:pb--{size} padding bottom
+	/********************* .sm:pb--{size} *****************/
+	@each $padding, $pad in $spacing-sizes {
+		.sm\:pb--#{$padding} {
+			padding-bottom: $pad;
+		}
+	}
+	/*************** .sm:pb--{size} negative padding bottom sm media **********/
+	@each $padding, $pad in $spacing-sizes {
+		@if $pad == auto {
+			.sm\:pb-neg--#{$padding} {
+				padding-bottom: $pad;
+			}
+		} @else {
+			.sm\:pb-neg--#{$padding} {
+				padding-bottom: -$pad;
+			}
+		}
+	}
 
-  // .sm:pl--{size} padding left
-  /********************* .sm:pl--{size} ****************/
-  @each $padding, $pad in $spacing-sizes {
-    .sm\:pl--#{$padding} {
-      padding-left: $pad;
-    }
-  }
-  /*********** .sm:pl--{size} negative padding left sm media ******/
-  @each $padding, $pad in $spacing-sizes {
-    @if $pad == auto {
-      .sm\:pl-neg--#{$padding} {
-        padding-left: $pad;
-      }
-    } @else {
-      .sm\:pl-neg--#{$padding} {
-        padding-left: -$pad;
-      }
-    }
-  }
+	// .sm:pl--{size} padding left
+	/********************* .sm:pl--{size} ****************/
+	@each $padding, $pad in $spacing-sizes {
+		.sm\:pl--#{$padding} {
+			padding-left: $pad;
+		}
+	}
+	/*********** .sm:pl--{size} negative padding left sm media ******/
+	@each $padding, $pad in $spacing-sizes {
+		@if $pad == auto {
+			.sm\:pl-neg--#{$padding} {
+				padding-left: $pad;
+			}
+		} @else {
+			.sm\:pl-neg--#{$padding} {
+				padding-left: -$pad;
+			}
+		}
+	}
 } // End of media query

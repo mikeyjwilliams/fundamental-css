@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"serve": "cross-env NODE_ENV=dev concurrently \"npm run scss:watch\" \"live-server ./public\"",
-		"scss:watch": "gulp ",
+		"scss:watch": "gulp sassy --watch",
 		"production": "cross-env NOD_ENV=production ",
 		"start": "npm run serve"
 	},
@@ -44,6 +44,7 @@
 		"gulp-sass": "^4.1.0",
 		"gulp-sourcemaps": "^2.6.5",
 		"gulp-stylestats": "^3.1.0",
+		"gulp-strip-css-comments": "^2.0.0",
 		"pixrem": "^5.0.0",
 		"postcss": "^7.0.32",
 		"postcss-cli": "^7.1.1",
