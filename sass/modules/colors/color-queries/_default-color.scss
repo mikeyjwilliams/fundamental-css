@@ -339,3 +339,29 @@
     }
   }
 }
+@each $generic, $color in $black {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--11) ==
+    'light'
+  {
+    .bg-black-l#{str-slice($generic, $slice-color-class--12)} {
+      --bg-opacity: 1;
+      background-color: $color;
+      opacity: var(--bg-opacity);
+    }
+  } @else if
+    str-slice($generic, $slice-color-start--5, $slice-color-end--8) ==
+    'dark'
+  {
+    .bg-black-d#{str-slice($generic, $slice-color-class--12)} {
+      --bg-opacity: 1;
+      background-color: $color;
+      opacity: var(--bg-opacity);
+    }
+  } @else {
+    .bg-black {
+      --bg-opacity: 1;
+      background-color: $color;
+      opacity: var(--bg-opacity);
+    }
+  }
+}
