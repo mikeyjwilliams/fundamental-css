@@ -3,7 +3,7 @@
 //******************** .containers **************/
 @each $name, $point in $breakpoints {
 	@media (min-width: $point) {
-		.container-#{$name} {
+		.container {
 			@if $point == 'none' {
 				width: 100%;
 			} @else {
