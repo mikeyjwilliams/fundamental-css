@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./base.css" />
+    <!-- <link rel="stylesheet" href="./base.css" /> -->
     <link rel="stylesheet" href="./build.css" />
    <link rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/default.min.css">
@@ -162,13 +162,14 @@
 &lt;p class='font-white'&gt; $color-white: $sugar-cane;&lt;/p&gt;
 </code>
     </pre>
-    <section class="display">
-      <header class=example-top">
+    <section class="box">
+      <header class="built-code-top">
         <h3 class='text--3xl text--justify'>
           Font color display examples
         </h3>
       </header>
-      <div>
+      <div class='example-show-code'>
+      
 <p class='font-l-gray--200'>variables.scss; </p><br/>
 
 <p class='font-green'>$bright-green: #5be206;</p>
@@ -181,9 +182,9 @@
 <br/>
 <p class='font-red' >$milano-red: #bf0a0a;</p>
 <br/>
-<p class='font-white bg-black'>$sugar-cane: #fdfffc;</p>
+<p class='font-white'>$sugar-cane: #fdfffc;</p>
 <br/>
-<p class='font-black'>$swamp: #00171f;</p>
+<p class='font-black bg--white'>$swamp: #00171f;</p>
 <br/>
 <p class='font-gray'>$bali-hai: #8d99ae;</p>
 <br/>
@@ -200,11 +201,11 @@
 <br/>
 <p class='font-red'>$color-red: $milano-red;</p>
 <br/>
-<p class='font-black'>$color-black: $swamp;</p>
+<p class='font-black bg--white'>$color-black: $swamp;</p>
 <br/>
 <p class='font-gray'>$color-gray: $bali-hai;</p>
 <br/>
-<p class='font-white bg-black'> $color-white: $sugar-cane;</p>
+<p class='font-white'> $color-white: $sugar-cane;</p>
       </div>
     </section>  
     </div>
