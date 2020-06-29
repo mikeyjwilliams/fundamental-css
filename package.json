@@ -1,13 +1,13 @@
 {
   "name": "fundamental-css",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "sass based utility library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "npx http-server ./ -p 8080 -a 127.0.0.1",
-    "build:scss": "sass sass/base.scss public/build.css",
-    "scss:watch": "sass --watch sass/base.scss public/build.css",
+    "server": "php -S localhost:8080",
+    "build:scss": "sass sass/base.scss css/build.css",
+    "scss:watch": "sass --watch sass/base.scss css/build.css",
+    "build:prod": "gulp qa",
     "gulp:stats": "gulp stats",
     "gulp:prod": "gulp production",
     "gulp:dev": "gulp dev",
