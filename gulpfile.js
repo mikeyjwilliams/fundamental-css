@@ -329,8 +329,8 @@ function qa() {
       replace: true,
     }),
     autoprefixer(),
-    combineMediaQuery(),
   ];
+  const media = [combineMediaQuery()];
 
   return gulp
     .src(paths.styles.sassBase)
@@ -342,11 +342,13 @@ function qa() {
     .pipe(flatten())
     .pipe(gulp.dest(paths.dest.unoptimized))
     .pipe(stripComments())
+    .pipe(postcss(media))
+    .pipe(filter('**/*.css'))
     .pipe(gulp.dest(paths.dest.public))
     .pipe(filter('**/*.css'))
     .pipe(stripComments())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(cssnano())
+    .pipe(csso())
     .pipe(gulp.dest(paths.dest.publicMini))
     .pipe(gulp.dest(paths.dest.compressedOptimized));
 }

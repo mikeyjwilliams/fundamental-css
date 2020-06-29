@@ -13,7 +13,7 @@
     "gulp:dev": "gulp dev",
     "gulp:test": "gulp test",
     "gulp:qa": "gulp qa",
-    "production": "cross-env NOD_ENV=production npm run gulp:qa",
+    "production": "cross-env NOD_ENV=qa npm run gulp:qa",
     "start": "npm run server"
   },
   "repository": {
