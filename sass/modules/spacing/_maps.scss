@@ -1,0 +1,45 @@
+/** @format */
+
+//*****************************************************************
+//*** @name: Spacing Maps
+//*** @TLDR: maps are used for both padding & margin.
+//*****************************************************************
+//*** @description: maps, contains generic maps
+//*** to be used with spacing classes, the goal
+//*** is to make least amount of maps and have them
+//*** usable simultaneously between padding and margin
+//*** at the same time.
+//*** go to https://sassy-util-library.vercel.app
+//*** or follow the README.md to run the  repo on your computer
+//*** to view how to customize this.
+//*******************************************************************
+
+//********************************************
+//** --- Spacing Map ---
+//** spacing map *note* careful altering used
+//** for both all the padding utility classes
+//** and margin utility classes are based off
+//** this map.
+//********************************************
+$spacing-sizes: (
+  // map of margin class creators & margin class sizes.
+    $space-size--a: $space-size--auto,
+  $space-size--0: $space-size--zero,
+  $space-size--1: $space-size--quarter,
+  $space-size--2: $space-size--half,
+  $space-size--3: $space-size--third,
+  $space-size--4: $space-size--one,
+  $space-size--5: $space-size--one-quarter,
+  $space-size--6: $space-size--one-half,
+  $space-size--8: $space-size--two,
+  $space-size--10: $space-size--two-half,
+  $space-size--12: $space-size--three,
+  $space-size--16: $space-size--four,
+  $space-size--20: $space-size--five,
+  $space-size--24: $space-size--six,
+  $space-size--32: $space-size--eight,
+  $space-size--40: $space-size--ten,
+  $space-size--48: $space-size--twelve,
+  $space-size--56: $space-size--fourteen,
+  $space-size--64: $space-size--sixteen
+);

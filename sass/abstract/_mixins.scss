@@ -1,0 +1,27 @@
+/** @format */
+
+//********************************************
+//** Mixins to produce your own custom styles
+//********************************************
+
+//******************************************
+//**
+//******************************************
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin ellipse($length: 100%) {
+  white-space: nowrap;
+  display: inline-block;
+  max-width: $length;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+}

@@ -1,0 +1,11 @@
+/** @format */
+
+@tailwind base;
+
+/****** components *******/
+
+@tailwind components;
+
+/********* utilities ******/
+
+@tailwind utilities;

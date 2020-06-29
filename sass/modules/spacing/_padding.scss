@@ -1,0 +1,17 @@
+/** @format */
+
+//*****************************************************************
+//*** @name: padding
+//*** @TLDR: main import file for padding files.
+//*****************************************************************
+//*** @description: Padding partial is the main file for importing
+//*** all padding unprefixed and prefixed utility classes.
+//*** go to https://sassy-util-library.vercel.app
+//*** or follow the README.md to run the  repo on your computer
+//*** to view how to customize this.
+//*******************************************************************
+@import './padding-queries/padding-default';
+@import './padding-queries/padding-xs';
+@import './padding-queries/padding-sm';
+@import './padding-queries/padding-md';
+@import './padding-queries/padding-lg';

@@ -1,0 +1,151 @@
+/** @format */
+
+//*******************Media Query ********************/
+@media (min-width: 31.25rem) /* 500px */ {
+	// xs:m--{size} margin all extra small
+	/************* .xs:m--{size} ************************/
+	@each $sizing, $size in $spacing-sizes {
+		.xs\:m--#{$sizing} {
+			margin: $size;
+		}
+	}
+
+	/** negative xs:m-neg--{size} **/
+	@each $sizing, $size in $spacing-sizes {
+		@if $size == auto {
+			.xs\:m-neg--#{$sizing} {
+				margin: $size;
+			}
+		} @else {
+			.xs\:m-neg--#{$sizing} {
+				margin: -$size;
+			}
+		}
+	}
+	//xs:mx--{size} margin x axis <----> extra small
+	/******************* .xs:mx--{size} **************/
+	@each $sizing, $size in $spacing-sizes {
+		.xs\:mx--#{$sizing} {
+			margin-left: $size;
+			margin-right: $size;
+		}
+	}
+
+	/*** xs:mx-neg--{size} negative x axis ***/
+	@each $sizing, $size in $spacing-sizes {
+		@if $size == auto {
+			.xs\:mx-neg--#{$sizing} {
+				margin-left: $size;
+				margin-right: $size;
+			}
+		} @else {
+			.xs\.xs\:mx-neg--#{$sizing} {
+				margin-left: -$size;
+				margin-right: -$size;
+			}
+		}
+	}
+
+	// xs:my--{size} margin y axis top | bottom extra small
+	/********************* .xs:my--{size} *****************/
+	@each $sizing, $size in $spacing-sizes {
+		.xs\:my--#{$sizing} {
+			margin-top: $size;
+			margin-bottom: $size;
+		}
+	}
+	/** xs:my-neg--{size} margin negative top bottom **/
+	@each $sizing, $size in $spacing-sizes {
+		@if $size == auto {
+			.xs\:my-neg--#{$sizing} {
+				margin-top: $size;
+				margin-bottom: $size;
+			}
+		} @else {
+			.xs\:my-neg--#{$sizing} {
+				margin-top: -$size;
+				margin-bottom: -$size;
+			}
+		}
+	}
+
+	// xs:mt--{size} margin top extra small
+	/*************** .xs:mt--{size} ***************/
+	@each $sizing, $size in $spacing-sizes {
+		.xs\:mt--#{$sizing} {
+			margin-top: $size;
+		}
+	}
+	/** xs:mt-neg--{size} negative margin top **/
+	@each $sizing, $size in $spacing-sizes {
+		@if $size == auto {
+			.xs\:mt-neg--#{$size} {
+				margin-top: $size;
+			}
+		} @else {
+			.xs\:mt-neg--#{$sizing} {
+				margin-top: -$size;
+			}
+		}
+	}
+
+	// xs:mr--{size} margin right extra small
+	/******************* .xs:mr--{size} ******************/
+	@each $sizing, $size in $spacing-sizes {
+		.xs\:mr--#{$sizing} {
+			margin-right: $size;
+		}
+	}
+	/*** .xs:mr-neg--{size} negative margin right ***/
+	@each $sizing, $size in $spacing-sizes {
+		@if $size == auto {
+			.xs\:mr-neg--#{$sizing} {
+				margin-right: $size;
+			}
+		} @else {
+			.xs\:mr-neg--#{$sizing} {
+				margin-right: -$size;
+			}
+		}
+	}
+
+	// xs:mb--{size} margin bottom extra small
+	/**************** .xs:mb--{size} ***************/
+	@each $sizing, $size in $spacing-sizes {
+		.xs\:mb--#{$sizing} {
+			margin-bottom: $size;
+		}
+	}
+	/*** .xs:mb-neg--{size} margin bottom size xs ***/
+	@each $sizing, $size in $spacing-sizes {
+		@if $sizing == auto {
+			.xs\:mb-neg--#{$sizing} {
+				margin-bottom: $size;
+			}
+		} @else {
+			.xs\:mb-neg--#{$sizing} {
+				margin-bottom: -$size;
+			}
+		}
+	}
+
+	// xs:ml--{size} margin left extra small
+	/**************** .xs:ml--{size} **********************/
+	@each $sizing, $size in $spacing-sizes {
+		.xs\:ml--#{$sizing} {
+			margin-left: $size;
+		}
+	}
+	/*** .xs:ml-neg--{size} margin left size xs ***/
+	@each $sizing, $size in $spacing-sizes {
+		@if $size == auto {
+			.xs\:ml-neg--#{$sizing} {
+				margin-left: $size;
+			}
+		} @else {
+			.xs\:ml-neg--#{$sizing} {
+				margin-left: -$size;
+			}
+		}
+	}
+}

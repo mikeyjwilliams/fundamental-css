@@ -1,0 +1,199 @@
+/** @format **/
+
+//*****************************************************************
+//*** @name: margin all placeholders
+//*** @TLDR: Extendable placeholders to add to custom classes
+//*** margin all
+//*****************************************************************
+//*** @description: extendable placeholders both positive
+//*** and negative margin sizes.
+//*** go to https://sassy-util-library.vercel.app
+//*** or follow the README.md to run the  repo on your computer
+//*** to view how to customize this.
+//*******************************************************************
+
+//******************************************
+//****** margin all placeholders
+//******************************************
+%m--a {
+  margin: $space-size--auto;
+}
+
+%m-neg--a {
+  margin: $space-size--auto;
+}
+
+%m--0 {
+  margin: $space-size--zero;
+}
+
+%m-neg--0 {
+  margin: $space-size--zero;
+}
+
+%m--1 {
+  margin: $space-size--quarter;
+}
+
+%m-neg--1 {
+  margin: -$space-size--quarter;
+}
+
+%m--2 {
+  margin: $space-size--half;
+}
+
+%m-neg--2 {
+  margin: -$space-size--half;
+}
+
+%m--3 {
+  margin: $space-size--third;
+}
+
+%m-neg--3 {
+  margin: -$space-size--third;
+}
+
+%m--4 {
+  margin: $space-size--one;
+}
+
+%m-neg--4 {
+  margin: -$space-size--one;
+}
+
+%m--5 {
+  margin: $space-size--one-quarter;
+}
+
+%m-neg--5 {
+  margin: -$space-size--one-quarter;
+}
+
+%m--6 {
+  margin: $space-size--one-half;
+}
+
+%m-neg--6 {
+  margin: -$space-size--one-half;
+}
+
+%m--8 {
+  margin: $space-size--two;
+}
+
+%m-neg--8 {
+  margin: -$space-size--two;
+}
+
+%m--10 {
+  margin: $space-size--two-half;
+}
+
+%m-neg--10 {
+  margin: -$space-size--two-half;
+}
+
+%m--12 {
+  margin: $space-size--three;
+}
+
+%m-neg--12 {
+  margin: -$space-size--three;
+}
+
+%m--16 {
+  margin: $space-size--four;
+}
+
+%m-neg--16 {
+  margin: -$space-size--four;
+}
+
+%m--18 {
+  margin: $space-size--five;
+}
+
+%m-neg--18 {
+  margin: -$space-size--five;
+}
+
+%m--20 {
+  margin: $space-size--six;
+}
+
+%m-neg--20 {
+  margin: -$space-size--six;
+}
+
+%m--24 {
+  margin: $space-size--six;
+}
+
+%m-neg--24 {
+  margin: -$space-size--six;
+}
+
+%m--32 {
+  margin: $space-size--eight;
+}
+
+%m-neg--32 {
+  margin: -$space-size--eight;
+}
+
+%m--40 {
+  margin: $space-size--ten;
+}
+
+%m-neg--40 {
+  margin: -$space-size--ten;
+}
+
+%m--48 {
+  margin: $space-size--twelve;
+}
+
+%m-neg--48 {
+  margin: -$space-size--twelve;
+}
+
+%m--56 {
+  margin: $space-size--fourteen;
+}
+
+%m-neg--56 {
+  margin: -$space-size--fourteen;
+}
+
+%m--64 {
+  margin: $space-size--sixteen;
+}
+
+%m-neg--64 {
+  margin: -$space-size--sixteen;
+}
+//***********************************
+//** mx--{size} margin x axis extends
+//************************************
+
+// $space-size--auto: auto !default;
+// $space-size--zero: 0 !default;
+// $space-size--quarter: 0.25rem !default;
+// $space-size--half: 0.5rem !default;
+// $space-size--third: 0.75rem !default;
+// $space-size--one: 1rem !default;
+// $space-size--one-quarter: 1.25rem !default;
+// $space-size--one-half: 1.5rem !default;
+// $space-size--two: 1.5rem !default;
+// $space-size--two-half: 2.5rem !default;
+// $space-size--three: 3rem !default;
+// $space-size--four: 4rem !default;
+// $space-size--five: 5rem !default;
+// $space-size--six: 6rem !default;
+// $space-size--eight: 8rem !default;
+// $space-size--ten: 10rem !default;
+// $space-size--twelve: 12rem !default;
+// $space-size--fourteen: 14rem !default;
+// $space-size--sixteen: 16rem !default;

@@ -1,0 +1,51 @@
+/** @format */
+
+//********************************************
+//*** main spacing utilities class import
+//********************************************
+//** this is the only import that is sort of
+//** intermixed but how can you have padding
+//** without margin? that just does not compute.
+//************************************************
+
+//** spacing sizes vars
+$space-size--auto: auto !default;
+$space-size--zero: 0 !default;
+$space-size--quarter: 0.25rem !default;
+$space-size--half: 0.5rem !default;
+$space-size--third: 0.75rem !default;
+$space-size--one: 1rem !default;
+$space-size--one-quarter: 1.25rem !default;
+$space-size--one-half: 1.5rem !default;
+$space-size--two: 2rem !default;
+$space-size--two-half: 2.5rem !default;
+$space-size--three: 3rem !default;
+$space-size--four: 4rem !default;
+$space-size--five: 5rem !default;
+$space-size--six: 6rem !default;
+$space-size--eight: 8rem !default;
+$space-size--ten: 10rem !default;
+$space-size--twelve: 12rem !default;
+$space-size--fourteen: 14rem !default;
+$space-size--sixteen: 16rem !default;
+
+//** name extension mapping for the sizes.
+$space-size--a: a !default;
+$space-size--0: 0 !default;
+$space-size--1: 1 !default;
+$space-size--2: 2 !default;
+$space-size--3: 3 !default;
+$space-size--4: 4 !default;
+$space-size--5: 5 !default;
+$space-size--6: 6 !default;
+$space-size--8: 8 !default;
+$space-size--10: 10 !default;
+$space-size--12: 12 !default;
+$space-size--16: 16 !default;
+$space-size--20: 20 !default;
+$space-size--24: 24 !default;
+$space-size--32: 32 !default;
+$space-size--40: 40 !default;
+$space-size--48: 48 !default;
+$space-size--56: 56 !default;
+$space-size--64: 64 !default;

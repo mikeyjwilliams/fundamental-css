@@ -1,0 +1,15 @@
+/** @format */
+
+//***************************************************************************
+//* @name color-map
+//* @returns color name double mapped within color maps, or one of its shades.
+//* @description: the color-map maps both the color, and the shade of the color   and produces either the color or a tint of the color lightened or darkend incrementing by a percent.
+//***************************************************************************
+@function palette($color-palette, $shade: base) {
+  $color: map-get($color-palette, $shade);
+  @return $color;
+}
+
+@function em($context, $base: 10px) {
+  @return ($context / $base) * 1em;
+}

@@ -1,0 +1,17 @@
+/** @format */
+
+//**************************************************
+//****** margin import file ************************
+//**************************************************
+
+//** import margin files from margins folder
+//** reason for this is to split up margin files
+//** so it does not become a 1000 line file or
+//** something massive.
+//**************************************************
+
+@import './margin-queries/margin-default';
+@import './margin-queries/margin-xs';
+@import './margin-queries/margin-sm';
+@import './margin-queries/margin-md';
+@import './margin-queries/margin-lg';

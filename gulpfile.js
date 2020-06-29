@@ -2,23 +2,22 @@
 
 // const { series, parallel, src, dest, watch } = require('gulp');
 const gulp = require('gulp');
-
 const autoprefixer = require('autoprefixer');
 const chalk = require('chalk');
 const cssStats = require('cssstats');
 const bytediff = require('gulp-bytediff');
 const crass = require('gulp-crass');
 const cssnano = require('gulp-cssnano');
-const filter = require('gulp-filter');
+const csscss = require('gulp-csscss');
+const csso = require('gulp-csso');
 const flatten = require('gulp-flatten');
-const postcss = require('gulp-postcss');
+const filter = require('gulp-filter');
 const rename = require('gulp-rename');
-const sass = require('gulp-sass');
 const sizereport = require('gulp-sizereport');
 const stripComments = require('gulp-strip-css-comments');
 const stylestats = require('gulp-stylestats');
 const sourcemaps = require('gulp-sourcemaps');
-// const mdcss = require('mdcss');
+
 const pixrem = require('pixrem')({
   rootValue: 16,
   replace: false,
@@ -26,35 +25,42 @@ const pixrem = require('pixrem')({
   unitPrecision: 3,
 });
 const pxtorem = require('postcss-pxtorem');
+const combineMediaQuery = require('postcss-combine-media-query');
 
-const mdcss = require('mdcss');
 const { watch } = require('gulp');
+const postcss = require('gulp-postcss');
+const dartSass = require('gulp-dart-sass'); // will refactor in in another branch feature.
+const sass = require('gulp-sass');
 
 //** if you use dart-sass there will be breaking changes in a future release I will be converting to this. */
 sass.compiler = require('node-sass');
 
 const paths = {
   styles: {
-    tBase: './src/styles/base/tail-base.css',
-    tComponent: './src/styles/base/tail-components.css',
-    tUtilities: './src/styles/base/tailwind-utilities.css',
-    baseScss: './src/styles/base.scss',
-    baseCss: './src/styles/sass-build/base.css',
-    buildCss: './src/styles/final/',
+    tBase: './builds/base/tail-base.css',
+    tComponent: './builds/base/tail-components.css',
+    tUtilities: './builds/base/tailwind-utilities.css',
+    sassBase: './sass/*.scss',
+    buildsBuildbase: './builds/build/*.css',
+    stylesSassbuildBase: './styles/sass-build/*.css',
+
+    publicBuildBuild: './public/build/build.css',
     map: './',
   },
   dest: {
-    sassBuild: './src/styles/sass-build/',
     buildMap: './',
-    buildFile: './src/styles/final/',
-    miniBuild: './src/styles/final/minibuild/',
+    public: './public',
+    publicBase: './public/*.css',
+    publicMini: './public/mini/',
     miniMap: './',
-    finalBuild: './src/styles/final/*.css',
-    exportBuild: './css-build/',
-    compact: './compact/',
+    uncompressedCss: './uncompressed-css/',
+    compressedCss: './compressed-css/',
+    unoptimized: './unoptimized/',
     optimized: './optimized/',
-    exportCss: './src/styles/uncompressed-css/',
-    data: './data/',
+    uncompressedOptimized: './uncompressed-optimized/',
+    compressedOptimized: './compressed-optimized/',
+
+    stats: './stats/',
   },
 };
 
@@ -74,7 +80,7 @@ function humanFileSize(size) {
 function formatByteMessage(source, data) {
   const prettyStartSize = humanFileSize(data.startSize);
   let message = '';
-
+  console.log('D ', data);
   if (data.startSize !== data.endSize) {
     const change = data.savings > 0 ? 'saved' : 'gained';
     const prettySavings = humanFileSize(Math.abs(data.savings));
@@ -103,11 +109,11 @@ function formatByteMessage(source, data) {
  */
 function sassy() {
   return gulp
-    .src(paths.styles.baseScss)
+    .src(paths.styles.sassBase)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write(paths.dest.buildMap))
-    .pipe(gulp.dest(paths.dest.sassBuild));
+    .pipe(gulp.dest(paths.dest.public));
 }
 
 /**
@@ -117,14 +123,14 @@ function sassy() {
  */
 function stats() {
   return gulp
-    .src(paths.dest.finalBuild)
+    .src(paths.dest.publicBase)
     .pipe(
       stylestats({
         type: 'json',
         outfile: true,
       })
     )
-    .pipe(gulp.dest('./stats/'));
+    .pipe(gulp.dest(paths.dest.stats));
 }
 
 /**
@@ -147,128 +153,171 @@ function pixeltorem() {
   ];
 
   return gulp
-    .src(paths.styles.baseCss)
+    .src(paths.styles.stylesSassbuildBase)
     .pipe(postcss(processors))
-    .pipe(gulp.dest(paths.dest.buildFile))
-    .pipe(gulp.dest(paths.dest.compact));
+    .pipe(gulp.dest(paths.dest.public))
+    .pipe(gulp.dest(paths.dest.uncompressedCss));
 }
 
-function production() {
-  const processors = [
-    pxtorem({
-      exclude: /node_modules/i,
-      rootValue: 16,
-      unitPrecision: 5,
-      propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
-      mediaQuery: true,
-      minPixelValue: 0,
-      replace: true,
-    }),
-    autoprefixer(),
-  ];
+/**
+ * @name renameMini
+ * @description renames final build extension to mini.css
+ * @implements gulp-rename
+ */
+// function renameMini() {
+//   return gulp
+//     .src(paths.dest.buildsBuildbase)
+//     .pipe(
+//       rename(function (path) {
+//         path.extname = '.mini.css';
+//       })
+//     )
+//     .pipe(gulp.dest(paths.dest.publicMini));
+// }
 
+/**
+ * @name compact
+ * @description minify css styles
+ * @implements gulp-sourcemaps, gulp-cssnano
+ */
+function compact() {
   return gulp
-    .src(paths.styles.baseScss)
+    .src(paths.styles.buildsBuildbase)
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss(processors))
-    .pipe(bytediff.start())
-    .pipe(filter('**/*.css'))
-    .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
-    .pipe(sourcemaps.write(paths.styles.map))
-    .pipe(flatten())
-    .pipe(gulp.dest(paths.dest.buildFile))
-    .pipe(filter('**/*.css'))
-    .pipe(stripComments())
-    .pipe(crass())
-    .pipe(gulp.dest(paths.dest.optimized))
-    .pipe(gulp.dest(paths.dest.exportCss))
-    .pipe(bytediff.start())
-    .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
-    .pipe(gulp.dest(paths.dest.miniBuild))
-    .pipe(gulp.dest(paths.dest.compact))
-    .pipe(sizereport({ gzip: true, total: false, title: 'SIZE REPORT' }));
+    .pipe(sourcemaps.write(paths.dest.miniMap))
+    .pipe(gulp.dest(paths.dest.compressedCss));
 }
 
-function dev() {
-  const processors = [
-    pxtorem({
-      exclude: /node_modules/i,
-      rootValue: 16,
-      unitPrecision: 5,
-      propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
-      mediaQuery: true,
-      minPixelValue: 0,
-      replace: true,
-    }),
-    autoprefixer(),
-  ];
-
-  return gulp
-    .src(paths.styles.baseScss)
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss(processors))
-    .pipe(filter('**/*.css'))
-    .pipe(sourcemaps.write(paths.styles.map))
-    .pipe(flatten())
-    .pipe(gulp.dest(paths.dest.exportCss))
-    .pipe(filter('**/*.css'))
-    .pipe(stripComments())
-    .pipe(crass())
-    .pipe(gulp.dest(paths.dest.optimized))
-    .pipe(gulp.dest(paths.dest.buildFile))
-
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(cssnano())
-    .pipe(gulp.dest(paths.dest.miniBuild))
-    .pipe(gulp.dest(paths.dest.compact));
+function check() {
+  return gulp.src(paths.dest.public).pipe(csscss());
 }
+// not working properly
+// function production() {
+//   const processors = [
+//     pxtorem({
+//       exclude: /node_modules/i,
+//       rootValue: 16,
+//       unitPrecision: 5,
+//       propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
+//       mediaQuery: true,
+//       minPixelValue: 0,
+//       replace: true,
+//     }),
+//     autoprefixer(),
+//   ];
+//   const query = [combineMediaQuery()];
 
-function test() {
-  const processors = [
-    autoprefixer(),
-    pxtorem({
-      exclude: /node_modules/i,
-      rootValue: 16,
-      unitPrecision: 5,
-      propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
-      mediaQuery: true,
-      minPixelValue: 0,
-      replace: true,
-    }),
-  ];
+//   const cssFilter = filter('**/*.css', { restore: true });
 
-  return (
-    gulp
-      .src(paths.styles.baseScss)
-      .pipe(sourcemaps.init())
-      .pipe(sass().on('error', sass.logError))
-      .pipe(postcss(processors))
-      .pipe(bytediff.start())
-      .pipe(filter('**/*.css'))
-      .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
-      .pipe(sourcemaps.write(paths.styles.map))
-      .pipe(flatten())
-      .pipe(gulp.dest(paths.dest.buildFile))
-      .pipe(filter('**/*.css'))
-      .pipe(stripComments())
-      .pipe(crass())
-      .pipe(gulp.dest(paths.dest.optimized))
-      // .pipe(gulp.dest(paths.dest.exportCss)
-      .pipe(bytediff.start())
-      .pipe(rename({ suffix: '.min' }))
-      .pipe(cssnano())
-      .pipe(gulp.dest(paths.dest.miniBuild))
-      .pipe(gulp.dest(paths.dest.compact))
-      .pipe(sizereport({ gzip: true, total: false, title: 'SIZE REPORT' }))
-  );
-}
+//   return (
+//     gulp
+//       .src(paths.styles.sassBase)
+//       .pipe(sourcemaps.init())
+//       .pipe(sass().on('error', sass.logError))
+//       .pipe(postcss(processors))
+//       // .pipe(bytediff.start())
+//       // .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
+//       .pipe(sourcemaps.write(paths.styles.map))
+//       .pipe(flatten())
+//       .pipe(gulp.dest(paths.dest.unoptimized))
+//       // .pipe(cssFilter)
+//       .pipe(stripComments())
+//       .pipe(postcss(query))
+//       // .pipe(crass())
+//       .pipe(gulp.dest(paths.dest.uncompressedOptimized))
+//       .pipe(gulp.dest(paths.dest.public))
+//       // .pipe(cssFilter)
+//       .pipe(rename({ suffix: '.min' }), console.log('rename'))
+//       // .pipe(stripComments())
+//       .pipe(csso())
+//       // .pipe(bytediff.start())
+//       .pipe(gulp.dest(paths.dest.publicMini), console.log('publicmini'))
+//       .pipe(gulp.dest(paths.dest.compressedOptimized))
+//     // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
+//   );
+// }
+// not working properly
+// function dev() {
+//   const processors = [
+//     pxtorem({
+//       exclude: /node_modules/i,
+//       rootValue: 16,
+//       unitPrecision: 5,
+//       propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
+//       mediaQuery: true,
+//       minPixelValue: 0,
+//       replace: true,
+//     }),
+//     autoprefixer(),
+//   ];
 
+//   return gulp
+//     .src(paths.styles.sassBase)
+//     .pipe(sourcemaps.init())
+//     .pipe(sass().on('error', sass.logError))
+//     .pipe(postcss(processors))
+//     .pipe(filter('**/*.css'))
+//     .pipe(sourcemaps.write(paths.styles.map))
+//     .pipe(flatten())
+//     .pipe(gulp.dest(paths.dest.unoptimized))
+//     .pipe(filter('**/*.css'))
+//     .pipe(stripComments())
+
+//     .pipe(gulp.dest(paths.dest.uncompressedOptimized))
+//     .pipe(rename({ suffix: '.min' }))
+//     .pipe(cssnano())
+//     .pipe(gulp.dest(paths.dest.optimized))
+//     .pipe(gulp.dest(paths.dest.public))
+
+//     .pipe(gulp.dest(paths.dest.publicMini))
+//     .pipe(gulp.dest(paths.dest.compressedOptimized));
+// }
+// doesnt work properly
+// function test() {
+//   const processors = [
+//     autoprefixer(),
+//     pxtorem({
+//       exclude: /node_modules/i,
+//       rootValue: 16,
+//       unitPrecision: 5,
+//       propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
+//       mediaQuery: true,
+//       minPixelValue: 0,
+//       replace: true,
+//     }),
+//   ];
+//   const query = [combineMediaQuery()];
+
+//   return (
+//     gulp
+//       .src(paths.styles.sassBase)
+//       .pipe(sourcemaps.init())
+//       .pipe(sass().on('error', sass.logError))
+//       .pipe(postcss(processors))
+//       // .pipe(bytediff.start())
+//       .pipe(filter('**/*.css'))
+//       // .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
+//       .pipe(sourcemaps.write(paths.styles.map))
+//       .pipe(flatten())
+//       .pipe(stripComments())
+//       // .pipe(crass())
+//       .pipe(filter('./**/*.css'))
+//       .pipe(postcss(query))
+//       .pipe(gulp.dest(paths.dest.public))
+//       .pipe(gulp.dest(paths.dest.optimized))
+//       .pipe(filter('./**/*.css'))
+//       .pipe(stripComments())
+//       .pipe(rename({ suffix: '.min' }))
+//       .pipe(csso())
+//       // .pipe(bytediff.start())
+//       .pipe(gulp.dest(paths.dest.publicMini))
+//       .pipe(gulp.dest(paths.dest.compressedOptimized))
+//     // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
+//   );
+// }
 function qa() {
   const processors = [
-    autoprefixer(),
     pxtorem({
       exclude: /node_modules/i,
       rootValue: 16,
@@ -278,47 +327,42 @@ function qa() {
       minPixelValue: 0,
       replace: true,
     }),
+    autoprefixer(),
+    combineMediaQuery(),
   ];
 
   return gulp
-    .src(paths.styles.baseScss)
+    .src(paths.styles.sassBase)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss(processors))
     .pipe(filter('**/*.css'))
     .pipe(sourcemaps.write(paths.styles.map))
     .pipe(flatten())
-    .pipe(gulp.dest(paths.dest.exportCss))
-    .pipe(gulp.dest(paths.dest.buildFile))
+    .pipe(gulp.dest(paths.dest.unoptimized))
+    .pipe(stripComments())
+    .pipe(gulp.dest(paths.dest.public))
     .pipe(filter('**/*.css'))
     .pipe(stripComments())
     .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
-    .pipe(gulp.dest(paths.dest.miniBuild))
-    .pipe(gulp.dest(paths.dest.compact));
+    .pipe(gulp.dest(paths.dest.publicMini))
+    .pipe(gulp.dest(paths.dest.compressedOptimized));
 }
+exports.compact = compact; // builds the compressed folder with source map.
 
-// if (process.env.NODE_ENV === 'production') {
-// 	exports.build = series(sassy);
-// } else {
-// 	exports.build = series('sassWatch');
-// }
-const build = function () {
-  watch('./src/styles/base.scss', sassy);
-};
-// exports.sassy = sassy;
-// exports.docCss = docCss;
-exports.build = build;
-exports.sassy = sassy;
-
-exports.pixeltorem = pixeltorem;
-
-exports.production = production;
-exports.dev = dev;
-exports.test = test;
+// exports.production = production;
+/**
+ * ./sass/base.scss
+ * ./public
+ * ./
+ */
+// exports.dev = dev;
+// exports.test = test;
 exports.qa = qa;
-
-exports.default = build;
+// exports.build = qa;
+// exports.liveReload = liveReload; // reloads pages when things in public folder change.
+// exports.default = build;
 // stats is not in the series run yourself
 exports.stats = stats;
-//** update */
+exports.check = check;

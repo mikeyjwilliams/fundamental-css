@@ -1,0 +1,277 @@
+/** @format */
+
+$font-opacity: 1;
+$bg-opacity: 1;
+
+@each $g-color, $green-color in $green {
+  @if str-slice($g-color, 1, 5) == 'light' {
+    .md\:font-l-green#{str-slice($g-color, 12)} {
+      color: $green-color;
+      opacity: $font-opacity;
+    }
+  } @else if str-slice($g-color, 1, 4) == 'dark' {
+    .md\:font-d-green#{str-slice($g-color, 11)} {
+      color: $green-color;
+      opacity: $font-opacity;
+    }
+  } @else {
+    .md\:font-base-green {
+      color: $green-color;
+      opacity: $font-opacity;
+    }
+  }
+}
+
+/*---
+name: fonts in blue shades based on $color-blue.
+content: fonts in shades from light to dark of blue based on the chosen blue in variables.
+*/
+@each $b-color, $blue-color in $blue {
+  @if str-slice($b-color, 1, 5) == 'light' {
+    .md\:font-l-blue#{str-slice($b-color, 11)} {
+      color: $blue-color;
+      opacity: $font-opacity;
+    }
+  } @else if str-slice($b-color, 1, 4) == 'dark' {
+    .md\:font-d-blue#{str-slice($b-color, 10)} {
+      color: $blue-color;
+      opacity: $font-opacity;
+    }
+  } @else {
+    .md\:font-base-blue {
+      color: $blue-color;
+      opacity: $font-opacity;
+    }
+  }
+}
+
+/*---
+name: fonts in yellow shades based on $color-yellow.
+content: fonts in shades from light to dark of yellow based on chosen yellow in variables files.
+*/
+@each $y-color, $yellow-color in $yellow {
+  @if str-slice($y-color, 1, 5) == 'light' {
+    .md\:font-l-yellow#{str-slice($y-color, 13)} {
+      color: $yellow-color;
+      opacity: $font-opacity;
+    }
+  } @else if str-slice($y-color, 1, 4) == 'dark' {
+    .md\:font-d-yellow#{str-slice($y-color, 12)} {
+      color: $yellow-color;
+      opacity: $font-opacity;
+    }
+  } @else {
+    .md\:font-base-yellow {
+      color: $yellow-color;
+      opacity: $font-opacity;
+    }
+  }
+}
+
+/*---
+name: fonts in orange shades based on $color-orange.
+content: fonts in shades from light to dark of orange based on orange in variables file.
+*/
+@each $o-color, $orange-color in $orange {
+  @if str-slice($o-color, 1, 5) == 'light' {
+    .md\:font-l-orange#{str-slice($o-color, 13)} {
+      color: $orange-color;
+      opacity: $font-opacity;
+    }
+  } @else if str-slice($o-color, 1, 4) == 'dark' {
+    .md\:font-d-orange#{str-slice($o-color, 12)} {
+      color: $orange-color;
+      opacity: $font-opacity;
+    }
+  } @else {
+    .md\:font-base-orange {
+      color: $orange-color;
+      opacity: $font-opacity;
+    }
+  }
+}
+
+/*---
+name: fonts in red shades based on $color-red.
+content: fonts in shades from light to dark of red based on red in variables file.
+*/
+
+@each $r-color, $red-color in $red {
+  @if str-slice($r-color, 1, 5) == 'light' {
+    .md\:font-l-red#{str-slice($r-color, 10)} {
+      color: $red-color;
+      opacity: $font-opacity;
+    }
+  } @else if str-slice($r-color, 1, 4) == 'dark' {
+    .md\:font-d-red#{str-slice($r-color, 9)} {
+      color: $red-color;
+      opacity: $font-opacity;
+    }
+  } @else {
+    .md\:font-base-red {
+      color: $red-color;
+      opacity: $font-opacity;
+    }
+  }
+}
+
+/*---
+name: fonts in  black shades based on $color-black.
+content: fonts in  shades from light to dark of black based on black in variables file.
+*/
+@each $bl-color, $black-color in $black {
+  @if str-slice($bl-color, 1, 5) == 'light' {
+    .md\:font-l-black#{str-slice($bl-color, 12)} {
+      color: $black-color;
+      opacity: $font-opacity;
+    }
+  } @else if str-slice($bl-color, 1, 4) == 'dark' {
+    .md\:font-d-black#{str-slice($bl-color, 11)} {
+      color: $black-color;
+      opacity: $font-opacity;
+    }
+  } @else {
+    .md\:font-base-black {
+      color: $black-color;
+      opacity: $font-opacity;
+    }
+  }
+}
+
+/*---
+name: fonts in gray shades based on $color-gray.
+content: fonts in shades from light to dark of gray based on gray in variables file.
+
+*/
+@each $gr-color, $gray-color in $gray {
+  @if str-slice($gr-color, 1, 5) == 'light' {
+    .md\:font-l-gray#{str-slice($gr-color, 11)} {
+      color: $gray-color;
+      opacity: $font-opacity;
+    }
+  } @else if str-slice($gr-color, 1, 4) == 'dark' {
+    .md\:font-d-gray#{str-slice($gr-color, 10)} {
+      color: $gray-color;
+      opacity: $font-opacity;
+    }
+  } @else {
+    .md\:font-base-gray {
+      color: $gray-color;
+      opacity: $font-opacity;
+    }
+  }
+}
+/*---
+name: fonts in white based on $color-white.
+content: fonts in shades from light to dark of white based on white in variables file.
+*/
+@each $w-color, $white-color in $white {
+  @if str-slice($w-color, 1, 5) == 'light' {
+    .md\:font-l-white#{str-slice($w-color, 12)} {
+      color: $white-color;
+      opacity: $font-opacity;
+    }
+  } @else if str-slice($w-color, 1, 4) == 'dark' {
+    .md\:font-d-white#{str-slice($w-color, 11)} {
+      color: $white-color;
+      opacity: $font-opacity;
+    }
+  } @else {
+    .md\:font-base-white {
+      color: $white-color;
+      opacity: $font-opacity;
+    }
+  }
+}
+
+@each $g-color, $green-color in $green {
+  @if str-slice($g-color, 1, 5) == 'light' {
+    .md\:bg-l-green#{str-slice($g-color, 12)} {
+      background-color: $green-color;
+      opacity: $bg-opacity;
+    }
+  } @else if str-slice($g-color, 1, 4) == 'dark' {
+    .md\:bg-d-green#{str-slice($g-color, 11)} {
+      background-color: $green-color;
+      opacity: $bg-opacity;
+    }
+  } @else {
+    .md\:bg-base-green {
+      background-color: $green-color;
+      opacity: $bg-opacity;
+    }
+  }
+}
+
+@each $b-color, $blue-color in $blue {
+  @if str-slice($b-color, 1, 5) == 'light' {
+    .md\:bg-l-blue#{str-slice($b-color, 11)} {
+      background-color: $blue-color;
+      opacity: $bg-opacity;
+    }
+  } @else if str-slice($b-color, 1, 4) == 'dark' {
+    .md\:bg-d-blue#{str-slice($b-color, 10)} {
+      background-color: $blue-color;
+      opacity: $bg-opacity;
+    }
+  } @else {
+    .md\:bg-base-blue {
+      background-color: $blue-color;
+      opacity: $bg-opacity;
+    }
+  }
+}
+@each $y-color, $yellow-color in $yellow {
+  @if str-slice($y-color, 1, 5) == 'light' {
+    .md\:bg-l-yellow#{str-slice($y-color, 13)} {
+      background-color: $yellow-color;
+      opacity: $bg-opacity;
+    }
+  } @else if str-slice($y-color, 1, 4) == 'dark' {
+    .md\:bg-d-yellow#{str-slice($y-color, 12)} {
+      background-color: $yellow-color;
+      opacity: $bg-opacity;
+    }
+  } @else {
+    .md\:bg-base-yellow {
+      background-color: $yellow-color;
+      opacity: $bg-opacity;
+    }
+  }
+}
+@each $o-color, $orange-color in $orange {
+  @if str-slice($o-color, 1, 5) == 'light' {
+    .md\:bg-l-orange#{str-slice($o-color, 13)} {
+      background-color: $orange-color;
+      opacity: $bg-opacity;
+    }
+  } @else if str-slice($o-color, 1, 4) == 'dark' {
+    .md\:bg-d-orange#{str-slice($o-color, 12)} {
+      background-color: $orange-color;
+      opacity: $bg-opacity;
+    }
+  } @else {
+    .md\:bg-base-orange {
+      background-color: $orange-color;
+      opacity: $bg-opacity;
+    }
+  }
+}
+@each $r-color, $red-color in $red {
+  @if str-slice($r-color, 1, 5) == 'light' {
+    .md\:bg-l-red#{str-slice($r-color, 10)} {
+      background-color: $red-color;
+      opacity: $bg-opacity;
+    }
+  } @else if str-slice($r-color, 1, 4) == 'dark' {
+    .md\:bg-d-red#{str-slice($r-color, 9)} {
+      background-color: $red-color;
+      opacity: $bg-opacity;
+    }
+  } @else {
+    .md\:bg-base-red {
+      background-color: $red-color;
+      opacity: $bg-opacity;
+    }
+  }
+}

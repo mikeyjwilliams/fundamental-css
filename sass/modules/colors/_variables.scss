@@ -1,0 +1,70 @@
+/** @format */
+
+//******************************************************
+//**************** Colors variables ***********************
+//* @name specific-colors  ************************
+//************************************************************
+$bright-green: #5be206 !default;
+$robins-egg-blue: #04c4d9 !default;
+$corn: #f2b705 !default;
+$trinidad: #f25c05 !default;
+$milano-red: #bf0a0a !default;
+$sugar-cane: #fdfffc !default;
+$swamp: #00171f !default;
+$bali-hai: #8d99ae !default;
+
+//***********************************************
+//* @name: specific-color-to-generic-color
+//* all basic colors are turned into there own
+//* color variable of said color, so they can be easily
+//* customized in the docs online there is more information.
+//***********************************************************
+// used in color maps
+$color-green: $bright-green !default;
+$color-blue: $robins-egg-blue !default;
+$color-yellow: $corn !default;
+$color-orange: $trinidad !default;
+$color-red: $milano-red !default;
+$color-black: $swamp !default;
+$color-gray: $bali-hai !default;
+$color-white: $sugar-cane !default;
+
+//*** percents made particularly for colors
+//*** but can be used elsewhere if needed.
+// used in color maps.
+$percent-45: 45% !default;
+$percent-40: 40% !default;
+$percent-35: 35% !default;
+$percent-30: 30% !default;
+$percent-25: 25% !default;
+$percent-20: 20% !default;
+$percent-18: 18% !default;
+$percent-15: 15% !default;
+$percent-12: 12% !default;
+$percent-10: 10% !default;
+$percent-7: 7% !default;
+$percent-5: 5% !default;
+
+//******************************************
+//** loop variables
+//******************************************
+//** used in default-colors.scss
+$slice-color-start--5: 5 !default;
+$slice-color-start--6: 6 !default;
+$slice-color-start--7: 7 !default;
+$slice-color-start--8: 8 !default;
+$slice-color-start--10: 10 !default;
+$slice-color-start--11: 11 !default;
+
+$slice-color-end--8: 8 !default;
+$slice-color-end--9: 9 !default;
+$slice-color-end--10: 10 !default;
+$slice-color-end--11: 11 !default;
+$slice-color-end--12: 12 !default;
+
+$slice-color-class--8: 8 !default;
+$slice-color-class--9: 9 !default;
+$slice-color-class--10: 10 !default;
+$slice-color-class--11: 11 !default;
+$slice-color-class--12: 12 !default;
+$slice-color-class--13: 13 !default;
