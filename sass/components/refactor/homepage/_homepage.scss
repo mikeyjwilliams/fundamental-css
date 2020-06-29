@@ -9,6 +9,17 @@
   border-radius: 0.75rem;
   margin-bottom: 25px;
 }
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.three-4th {
+  width: 85%;
+}
+.one-4th {
+  width: 15%;
+}
 
 .box-black {
   .built-code-top {
@@ -36,4 +47,8 @@
     border-radius: 0 0 0.75rem 0.75rem;
     background-color: lighten(gray, 20%);
   }
+}
+
+.bg-white {
+  background-color: white;
 }

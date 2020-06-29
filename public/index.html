@@ -18,11 +18,12 @@
       <h1 class='text--center font-gray-l--300 text--7xl font--verdana'>Pattern Css</h1>
       <p class='text--center font-gray-l--500 text--5xl font--luicia'>A customizable component based library</p>
     </header>
-    <main>
+   <div class='flex-container'>
+      <main class='three-4th'>
       <section class="home__header">
-        <div class="home__side bg-l-blue--900">
+        <div class="home__side bg-red-l--900">
           <h2 class=" header--margin-bottom header__font">
-            <span class="font-d-red--600">Sassy Util Library</span>,<br /> come build a library with us.
+            <span class="">Sassy Util Library</span>,<br /> come build a library with us.
           </h2>
           <p class="font-d-black--200">
             Sassy Util Library is a customizable sass driven project. As a free
@@ -46,7 +47,7 @@
             included in the MIT license with their work and email.
           </p>
         </div>
-        <div class="home__side bg-l-blue--900">
+        <div class="home__side bg-red-l--900">
           <h2 class="font-d-red--700 header__font header--margin-bottom">
             Why Sassy Util Library...
           </h2>
@@ -72,9 +73,9 @@
           </p>
         </div>
       </section>
-      <section class="homepage">
-        <div class="bg-blue-l--900 homepage__top">
-          <h2 class="text--xl" id="hp-utility-first">
+      <section class="homepage bg-red-l--900 mx--a homepage__top">
+        <div>
+          <h2 class="text--2xl px--2" id="hp-utility-first">
             Most CSS Frameworks work too hard
           </h2>
           <p>
@@ -120,11 +121,12 @@
             design systems.
           </p>
           <div class="display">
-            <header class="example-top">
+            <header class="example-top bg-white">
               <h3 class="text--3xl">Font color class examples</h3>
             </header>
             <pre id="hp-example-block" class="mb--3">
-<code class='language-html'>&lt;p class='font-l-gray--200'&gt;variables.scss; &lt;/p&gt;<br/>
+            
+      <code class='language-html'>&lt;p class='font-l-gray--200'&gt;variables.scss; &lt;/p&gt;<br/>
 
 &lt;p class='color-green'&gt;$bright-green: #5be206;&lt;/p&gt;
 <br/>
@@ -163,7 +165,7 @@
 </code>
     </pre>
     <section class="box-black">
-      <header class="built-code-top">
+      <header class="built-code-top bg-white">
         <h3 class='text--3xl text--justify'>
           Font color display examples
         </h3>
@@ -217,9 +219,10 @@
             colors. More on how to customize is discussed in the customization
             page for that module. {/* link to customization page */}
           </p>
-        </div>
+        </di
       </section>
-      <aside class="sidebar">
+    </main>
+      <aside class="sidebar one-4th">
         <h3 class="text--lg font-gray-l--200 sidebar__title">ON PAGE</h3>
         <ul>
           <li>
@@ -233,7 +236,8 @@
           </li>
         </ul>
         </aside>
-    </main>
+    
+  </div>
   </body>
   <script>
     hljs.configure({useBR: true});
