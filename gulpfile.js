@@ -316,7 +316,6 @@ function check() {
 //     // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
 //   );
 // }
-
 function qa() {
   const processors = [
     pxtorem({
@@ -329,8 +328,8 @@ function qa() {
       replace: true,
     }),
     autoprefixer(),
+    combineMediaQuery(),
   ];
-  const media = [combineMediaQuery()];
 
   return gulp
     .src(paths.styles.sassBase)
@@ -342,43 +341,28 @@ function qa() {
     .pipe(flatten())
     .pipe(gulp.dest(paths.dest.unoptimized))
     .pipe(stripComments())
-    .pipe(postcss(media))
-    .pipe(filter('**/*.css'))
     .pipe(gulp.dest(paths.dest.public))
     .pipe(filter('**/*.css'))
     .pipe(stripComments())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(csso())
+    .pipe(cssnano())
     .pipe(gulp.dest(paths.dest.publicMini))
     .pipe(gulp.dest(paths.dest.compressedOptimized));
 }
-
-// if (process.env.NODE_ENV === 'production') {
-// 	exports.build = series(sassy);
-// } else {
-// 	exports.build = series('sassWatch');
-// }
-const build = function () {
-  watch('./sass/base.scss', sassy);
-};
-// exports.sassy = sassy;
-// exports.docCss = docCss;
-exports.build = build;
-exports.sassy = sassy; // pulls from sass/base.scss => public/base.css
 exports.compact = compact; // builds the compressed folder with source map.
 
-exports.production = production;
+// exports.production = production;
 /**
  * ./sass/base.scss
  * ./public
  * ./
  */
-exports.dev = dev;
-exports.test = test;
+// exports.dev = dev;
+// exports.test = test;
 exports.qa = qa;
-
+// exports.build = qa;
 // exports.liveReload = liveReload; // reloads pages when things in public folder change.
-exports.default = build;
+// exports.default = build;
 // stats is not in the series run yourself
 exports.stats = stats;
 exports.check = check;
