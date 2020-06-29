@@ -192,130 +192,130 @@ function compact() {
 function check() {
   return gulp.src(paths.dest.public).pipe(csscss());
 }
+// not working properly
+// function production() {
+//   const processors = [
+//     pxtorem({
+//       exclude: /node_modules/i,
+//       rootValue: 16,
+//       unitPrecision: 5,
+//       propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
+//       mediaQuery: true,
+//       minPixelValue: 0,
+//       replace: true,
+//     }),
+//     autoprefixer(),
+//   ];
+//   const query = [combineMediaQuery()];
 
-function production() {
-  const processors = [
-    pxtorem({
-      exclude: /node_modules/i,
-      rootValue: 16,
-      unitPrecision: 5,
-      propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
-      mediaQuery: true,
-      minPixelValue: 0,
-      replace: true,
-    }),
-    autoprefixer(),
-  ];
-  const query = [combineMediaQuery()];
+//   const cssFilter = filter('**/*.css', { restore: true });
 
-  const cssFilter = filter('**/*.css', { restore: true });
+//   return (
+//     gulp
+//       .src(paths.styles.sassBase)
+//       .pipe(sourcemaps.init())
+//       .pipe(sass().on('error', sass.logError))
+//       .pipe(postcss(processors))
+//       // .pipe(bytediff.start())
+//       // .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
+//       .pipe(sourcemaps.write(paths.styles.map))
+//       .pipe(flatten())
+//       .pipe(gulp.dest(paths.dest.unoptimized))
+//       // .pipe(cssFilter)
+//       .pipe(stripComments())
+//       .pipe(postcss(query))
+//       // .pipe(crass())
+//       .pipe(gulp.dest(paths.dest.uncompressedOptimized))
+//       .pipe(gulp.dest(paths.dest.public))
+//       // .pipe(cssFilter)
+//       .pipe(rename({ suffix: '.min' }), console.log('rename'))
+//       // .pipe(stripComments())
+//       .pipe(csso())
+//       // .pipe(bytediff.start())
+//       .pipe(gulp.dest(paths.dest.publicMini), console.log('publicmini'))
+//       .pipe(gulp.dest(paths.dest.compressedOptimized))
+//     // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
+//   );
+// }
+// not working properly
+// function dev() {
+//   const processors = [
+//     pxtorem({
+//       exclude: /node_modules/i,
+//       rootValue: 16,
+//       unitPrecision: 5,
+//       propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
+//       mediaQuery: true,
+//       minPixelValue: 0,
+//       replace: true,
+//     }),
+//     autoprefixer(),
+//   ];
 
-  return (
-    gulp
-      .src(paths.styles.sassBase)
-      .pipe(sourcemaps.init())
-      .pipe(sass().on('error', sass.logError))
-      .pipe(postcss(processors))
-      // .pipe(bytediff.start())
-      // .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
-      .pipe(sourcemaps.write(paths.styles.map))
-      .pipe(flatten())
-      .pipe(gulp.dest(paths.dest.unoptimized))
-      // .pipe(cssFilter)
-      .pipe(stripComments())
-      .pipe(postcss(query))
-      // .pipe(crass())
-      .pipe(gulp.dest(paths.dest.uncompressedOptimized))
-      .pipe(gulp.dest(paths.dest.public))
-      // .pipe(cssFilter)
-      .pipe(rename({ suffix: '.min' }), console.log('rename'))
-      // .pipe(stripComments())
-      .pipe(csso())
-      // .pipe(bytediff.start())
-      .pipe(gulp.dest(paths.dest.publicMini), console.log('publicmini'))
-      .pipe(gulp.dest(paths.dest.compressedOptimized))
-    // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
-  );
-}
+//   return gulp
+//     .src(paths.styles.sassBase)
+//     .pipe(sourcemaps.init())
+//     .pipe(sass().on('error', sass.logError))
+//     .pipe(postcss(processors))
+//     .pipe(filter('**/*.css'))
+//     .pipe(sourcemaps.write(paths.styles.map))
+//     .pipe(flatten())
+//     .pipe(gulp.dest(paths.dest.unoptimized))
+//     .pipe(filter('**/*.css'))
+//     .pipe(stripComments())
 
-function dev() {
-  const processors = [
-    pxtorem({
-      exclude: /node_modules/i,
-      rootValue: 16,
-      unitPrecision: 5,
-      propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
-      mediaQuery: true,
-      minPixelValue: 0,
-      replace: true,
-    }),
-    autoprefixer(),
-  ];
+//     .pipe(gulp.dest(paths.dest.uncompressedOptimized))
+//     .pipe(rename({ suffix: '.min' }))
+//     .pipe(cssnano())
+//     .pipe(gulp.dest(paths.dest.optimized))
+//     .pipe(gulp.dest(paths.dest.public))
 
-  return gulp
-    .src(paths.styles.sassBase)
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss(processors))
-    .pipe(filter('**/*.css'))
-    .pipe(sourcemaps.write(paths.styles.map))
-    .pipe(flatten())
-    .pipe(gulp.dest(paths.dest.unoptimized))
-    .pipe(filter('**/*.css'))
-    .pipe(stripComments())
+//     .pipe(gulp.dest(paths.dest.publicMini))
+//     .pipe(gulp.dest(paths.dest.compressedOptimized));
+// }
+// doesnt work properly
+// function test() {
+//   const processors = [
+//     autoprefixer(),
+//     pxtorem({
+//       exclude: /node_modules/i,
+//       rootValue: 16,
+//       unitPrecision: 5,
+//       propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
+//       mediaQuery: true,
+//       minPixelValue: 0,
+//       replace: true,
+//     }),
+//   ];
+//   const query = [combineMediaQuery()];
 
-    .pipe(gulp.dest(paths.dest.uncompressedOptimized))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(cssnano())
-    .pipe(gulp.dest(paths.dest.optimized))
-    .pipe(gulp.dest(paths.dest.public))
-
-    .pipe(gulp.dest(paths.dest.publicMini))
-    .pipe(gulp.dest(paths.dest.compressedOptimized));
-}
-
-function test() {
-  const processors = [
-    autoprefixer(),
-    pxtorem({
-      exclude: /node_modules/i,
-      rootValue: 16,
-      unitPrecision: 5,
-      propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
-      mediaQuery: true,
-      minPixelValue: 0,
-      replace: true,
-    }),
-  ];
-  const query = [combineMediaQuery()];
-
-  return (
-    gulp
-      .src(paths.styles.sassBase)
-      .pipe(sourcemaps.init())
-      .pipe(sass().on('error', sass.logError))
-      .pipe(postcss(processors))
-      // .pipe(bytediff.start())
-      .pipe(filter('**/*.css'))
-      // .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
-      .pipe(sourcemaps.write(paths.styles.map))
-      .pipe(flatten())
-      .pipe(stripComments())
-      // .pipe(crass())
-      .pipe(filter('./**/*.css'))
-      .pipe(postcss(query))
-      .pipe(gulp.dest(paths.dest.public))
-      .pipe(gulp.dest(paths.dest.optimized))
-      .pipe(filter('./**/*.css'))
-      .pipe(stripComments())
-      .pipe(rename({ suffix: '.min' }))
-      .pipe(csso())
-      // .pipe(bytediff.start())
-      .pipe(gulp.dest(paths.dest.publicMini))
-      .pipe(gulp.dest(paths.dest.compressedOptimized))
-    // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
-  );
-}
+//   return (
+//     gulp
+//       .src(paths.styles.sassBase)
+//       .pipe(sourcemaps.init())
+//       .pipe(sass().on('error', sass.logError))
+//       .pipe(postcss(processors))
+//       // .pipe(bytediff.start())
+//       .pipe(filter('**/*.css'))
+//       // .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
+//       .pipe(sourcemaps.write(paths.styles.map))
+//       .pipe(flatten())
+//       .pipe(stripComments())
+//       // .pipe(crass())
+//       .pipe(filter('./**/*.css'))
+//       .pipe(postcss(query))
+//       .pipe(gulp.dest(paths.dest.public))
+//       .pipe(gulp.dest(paths.dest.optimized))
+//       .pipe(filter('./**/*.css'))
+//       .pipe(stripComments())
+//       .pipe(rename({ suffix: '.min' }))
+//       .pipe(csso())
+//       // .pipe(bytediff.start())
+//       .pipe(gulp.dest(paths.dest.publicMini))
+//       .pipe(gulp.dest(paths.dest.compressedOptimized))
+//     // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
+//   );
+// }
 
 function qa() {
   const processors = [
