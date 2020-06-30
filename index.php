@@ -224,7 +224,7 @@
                 </p>
     </div>
     </main>
-    <aside class="sidebar one-4th">
+    <aside class="one-4th">
         <h3 class="text--lg font-gray-l--200 sidebar__title">ON PAGE</h3>
         <ul>
             <li>
