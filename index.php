@@ -222,7 +222,7 @@
                     colors. More on how to customize is discussed in the customization
                     page for that module. {/* link to customization page */}
                 </p>
-    </div>
+    
     </main>
     <aside class="one-4th">
         <h3 class="text--lg font-gray-l--200 sidebar__title">ON PAGE</h3>
