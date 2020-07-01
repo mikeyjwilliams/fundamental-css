@@ -7,11 +7,12 @@
     <div class='flex-container'>
         <main class='three-4th'>
             <section class="home__header">
-                <div class="home__side bg-red-l--900">
-                    <h2 class=" header--margin-bottom header__font">
-                        <span class="">Fundamental Css</span>,<br /> come build a library
+                <div class="home__side box-red">
+                    <h2 class="text--3xl header font-red-d--400">
+                        <span>Fundamental Css</span>,<br /> come build a library
                         with us.
                     </h2>
+                    <div class='display-box'>
                     <p class="font-d-black--200">
                         Fundamental.css is a customizable sass driven project. As a free
                         free open source library. It is always in progress, and can always
@@ -38,11 +39,13 @@
                         any works are used there name and what work they built that is
                         included in the MIT license with their work and email.
                     </p>
+                    </div>
                 </div>
-                <div class="home__side bg-red-l--900">
-                    <h2 class="font-d-red--700 header__font header--margin-bottom">
+                <div class="home__side box-red">
+                    <h2 class="text--3xl font-red-d--600 header">
                         Why Fundamental Css...
                     </h2>
+                    <div class='display-box'>
                     <p class="font-d-black--200">The PVD goal is to provide</p>
                     <ol>
 
@@ -66,6 +69,7 @@
                         add
                         some interesting things to this project.
                     </p>
+                    </div>
                 </div>
             </section>
             <section class="homepage bg-red-l--900 mx--a homepage__top">
