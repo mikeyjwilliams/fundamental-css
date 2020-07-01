@@ -44,14 +44,14 @@ const paths = {
     buildsBuildbase: './builds/build/*.css',
     stylesSassbuildBase: './styles/sass-build/*.css',
 
-    publicBuildBuild: './public/build/build.css',
+    cssBuildBuild: './css/build/build.css',
     map: './',
   },
   dest: {
     buildMap: './',
-    public: './public',
-    publicBase: './public/*.css',
-    publicMini: './public/mini/',
+    css: './css/',
+    cssBase: './css/*.css',
+    cssMini: './css/mini/',
     miniMap: './',
     uncompressedCss: './uncompressed-css/',
     compressedCss: './compressed-css/',
@@ -113,7 +113,7 @@ function sassy() {
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write(paths.dest.buildMap))
-    .pipe(gulp.dest(paths.dest.public));
+    .pipe(gulp.dest(paths.dest.css));
 }
 
 /**
@@ -123,7 +123,7 @@ function sassy() {
  */
 function stats() {
   return gulp
-    .src(paths.dest.publicBase)
+    .src(paths.dest.cssBase)
     .pipe(
       stylestats({
         type: 'json',
@@ -155,7 +155,7 @@ function pixeltorem() {
   return gulp
     .src(paths.styles.stylesSassbuildBase)
     .pipe(postcss(processors))
-    .pipe(gulp.dest(paths.dest.public))
+    .pipe(gulp.dest(paths.dest.css))
     .pipe(gulp.dest(paths.dest.uncompressedCss));
 }
 
@@ -172,7 +172,7 @@ function pixeltorem() {
 //         path.extname = '.mini.css';
 //       })
 //     )
-//     .pipe(gulp.dest(paths.dest.publicMini));
+//     .pipe(gulp.dest(paths.dest.cssMini));
 // }
 
 /**
@@ -190,7 +190,7 @@ function compact() {
 }
 
 function check() {
-  return gulp.src(paths.dest.public).pipe(csscss());
+  return gulp.src(paths.dest.css).pipe(csscss());
 }
 // not working properly
 // function production() {
@@ -226,13 +226,13 @@ function check() {
 //       .pipe(postcss(query))
 //       // .pipe(crass())
 //       .pipe(gulp.dest(paths.dest.uncompressedOptimized))
-//       .pipe(gulp.dest(paths.dest.public))
+//       .pipe(gulp.dest(paths.dest.css))
 //       // .pipe(cssFilter)
 //       .pipe(rename({ suffix: '.min' }), console.log('rename'))
 //       // .pipe(stripComments())
 //       .pipe(csso())
 //       // .pipe(bytediff.start())
-//       .pipe(gulp.dest(paths.dest.publicMini), console.log('publicmini'))
+//       .pipe(gulp.dest(paths.dest.cssMini), console.log('cssmini'))
 //       .pipe(gulp.dest(paths.dest.compressedOptimized))
 //     // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
 //   );
@@ -268,9 +268,9 @@ function check() {
 //     .pipe(rename({ suffix: '.min' }))
 //     .pipe(cssnano())
 //     .pipe(gulp.dest(paths.dest.optimized))
-//     .pipe(gulp.dest(paths.dest.public))
+//     .pipe(gulp.dest(paths.dest.css))
 
-//     .pipe(gulp.dest(paths.dest.publicMini))
+//     .pipe(gulp.dest(paths.dest.cssMini))
 //     .pipe(gulp.dest(paths.dest.compressedOptimized));
 // }
 // doesnt work properly
@@ -304,14 +304,14 @@ function check() {
 //       // .pipe(crass())
 //       .pipe(filter('./**/*.css'))
 //       .pipe(postcss(query))
-//       .pipe(gulp.dest(paths.dest.public))
+//       .pipe(gulp.dest(paths.dest.css))
 //       .pipe(gulp.dest(paths.dest.optimized))
 //       .pipe(filter('./**/*.css'))
 //       .pipe(stripComments())
 //       .pipe(rename({ suffix: '.min' }))
 //       .pipe(csso())
 //       // .pipe(bytediff.start())
-//       .pipe(gulp.dest(paths.dest.publicMini))
+//       .pipe(gulp.dest(paths.dest.cssMini))
 //       .pipe(gulp.dest(paths.dest.compressedOptimized))
 //     // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
 //   );
@@ -341,12 +341,12 @@ function qa() {
     .pipe(flatten())
     .pipe(gulp.dest(paths.dest.unoptimized))
     .pipe(stripComments())
-    .pipe(gulp.dest(paths.dest.public))
+    .pipe(gulp.dest(paths.dest.css))
     .pipe(filter('**/*.css'))
     .pipe(stripComments())
     .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
-    .pipe(gulp.dest(paths.dest.publicMini))
+    .pipe(gulp.dest(paths.dest.cssMini))
     .pipe(gulp.dest(paths.dest.compressedOptimized));
 }
 exports.compact = compact; // builds the compressed folder with source map.
@@ -354,14 +354,14 @@ exports.compact = compact; // builds the compressed folder with source map.
 // exports.production = production;
 /**
  * ./sass/base.scss
- * ./public
+ * ./css
  * ./
  */
 // exports.dev = dev;
 // exports.test = test;
 exports.qa = qa;
 // exports.build = qa;
-// exports.liveReload = liveReload; // reloads pages when things in public folder change.
+// exports.liveReload = liveReload; // reloads pages when things in css folder change.
 // exports.default = build;
 // stats is not in the series run yourself
 exports.stats = stats;

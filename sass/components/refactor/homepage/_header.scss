@@ -9,29 +9,29 @@
 //** util class files eventually.
 
 .home__header {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
 }
 
 .home__side {
-  padding: 2.5%;
-  margin: 1.5rem 1rem;
-  border-radius: 0.5rem;
-  text-align: center; //***** add to FONTS in RC1 *****/
-  width: 50%;
+	padding: 2.5%;
+	margin: 1.5rem 1rem;
+	border-radius: 0.5rem;
+	text-align: center; //***** add to FONTS in RC1 *****/
+	width: 50%;
 }
 .section__flex {
-  @include flex-row;
+	@include flex-row;
 }
 
 .header--margin-bottom {
-  padding-bottom: 1.5em;
+	padding-bottom: 1.5em;
 }
 
 .header__font {
-  font-size: 2rem;
+	font-size: 2rem;
 }
 .box {
-  padding: 15%;
+	padding: 15%;
 }
