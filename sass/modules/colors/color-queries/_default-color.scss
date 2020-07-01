@@ -1,19 +1,10 @@
 /** @format */
 
 @each $generic, $color in $green {
-	@if str-slice($generic, $slice-color-start--7, $slice-color-end--11) ==
-		'light'
-	{
-		.font-green-l#{str-slice($generic, $slice-color-class--12)} {
-			--font-opacity: 1;
-			color: $color;
-			opacity: var(--font-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--7, $slice-color-start--10) ==
+	@if str-slice($generic, $slice-color-start--7, $slice-color-start--10) ==
 		'dark'
 	{
-		.font-green-d#{str-slice($generic, $slice-color-class--11)} {
+		.font-green#{str-slice($generic, $slice-color-class--11)} {
 			--font-opacity: 1;
 			color: $color;
 			opacity: var(--font-opacity);
@@ -28,19 +19,9 @@
 }
 
 @each $generic, $color in $blue {
-	@if str-slice($generic, $slice-color-start--6, $slice-color-end--10) ==
-		'light'
+	@if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
 	{
-		.font-blue-l#{str-slice($generic, $slice-color-class--11)} {
-			--font-opacity: 1;
-			color: $color;
-			opacity: var(--font-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--6, $slice-color-end--9) ==
-		'dark'
-	{
-		.font-blue-d#{str-slice($generic, $slice-color-class--10)} {
+		.font-blue#{str-slice($generic, $slice-color-class--10)} {
 			--font-opacity: 1;
 			color: $color;
 			opacity: var(--font-opacity);
@@ -55,19 +36,9 @@
 }
 
 @each $generic, $color in $yellow {
-	@if str-slice($generic, $slice-color-start--8, $slice-color-end--12) ==
-		'light'
+	@if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
 	{
-		.font-yellow-l#{str-slice($generic, $slice-color-class--13)} {
-			--font-opacity: 1;
-			color: $color;
-			opacity: var(--font-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--8, $slice-color-end--11) ==
-		'dark'
-	{
-		.font-yellow-l#{str-slice($generic, $slice-color-class--12)} {
+		.font-yellow#{str-slice($generic, $slice-color-class--12)} {
 			--font-opacity: 1;
 			color: $color;
 			opacity: var(--font-opacity);
@@ -82,19 +53,9 @@
 }
 
 @each $generic, $color in $orange {
-	@if str-slice($generic, $slice-color-start--8, $slice-color-end--12) ==
-		'light'
+	@if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
 	{
-		.font-orange-l#{str-slice($generic, $slice-color-class--13)} {
-			--font-opacity: 1;
-			color: $color;
-			opacity: var(--font-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--8, $slice-color-end--11) ==
-		'dark'
-	{
-		.font-orange-l#{str-slice($generic, $slice-color-class--12)} {
+		.font-orange#{str-slice($generic, $slice-color-class--12)} {
 			--font-opacity: 1;
 			color: $color;
 			opacity: var(--font-opacity);
@@ -109,18 +70,9 @@
 }
 
 @each $generic, $color in $red {
-	@if str-slice($generic, $slice-color-start--5, $slice-color-end--9) == 'light'
+	@if str-slice($generic, $slice-color-start--5, $slice-color-end--8) == 'dark'
 	{
-		.font-red-l#{str-slice($generic, $slice-color-class--10)} {
-			--font-opacity: 1;
-			color: $color;
-			opacity: var(--font-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--5, $slice-color-end--8) ==
-		'dark'
-	{
-		.font-red-d#{str-slice($generic, $slice-color-class--9)} {
+		.font-red#{str-slice($generic, $slice-color-class--9)} {
 			--font-opacity: 1;
 			color: $color;
 			opacity: var(--font-opacity);
@@ -135,19 +87,10 @@
 }
 
 @each $generic, $color in $black {
-	@if str-slice($generic, $slice-color-start--7, $slice-color-end--11) ==
-		'light'
-	{
-		.font-black-l#{str-slice($generic, $slice-color-class--12)} {
-			--font-opacity: 1;
-			color: $color;
-			opacity: var(--font-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--7, $slice-color-class--10) ==
+	@if str-slice($generic, $slice-color-start--7, $slice-color-class--10) ==
 		'dark'
 	{
-		.font-black-d#{str-slice($generic, $slice-color-class--11)} {
+		.font-black#{str-slice($generic, $slice-color-class--11)} {
 			--font-opacity: 1;
 			color: $color;
 			opacity: var(--font-opacity);
@@ -162,19 +105,9 @@
 }
 
 @each $generic, $color in $gray {
-	@if str-slice($generic, $slice-color-start--6, $slice-color-end--10) ==
-		'light'
+	@if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
 	{
-		.font-gray-l#{str-slice($generic, $slice-color-class--11)} {
-			--font-opacity: 1;
-			color: $color;
-			opacity: var(--font-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--6, $slice-color-end--9) ==
-		'dark'
-	{
-		.font-gray-d#{str-slice($generic, $slice-color-class--10)} {
+		.font-gray#{str-slice($generic, $slice-color-class--10)} {
 			--font-opacity: 1;
 			color: $color;
 			opacity: var(--font-opacity);
@@ -189,19 +122,9 @@
 }
 
 @each $generic, $color in $white {
-	@if str-slice($generic, $slice-color-start--7, $slice-color-end--11) ==
-		'light'
+	@if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
 	{
-		.font-white-l#{str-slice($generic, $slice-color-class--12)} {
-			--font-opacity: 1;
-			color: $color;
-			opacity: var(--font-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--7, $slice-color-end--10) ==
-		'dark'
-	{
-		.font-white-d#{str-slice($generic, $slice-color-class--11)} {
+		.font-white#{str-slice($generic, $slice-color-class--11)} {
 			--font-opacity: 1;
 			color: $color;
 			opacity: var(--font-opacity);
@@ -216,16 +139,8 @@
 }
 
 @each $generic, $color in $green {
-	@if str-slice($generic, $slice-color-start--7, $slice-color-end--11) ==
-		'light'
-	{
-		.bg-green-l#{str-slice($generic, $slice-color-class--12)} {
-			--bg-opacity: 1;
-			background-color: $color;
-			opacity: var(--bg-opacity);
-		}
-	} @else if str-slice($generic, $slice-color-start--7, 10) == 'dark' {
-		.bg-green-d#{str-slice($generic, 11)} {
+	@if str-slice($generic, $slice-color-start--7, 10) == 'dark' {
+		.bg-green#{str-slice($generic, 11)} {
 			--bg-opacity: 1;
 			background-color: $color;
 			opacity: var(--bg-opacity);
@@ -240,19 +155,9 @@
 }
 
 @each $generic, $color in $blue {
-	@if str-slice($generic, $slice-color-start--6, $slice-color-end--10) ==
-		'light'
+	@if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
 	{
-		.bg-blue-l#{str-slice($generic, $slice-color-class--11)} {
-			--bg-opacity: 1;
-			background-color: $color;
-			opacity: var(--bg-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--6, $slice-color-end--9) ==
-		'dark'
-	{
-		.bg-blue-d#{str-slice($generic, $slice-color-class--10)} {
+		.bg-blue#{str-slice($generic, $slice-color-class--10)} {
 			--bg-opacity: 1;
 			background-color: $color;
 			opacity: var(--bg-opacity);
@@ -266,19 +171,9 @@
 	}
 }
 @each $generic, $color in $yellow {
-	@if str-slice($generic, $slice-color-start--8, $slice-color-end--12) ==
-		'light'
+	@if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
 	{
-		.bg-yellow-l#{str-slice($generic, $slice-color-class--13)} {
-			--bg-opacity: 1;
-			background-color: $color;
-			opacity: var(--bg-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--8, $slice-color-end--11) ==
-		'dark'
-	{
-		.bg-yellow-d#{str-slice($generic, $slice-color-class--12)} {
+		.bg-yellow#{str-slice($generic, $slice-color-class--12)} {
 			--bg-opacity: 1;
 			background-color: $color;
 			opacity: var(--bg-opacity);
@@ -292,16 +187,8 @@
 	}
 }
 @each $generic, $color in $orange {
-	@if str-slice($generic, $slice-color-start--8, $slice-color-end--12) ==
-		'light'
-	{
-		.bg-orange-l#{str-slice($generic, $slice-color-class--13)} {
-			--bg-opacity: 1;
-			background-color: $color;
-			opacity: var(--bg-opacity);
-		}
-	} @else if str-slice($generic, $slice-color-start--8, 11) == 'dark' {
-		.bg-orange-d#{str-slice($generic, $slice-color-class--12)} {
+	@if str-slice($generic, $slice-color-start--8, 11) == 'dark' {
+		.bg-orange#{str-slice($generic, $slice-color-class--12)} {
 			--bg-opacity: 1;
 			background-color: $color;
 			opacity: var(--bg-opacity);
@@ -315,18 +202,9 @@
 	}
 }
 @each $generic, $color in $red {
-	@if str-slice($generic, $slice-color-start--5, $slice-color-end--9) == 'light'
+	@if str-slice($generic, $slice-color-start--5, $slice-color-end--8) == 'dark'
 	{
-		.bg-red-l#{str-slice($generic, $slice-color-class--10)} {
-			--bg-opacity: 1;
-			background-color: $color;
-			opacity: var(--bg-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--5, $slice-color-end--8) ==
-		'dark'
-	{
-		.bg-red-d#{str-slice($generic, $slice-color-end--9)} {
+		.bg-red#{str-slice($generic, $slice-color-end--9)} {
 			--bg-opacity: 1;
 			background-color: $color;
 			opacity: var(--bg-opacity);
@@ -340,19 +218,9 @@
 	}
 }
 @each $generic, $color in $black {
-	@if str-slice($generic, $slice-color-start--7, $slice-color-end--11) ==
-		'light'
+	@if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
 	{
-		.bg-black-l#{str-slice($generic, $slice-color-class--12)} {
-			--bg-opacity: 1;
-			background-color: $color;
-			opacity: var(--bg-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--5, $slice-color-end--8) ==
-		'dark'
-	{
-		.bg-black-d#{str-slice($generic, $slice-color-class--12)} {
+		.bg-black#{str-slice($generic, $slice-color-class--11)} {
 			--bg-opacity: 1;
 			background-color: $color;
 			opacity: var(--bg-opacity);
@@ -366,25 +234,31 @@
 	}
 }
 @each $generic, $color in $gray {
-	@if str-slice($generic, $slice-color-start--6, $slice-color-end--10) ==
-		'light'
+	@if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
 	{
-		.bg-gray-l#{str-slice($generic, $slice-color-class--11)} {
-			--bg-opacity: 1;
-			background-color: $color;
-			opacity: var(--bg-opacity);
-		}
-	} @else if
-		str-slice($generic, $slice-color-start--6, $slice-color-end--9) ==
-		'dark'
-	{
-		.bg-gray-d#{str-slice($generic, $slice-color-class--10)} {
+		.bg-gray#{str-slice($generic, $slice-color-class--10)} {
 			--bg-opacity: 1;
 			background-color: $color;
 			opacity: var(--bg-opacity);
 		}
 	} @else {
 		.bg-gray {
+			--bg-opacity: 1;
+			background-color: $color;
+			opacity: var(--bg-opacity);
+		}
+	}
+}
+@each $generic, $color in $white {
+	@if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+	{
+		.bg-white#{str-slice($generic, $slice-color-class--11)} {
+			--bg-opacity: 1;
+			background-color: $color;
+			opacity: var(--bg-opacity);
+		}
+	} @else {
+		.bg-white {
 			--bg-opacity: 1;
 			background-color: $color;
 			opacity: var(--bg-opacity);
