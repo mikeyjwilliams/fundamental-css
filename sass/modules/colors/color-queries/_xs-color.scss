@@ -83,13 +83,13 @@
   }
 }
 
-@each $r-color, $red-color in $red {
-  @if str-slice($r-color, $slice-color-start--5, $slice-color-end--8) == 'dark'
+@each $generic, $color in $red {
+  @if str-slice($generic, $slice-color-start--5, $slice-color-end--8) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:font-red#{str-slice($r-color, $slice-color-class--9)} {
+      .xs\:font-red#{str-slice($generic, $slice-color-class--9)} {
         --font-opacity: 1;
-        color: $red-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
@@ -97,20 +97,19 @@
     @media (min-width: 31.25rem) {
       .xs\:font-red {
         --font-opacity: 1;
-        color: $red-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
   }
 }
-@each $bl-color, $black-color in $black {
-  @if str-slice($bl-color, $slice-color-start--7, $slice-color-end--10) ==
-    'dark'
+@each $generic, $color in $black {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:font-black#{str-slice($bl-color, $slice-color-class--11)} {
+      .xs\:font-black#{str-slice($generic, $slice-color-class--11)} {
         --font-opacity: 1;
-        color: $black-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
@@ -118,20 +117,20 @@
     @media (min-width: 31.25rem) {
       .xs\:font-black {
         --font-opacity: 1;
-        color: $black-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
   }
 }
 
-@each $gr-color, $gray-color in $gray {
-  @if str-slice($gr-color, $slice-color-start--6, $slice-color-end--9) == 'dark'
+@each $generic, $color in $gray {
+  @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:font-gray#{str-slice($gr-color, $slice-color-class--10)} {
+      .xs\:font-gray#{str-slice($generic, $slice-color-class--10)} {
         --font-opacity: 1;
-        color: $gray-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
@@ -139,7 +138,7 @@
     @media (min-width: 31.25rem) {
       .xs\:font-gray {
         --font-opacity: 1;
-        color: $gray-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
