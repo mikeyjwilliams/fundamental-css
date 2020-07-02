@@ -306,3 +306,23 @@
     }
   }
 }
+@each $generic, $color in $white {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-white#{str-slice($generic, $slice-color-class--11)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
+    }
+  } @else {
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-white {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
+    }
+  }
+}
