@@ -265,3 +265,63 @@
     }
   }
 }
+@each $generic, $color in $black {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--lg) {
+      .lg\:bg-black#{str-slice($generic, $slice-color-class--11)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
+    }
+  } @else {
+    @media (min-width: $break-point--lg) {
+      .lg\:bg-black {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
+    }
+  }
+}
+@each $generic, $color in $gray {
+  @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
+  {
+    @media (min-width: $break-point--lg) {
+      .lg\:bg-gray#{str-slice($generic, $slice-color-class--10)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
+    }
+  } @else {
+    @media (min-width: $break-point--lg) {
+      .lg\:bg-gray {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
+    }
+  }
+}
+@each $generic, $color in $white {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--lg) {
+      .lg\:bg-white#{str-slice($generic, $slice-color-class--11)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
+    }
+  } @else {
+    @media (min-width: $break-point--lg) {
+      .lg\:bg-white {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
+    }
+  }
+}
