@@ -1,22 +1,21 @@
 /** @format */
 
-$font-opacity: 1;
-$bg-opacity: 1;
-
 @each $generic, $color in $green {
   @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
   {
     @media (min-width: $break-point--sm) {
       .sm\:font-green#{str-slice($generic, $slice-color-class--11)} {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:font-green {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -26,15 +25,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:font-blue#{str-slice($generic, $slice-color-class--10)} {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:font-blue {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -44,33 +45,37 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:font-yellow#{str-slice($generic, $slice-color-class--12)} {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:font-yellow {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   }
 }
-@each $generic, $orange-color in $orange {
+@each $generic, $color in $orange {
   @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
   {
     @media (min-width: $break-point--sm) {
       .sm\:font-orange#{str-slice($generic, $slice-color-class--12)} {
-        color: $orange-color;
-        opacity: $font-opacity;
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:font-orange {
-        color: $orange-color;
-        opacity: $font-opacity;
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -80,15 +85,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:font-red#{str-slice($generic, $slice-color-class--9)} {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:font-red {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -99,15 +106,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:font-black#{str-slice($generic, $slice-color-class--11)} {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:font-black {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -117,15 +126,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:font-gray#{str-slice($generic, $slice-color-class--10)} {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:font-gray {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -135,15 +146,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:font-white#{str-slice($generic, $slice-color-class--11)} {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:font-white {
+        --font-opacity: 1;
         color: $color;
-        opacity: $font-opacity;
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -154,15 +167,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:bg-green#{str-slice($generic, $slice-color-class--11)} {
+        --font-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:bg-green {
+        --font-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -173,15 +188,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:bg-blue#{str-slice($generic, $slice-color-class--10)} {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:bg-blue {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   }
@@ -191,15 +208,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:bg-yellow#{str-slice($generic, $slice-color-class--12)} {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:bg-yellow {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   }
@@ -209,15 +228,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:bg-orange#{str-slice($generic, $slice-color-class--12)} {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:bg-orange {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   }
@@ -227,15 +248,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:bg-red#{str-slice($generic, $slice-color-class--9)} {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:bg-red {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   }
@@ -245,15 +268,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:bg-black#{str-slice($generic, $slice-color-class--11)} {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:bg-black {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   }
@@ -263,15 +288,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:bg-gray#{str-slice($generic, $slice-color-class--10)} {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:bg-gray {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   }
@@ -281,15 +308,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--sm) {
       .sm\:bg-white#{str-slice($generic, $slice-color-class--11)} {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--sm) {
       .sm\:bg-white {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   }
