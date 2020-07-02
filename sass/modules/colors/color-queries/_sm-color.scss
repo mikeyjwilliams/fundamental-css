@@ -42,14 +42,14 @@ $bg-opacity: 1;
 @each $generic, $color in $yellow {
   @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
   {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-yellow#{str-slice($generic, $slice-color-class--12)} {
         color: $color;
         opacity: $font-opacity;
       }
     }
   } @else {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-yellow {
         color: $color;
         opacity: $font-opacity;
@@ -60,14 +60,14 @@ $bg-opacity: 1;
 @each $generic, $orange-color in $orange {
   @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
   {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-orange#{str-slice($generic, $slice-color-class--12)} {
         color: $orange-color;
         opacity: $font-opacity;
       }
     }
   } @else {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-orange {
         color: $orange-color;
         opacity: $font-opacity;
@@ -78,14 +78,14 @@ $bg-opacity: 1;
 @each $generic, $color in $red {
   @if str-slice($generic, $slice-color-start--5, $slice-color-end--8) == 'dark'
   {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-red#{str-slice($generic, $slice-color-class--9)} {
         color: $color;
         opacity: $font-opacity;
       }
     }
   } @else {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-red {
         color: $color;
         opacity: $font-opacity;
@@ -97,14 +97,14 @@ $bg-opacity: 1;
   @if str-slice($generic, $slice-color-start--7, $slice-color-class--10) ==
     'dark'
   {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-black#{str-slice($generic, $slice-color-class--11)} {
         color: $color;
         opacity: $font-opacity;
       }
     }
   } @else {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-black {
         color: $color;
         opacity: $font-opacity;
@@ -115,14 +115,14 @@ $bg-opacity: 1;
 @each $generic, $color in $gray {
   @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
   {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-gray#{str-slice($generic, $slice-color-class--10)} {
         color: $color;
         opacity: $font-opacity;
       }
     }
   } @else {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-gray {
         color: $color;
         opacity: $font-opacity;
@@ -133,14 +133,14 @@ $bg-opacity: 1;
 @each $generic, $color in $white {
   @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
   {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-white#{str-slice($generic, $slice-color-class--11)} {
         color: $color;
         opacity: $font-opacity;
       }
     }
   } @else {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:font-white {
         color: $color;
         opacity: $font-opacity;
@@ -152,14 +152,14 @@ $bg-opacity: 1;
 @each $generic, $color in $green {
   @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
   {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:bg-green#{str-slice($generic, $slice-color-class--11)} {
         background-color: $color;
         opacity: $bg-opacity;
       }
     }
   } @else {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:bg-green {
         background-color: $color;
         opacity: $bg-opacity;
@@ -171,14 +171,14 @@ $bg-opacity: 1;
 @each $generic, $color in $blue {
   @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
   {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:bg-blue#{str-slice($generic, $slice-color-class--10)} {
         background-color: $color;
         opacity: $bg-opacity;
       }
     }
   } @else {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:bg-blue {
         background-color: $color;
         opacity: $bg-opacity;
@@ -189,14 +189,14 @@ $bg-opacity: 1;
 @each $generic, $color in $yellow {
   @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
   {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:bg-yellow#{str-slice($generic, $slice-color-class--12)} {
         background-color: $color;
         opacity: $bg-opacity;
       }
     }
   } @else {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:bg-yellow {
         background-color: $color;
         opacity: $bg-opacity;
@@ -207,14 +207,14 @@ $bg-opacity: 1;
 @each $generic, $color in $orange {
   @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
   {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:bg-orange#{str-slice($generic, $slice-color-class--12)} {
         background-color: $color;
         opacity: $bg-opacity;
       }
     }
   } @else {
-    @media (min-width: 40rem) {
+    @media (min-width: $break-point--sm) {
       .sm\:bg-orange {
         background-color: $color;
         opacity: $bg-opacity;
@@ -222,21 +222,75 @@ $bg-opacity: 1;
     }
   }
 }
-@each $r-color, $red-color in $red {
-  @if str-slice($r-color, 1, 5) == 'light' {
-    .sm\:bg-l-red#{str-slice($r-color, 10)} {
-      background-color: $red-color;
-      opacity: $bg-opacity;
-    }
-  } @else if str-slice($r-color, 1, 4) == 'dark' {
-    .sm\:bg-d-red#{str-slice($r-color, 9)} {
-      background-color: $red-color;
-      opacity: $bg-opacity;
+@each $generic, $color in $red {
+  @if str-slice($generic, $slice-color-start--5, $slice-color-end--8) == 'dark'
+  {
+    @media (min-width: $break-point--sm) {
+      .sm\:bg-red#{str-slice($generic, $slice-color-class--9)} {
+        background-color: $color;
+        opacity: $bg-opacity;
+      }
     }
   } @else {
-    .sm\:bg-base-red {
-      background-color: $red-color;
-      opacity: $bg-opacity;
+    @media (min-width: $break-point--sm) {
+      .sm\:bg-red {
+        background-color: $color;
+        opacity: $bg-opacity;
+      }
+    }
+  }
+}
+@each $generic, $color in $black {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--sm) {
+      .sm\:bg-black#{str-slice($generic, $slice-color-class--11)} {
+        background-color: $color;
+        opacity: $bg-opacity;
+      }
+    }
+  } @else {
+    @media (min-width: $break-point--sm) {
+      .sm\:bg-black {
+        background-color: $color;
+        opacity: $bg-opacity;
+      }
+    }
+  }
+}
+@each $generic, $color in $gray {
+  @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
+  {
+    @media (min-width: $break-point--sm) {
+      .sm\:bg-gray#{str-slice($generic, $slice-color-class--10)} {
+        background-color: $color;
+        opacity: $bg-opacity;
+      }
+    }
+  } @else {
+    @media (min-width: $break-point--sm) {
+      .sm\:bg-gray {
+        background-color: $color;
+        opacity: $bg-opacity;
+      }
+    }
+  }
+}
+@each $generic, $color in $white {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--sm) {
+      .sm\:bg-white#{str-slice($generic, $slice-color-class--11)} {
+        background-color: $color;
+        opacity: $bg-opacity;
+      }
+    }
+  } @else {
+    @media (min-width: $break-point--sm) {
+      .sm\:bg-white {
+        background-color: $color;
+        opacity: $bg-opacity;
+      }
     }
   }
 }
