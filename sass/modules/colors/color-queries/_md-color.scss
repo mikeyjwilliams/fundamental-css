@@ -1,7 +1,5 @@
 /** @format */
 
-$bg-opacity: 1;
-
 @each $generic, $color in $green {
   @if str-slice($generic, $slice-color-start--7, $slice-color-start--10) ==
     'dark'
@@ -103,11 +101,6 @@ $bg-opacity: 1;
     }
   }
 }
-
-/*---
-name: fonts in  black shades based on $color-black.
-content: fonts in  shades from light to dark of black based on black in variables file.
-*/
 @each $generic, $color in $black {
   @if str-slice($generic, $slice-color-start--7, $slice-color-class--10) ==
     'dark'
@@ -183,8 +176,9 @@ content: fonts in  shades from light to dark of black based on black in variable
   } @else {
     @media (min-width: $break-point--md) {
       .md\:bg-green {
+        --bg-opacity: 1;
         background-color: $color;
-        opacity: $bg-opacity;
+        opacity: var(--bg-opacity);
       }
     }
   }
