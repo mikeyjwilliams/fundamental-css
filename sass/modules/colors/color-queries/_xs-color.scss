@@ -1,313 +1,328 @@
 /** @format */
 
-@each $g-color, $green-color in $green {
-  @if str-slice($g-color, 1, 5) == 'light' {
-    .xs\:font-l-green#{str-slice($g-color, 12)} {
-      --font-opacity: 1;
-      color: $green-color;
-      opacity: var(--font-opacity);
-    }
-  } @else if str-slice($g-color, 1, 4) == 'dark' {
-    .xs\:font-d-green#{str-slice($g-color, 11)} {
-      --font-opacity: 1;
-      color: $green-color;
-      opacity: var(--font-opacity);
+@each $generic, $color in $green {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:font-green#{str-slice($generic, $slice-color-class--11)} {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   } @else {
-    .xs\:font-base-green {
-      --font-opacity: 1;
-      color: $green-color;
-      opacity: var(--font-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:font-green {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   }
 }
 
-/*---
-name: fonts in blue shades based on $color-blue.
-content: fonts in shades from light to dark of blue based on the chosen blue in variables.
-*/
-@each $b-color, $blue-color in $blue {
-  @if str-slice($b-color, 1, 5) == 'light' {
-    .xs\:font-l-blue#{str-slice($b-color, 11)} {
-      --font-opacity: 1;
-      color: $blue-color;
-      opacity: var(--font-opacity);
-    }
-  } @else if str-slice($b-color, 1, 4) == 'dark' {
-    .xs\:font-d-blue#{str-slice($b-color, 10)} {
-      --font-opacity: 1;
-      color: $blue-color;
-      opacity: var(--font-opacity);
+@each $generic, $color in $blue {
+  @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:font-blue#{str-slice($generic, $slice-color-class--10)} {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   } @else {
-    .xs\:font-base-blue {
-      --font-opacity: 1;
-      color: $blue-color;
-      opacity: var(--font-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:font-blue {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
+    }
+  }
+}
+@each $generic, $color in $yellow {
+  @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:font-yellow#{str-slice($generic, $slice-color-class--12)} {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
+    }
+  } @else {
+    @media (min-width: $break-point--xs) {
+      .xs\:font-yellow {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   }
 }
 
-/*---
-name: fonts in yellow shades based on $color-yellow.
-content: fonts in shades from light to dark of yellow based on chosen yellow in variables files.
-*/
-@each $y-color, $yellow-color in $yellow {
-  @if str-slice($y-color, 1, 5) == 'light' {
-    .xs\:font-l-yellow#{str-slice($y-color, 13)} {
-      --font-opacity: 1;
-      color: $yellow-color;
-      opacity: var(--font-opacity);
-    }
-  } @else if str-slice($y-color, 1, 4) == 'dark' {
-    .xs\:font-d-yellow#{str-slice($y-color, 12)} {
-      --font-opacity: 1;
-      color: $yellow-color;
-      opacity: var(--font-opacity);
+@each $generic, $color in $orange {
+  @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:font-orange#{str-slice($generic, $slice-color-class--12)} {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   } @else {
-    .xs\:font-base-yellow {
-      --font-opacity: 1;
-      color: $yellow-color;
-      opacity: var(--font-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:font-orange {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   }
 }
 
-/*---
-name: fonts in orange shades based on $color-orange.
-content: fonts in shades from light to dark of orange based on orange in variables file.
-*/
-@each $o-color, $orange-color in $orange {
-  @if str-slice($o-color, 1, 5) == 'light' {
-    .xs\:font-l-orange#{str-slice($o-color, 13)} {
-      --font-opacity: 1;
-      color: $orange-color;
-      opacity: var(--font-opacity);
-    }
-  } @else if str-slice($o-color, 1, 4) == 'dark' {
-    .xs\:font-d-orange#{str-slice($o-color, 12)} {
-      --font-opacity: 1;
-      color: $orange-color;
-      opacity: var(--font-opacity);
+@each $generic, $color in $red {
+  @if str-slice($generic, $slice-color-start--5, $slice-color-end--8) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:font-red#{str-slice($generic, $slice-color-class--9)} {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   } @else {
-    .xs\:font-base-orange {
-      --font-opacity: 1;
-      color: $orange-color;
-      opacity: var(--font-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:font-red {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
+    }
+  }
+}
+@each $generic, $color in $black {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:font-black#{str-slice($generic, $slice-color-class--11)} {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
+    }
+  } @else {
+    @media (min-width: $break-point--xs) {
+      .xs\:font-black {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   }
 }
 
-/*---
-name: fonts in red shades based on $color-red.
-content: fonts in shades from light to dark of red based on red in variables file.
-*/
-
-@each $r-color, $red-color in $red {
-  @if str-slice($r-color, 1, 5) == 'light' {
-    .xs\:font-l-red#{str-slice($r-color, 10)} {
-      --font-opacity: 1;
-      color: $red-color;
-      opacity: var(--font-opacity);
-    }
-  } @else if str-slice($r-color, 1, 4) == 'dark' {
-    .xs\:font-d-red#{str-slice($r-color, 9)} {
-      --font-opacity: 1;
-      color: $red-color;
-      opacity: var(--font-opacity);
+@each $generic, $color in $gray {
+  @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:font-gray#{str-slice($generic, $slice-color-class--10)} {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   } @else {
-    .xs\:font-base-red {
-      --font-opacity: 1;
-      color: $red-color;
-      opacity: var(--font-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:font-gray {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
+    }
+  }
+}
+@each $generic, $color in $white {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:font-white#{str-slice($generic, $slice-color-class--11)} {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
+    }
+  } @else {
+    @media (min-width: $break-point--xs) {
+      .xs\:font-white {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   }
 }
 
-/*---
-name: fonts in  black shades based on $color-black.
-content: fonts in  shades from light to dark of black based on black in variables file.
-*/
-@each $bl-color, $black-color in $black {
-  @if str-slice($bl-color, 1, 5) == 'light' {
-    .xs\:font-l-black#{str-slice($bl-color, 12)} {
-      --font-opacity: 1;
-      color: $black-color;
-      opacity: var(--font-opacity);
-    }
-  } @else if str-slice($bl-color, 1, 4) == 'dark' {
-    .xs\:font-d-black#{str-slice($bl-color, 11)} {
-      --font-opacity: 1;
-      color: $black-color;
-      opacity: var(--font-opacity);
+@each $generic, $color in $green {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-green#{str-slice($generic, $slice-color-class--11)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   } @else {
-    .xs\:font-base-black {
-      --font-opacity: 1;
-      color: $black-color;
-      opacity: var(--font-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-green {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   }
 }
 
-/*---
-name: fonts in gray shades based on $color-gray.
-content: fonts in shades from light to dark of gray based on gray in variables file.
-
-*/
-@each $gr-color, $gray-color in $gray {
-  @if str-slice($gr-color, 1, 5) == 'light' {
-    .xs\:font-l-gray#{str-slice($gr-color, 11)} {
-      --font-opacity: 1;
-      color: $gray-color;
-      opacity: var(--font-opacity);
-    }
-  } @else if str-slice($gr-color, 1, 4) == 'dark' {
-    .xs\:font-d-gray#{str-slice($gr-color, 10)} {
-      --font-opacity: 1;
-      color: $gray-color;
-      opacity: var(--font-opacity);
+@each $generic, $color in $blue {
+  @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-blue#{str-slice($generic, $slice-color-class--10)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   } @else {
-    .xs\:font-base-gray {
-      --font-opacity: 1;
-      color: $gray-color;
-      opacity: var(--font-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-blue {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   }
 }
-/*---
-name: fonts in white based on $color-white.
-content: fonts in shades from light to dark of white based on white in variables file.
-*/
-@each $w-color, $white-color in $white {
-  @if str-slice($w-color, 1, 5) == 'light' {
-    .xs\:font-l-white#{str-slice($w-color, 12)} {
-      --font-opacity: 1;
-      color: $white-color;
-      opacity: var(--font-opacity);
-    }
-  } @else if str-slice($w-color, 1, 4) == 'dark' {
-    .xs\:font-d-white#{str-slice($w-color, 11)} {
-      --font-opacity: 1;
-      color: $white-color;
-      opacity: var(--font-opacity);
+@each $generic, $color in $yellow {
+  @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-yellow#{str-slice($generic, $slice-color-class--12)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   } @else {
-    .xs\:font-base-white {
-      --font-opacity: 1;
-      color: $white-color;
-      opacity: var(--font-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-yellow {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   }
 }
-
-@each $g-color, $green-color in $green {
-  @if str-slice($g-color, 1, 5) == 'light' {
-    .xs\:bg-l-green#{str-slice($g-color, 12)} {
-      --bg-opacity: 1;
-      background-color: $green-color;
-      opacity: var(--bg-opacity);
-    }
-  } @else if str-slice($g-color, 1, 4) == 'dark' {
-    .xs\:bg-d-green#{str-slice($g-color, 11)} {
-      --bg-opacity: 1;
-      background-color: $green-color;
-      opacity: var(--bg-opacity);
+@each $generic, $color in $orange {
+  @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-orange#{str-slice($generic, $slice-color-class--12)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   } @else {
-    .xs\:bg-base-green {
-      --bg-opacity: 1;
-      background-color: $green-color;
-      opacity: var(--bg-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-orange {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   }
 }
-
-@each $b-color, $blue-color in $blue {
-  @if str-slice($b-color, 1, 5) == 'light' {
-    .xs\:bg-l-blue#{str-slice($b-color, 11)} {
-      --bg-opacity: 1;
-      background-color: $blue-color;
-      opacity: var(--bg-opacity);
-    }
-  } @else if str-slice($b-color, 1, 4) == 'dark' {
-    .xs\:bg-d-blue#{str-slice($b-color, 10)} {
-      --bg-opacity: 1;
-      background-color: $blue-color;
-      opacity: var(--bg-opacity);
+@each $generic, $color in $red {
+  @if str-slice($generic, $slice-color-start--5, $slice-color-end--8) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-red#{str-slice($generic, $slice-color-class--9)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   } @else {
-    .xs\:bg-base-blue {
-      --bg-opacity: 1;
-      background-color: $blue-color;
-      opacity: var(--bg-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-red {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   }
 }
-@each $y-color, $yellow-color in $yellow {
-  @if str-slice($y-color, 1, 5) == 'light' {
-    .xs\:bg-l-yellow#{str-slice($y-color, 13)} {
-      --bg-opacity: 1;
-      background-color: $yellow-color;
-      opacity: var(--bg-opacity);
-    }
-  } @else if str-slice($y-color, 1, 4) == 'dark' {
-    .xs\:bg-d-yellow#{str-slice($y-color, 12)} {
-      --bg-opacity: 1;
-      background-color: $yellow-color;
-      opacity: var(--bg-opacity);
+@each $generic, $color in $black {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-black#{str-slice($generic, $slice-color-class--11)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   } @else {
-    .xs\:bg-base-yellow {
-      --bg-opacity: 1;
-      background-color: $yellow-color;
-      opacity: var(--bg-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-black {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   }
 }
-@each $o-color, $orange-color in $orange {
-  @if str-slice($o-color, 1, 5) == 'light' {
-    .xs\:bg-l-orange#{str-slice($o-color, 13)} {
-      --bg-opacity: 1;
-      background-color: $orange-color;
-      opacity: var(--bg-opacity);
-    }
-  } @else if str-slice($o-color, 1, 4) == 'dark' {
-    .xs\:bg-d-orange#{str-slice($o-color, 12)} {
-      --bg-opacity: 1;
-      background-color: $orange-color;
-      opacity: var(--bg-opacity);
+@each $generic, $color in $gray {
+  @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-gray#{str-slice($generic, $slice-color-class--10)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   } @else {
-    .xs\:bg-base-orange {
-      --bg-opacity: 1;
-      background-color: $orange-color;
-      opacity: var(--bg-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-gray {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   }
 }
-@each $r-color, $red-color in $red {
-  @if str-slice($r-color, 1, 5) == 'light' {
-    .xs\:bg-l-red#{str-slice($r-color, 10)} {
-      --bg-opacity: 1;
-      background-color: $red-color;
-      opacity: var(--bg-opacity);
-    }
-  } @else if str-slice($r-color, 1, 4) == 'dark' {
-    .xs\:bg-d-red#{str-slice($r-color, 9)} {
-      --bg-opacity: 1;
-      background-color: $red-color;
-      opacity: var(--bg-opacity);
+@each $generic, $color in $white {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-white#{str-slice($generic, $slice-color-class--11)} {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   } @else {
-    .xs\:bg-base-red {
-      --bg-opacity: 1;
-      background-color: $red-color;
-      opacity: var(--bg-opacity);
+    @media (min-width: $break-point--xs) {
+      .xs\:bg-white {
+        --bg-opacity: 1;
+        background-color: $color;
+        opacity: var(--bg-opacity);
+      }
     }
   }
 }
