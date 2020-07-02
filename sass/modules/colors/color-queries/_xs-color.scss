@@ -1,12 +1,12 @@
 /** @format */
 
-@each $g-color, $green-color in $green {
-  @if str-slice($g-color, $slice-color-start--7, $slice-color-end--10) == 'dark'
+@each $generic, $color in $green {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:font-green#{str-slice($g-color, $slice-color-class--11)} {
+      .xs\:font-green#{str-slice($generic, $slice-color-class--11)} {
         --font-opacity: 1;
-        color: $green-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
@@ -14,20 +14,20 @@
     @media (min-width: 31.25rem) {
       .xs\:font-green {
         --font-opacity: 1;
-        color: $green-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
   }
 }
 
-@each $b-color, $blue-color in $blue {
-  @if str-slice($b-color, $slice-color-start--6, $slice-color-end--9) == 'dark'
+@each $generic, $color in $blue {
+  @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:font-blue#{str-slice($b-color, $slice-color-class--10)} {
+      .xs\:font-blue#{str-slice($generic, $slice-color-class--10)} {
         --font-opacity: 1;
-        color: $blue-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
@@ -35,7 +35,7 @@
     @media (min-width: 31.25rem) {
       .xs\:font-blue {
         --font-opacity: 1;
-        color: $blue-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
