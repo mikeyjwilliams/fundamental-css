@@ -139,8 +139,9 @@
 }
 
 @each $generic, $color in $green {
-	@if str-slice($generic, $slice-color-start--7, 10) == 'dark' {
-		.bg-green#{str-slice($generic, 11)} {
+	@if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+	{
+		.bg-green#{str-slice($generic, $slice-color-class--11)} {
 			--bg-opacity: 1;
 			background-color: $color;
 			opacity: var(--bg-opacity);
@@ -187,7 +188,8 @@
 	}
 }
 @each $generic, $color in $orange {
-	@if str-slice($generic, $slice-color-start--8, 11) == 'dark' {
+	@if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
+	{
 		.bg-orange#{str-slice($generic, $slice-color-class--12)} {
 			--bg-opacity: 1;
 			background-color: $color;
