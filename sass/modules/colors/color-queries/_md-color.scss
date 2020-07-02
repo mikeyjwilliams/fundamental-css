@@ -9,17 +9,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--md) {
       .md\:font-green#{str-slice($generic, $slice-color-class--11)} {
-        --bg-opacity: 1;
+        --font-opacity: 1;
         color: $color;
-        opacity: var(--bg-opacity);
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--md) {
       .md\:font-green {
-        --bg-opacity: 1;
+        --font-opacity: 1;
         color: $color;
-        opacity: var(--bg-opacity);
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -29,17 +29,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--md) {
       .md\:font-blue#{str-slice($generic, $slice-color-class--10)} {
-        --bg-opacity: 1;
+        --font-opacity: 1;
         color: $color;
-        opacity: var(--bg-opacity);
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--md) {
       .md\:font-blue {
-        --bg-opacity: 1;
+        --font-opacity: 1;
         color: $color;
-        opacity: var(--bg-opacity);
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -49,16 +49,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--md) {
       .md\:font-yellow#{str-slice($generic, $slice-color-class--12)} {
-        --bg-opacity: 1;
+        --font-opacity: 1;
         color: $color;
-        opacity: var(--bg-opacity);
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--md) {
       .md\:font-yellow {
+        --font-opacity: 1;
         color: $color;
-        opacity: var(--bg-opacity);
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -68,17 +69,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--md) {
       .md\:font-orange#{str-slice($generic, $slice-color-class--12)} {
-        --bg-opacity: 1;
+        --font-opacity: 1;
         color: $color;
-        opacity: var(--bg-opacity);
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--md) {
       .md\:font-orange {
-        --bg-opacity: 1;
+        --font-opacity: 1;
         color: $color;
-        opacity: var(--bg-opacity);
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -88,17 +89,17 @@ $bg-opacity: 1;
   {
     @media (min-width: $break-point--md) {
       .md\:font-red#{str-slice($generic, $slice-color-class--9)} {
-        --bg-opacity: 1;
+        --font-opacity: 1;
         color: $color;
-        opacity: var(--bg-opacity);
+        opacity: var(--font-opacity);
       }
     }
   } @else {
     @media (min-width: $break-point--md) {
       .md\:font-red {
-        --bg-opacity: 1;
+        --font-opacity: 1;
         color: $color;
-        opacity: var(--bg-opacity);
+        opacity: var(--font-opacity);
       }
     }
   }
@@ -108,67 +109,64 @@ $bg-opacity: 1;
 name: fonts in  black shades based on $color-black.
 content: fonts in  shades from light to dark of black based on black in variables file.
 */
-@each $bl-color, $black-color in $black {
-  @if str-slice($bl-color, 1, 5) == 'light' {
-    .md\:font-l-black#{str-slice($bl-color, 12)} {
-      color: $black-color;
-      opacity: $font-opacity;
-    }
-  } @else if str-slice($bl-color, 1, 4) == 'dark' {
-    .md\:font-d-black#{str-slice($bl-color, 11)} {
-      color: $black-color;
-      opacity: $font-opacity;
+@each $generic, $color in $black {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-class--10) ==
+    'dark'
+  {
+    @media (min-width: $break-point--md) {
+      .md\:font-black#{str-slice($generic, $slice-color-class--11)} {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   } @else {
-    .md\:font-base-black {
-      color: $black-color;
-      opacity: $font-opacity;
+    @media (min-width: $break-point--md) {
+      .md\:font-black {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   }
 }
-
-/*---
-name: fonts in gray shades based on $color-gray.
-content: fonts in shades from light to dark of gray based on gray in variables file.
-
-*/
-@each $gr-color, $gray-color in $gray {
-  @if str-slice($gr-color, 1, 5) == 'light' {
-    .md\:font-l-gray#{str-slice($gr-color, 11)} {
-      color: $gray-color;
-      opacity: $font-opacity;
-    }
-  } @else if str-slice($gr-color, 1, 4) == 'dark' {
-    .md\:font-d-gray#{str-slice($gr-color, 10)} {
-      color: $gray-color;
-      opacity: $font-opacity;
+@each $generic, $color in $gray {
+  @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
+  {
+    @media (min-width: $break-point--md) {
+      .md\:font-gray#{str-slice($generic, $slice-color-class--10)} {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   } @else {
-    .md\:font-base-gray {
-      color: $gray-color;
-      opacity: $font-opacity;
+    @media (min-width: $break-point--md) {
+      .md\:font-gray {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   }
 }
-/*---
-name: fonts in white based on $color-white.
-content: fonts in shades from light to dark of white based on white in variables file.
-*/
-@each $w-color, $white-color in $white {
-  @if str-slice($w-color, 1, 5) == 'light' {
-    .md\:font-l-white#{str-slice($w-color, 12)} {
-      color: $white-color;
-      opacity: $font-opacity;
-    }
-  } @else if str-slice($w-color, 1, 4) == 'dark' {
-    .md\:font-d-white#{str-slice($w-color, 11)} {
-      color: $white-color;
-      opacity: $font-opacity;
+@each $generic, $color in $white {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
+  {
+    @media (min-width: $break-point--md) {
+      .md\:font-white#{str-slice($generic, $slice-color-class--11)} {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   } @else {
-    .md\:font-base-white {
-      color: $white-color;
-      opacity: $font-opacity;
+    @media (min-width: $break-point--md) {
+      .md\:font-white {
+        --font-opacity: 1;
+        color: $color;
+        opacity: var(--font-opacity);
+      }
     }
   }
 }
