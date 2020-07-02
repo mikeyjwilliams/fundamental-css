@@ -41,13 +41,13 @@
     }
   }
 }
-@each $y-color, $yellow-color in $yellow {
-  @if str-slice($y-color, $slice-color-start--8, $slice-color-end--11) == 'dark'
+@each $generic, $color in $yellow {
+  @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:font-yellow#{str-slice($y-color, $slice-color-class--12)} {
+      .xs\:font-yellow#{str-slice($generic, $slice-color-class--12)} {
         --font-opacity: 1;
-        color: $yellow-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
@@ -55,20 +55,20 @@
     @media (min-width: 31.25rem) {
       .xs\:font-yellow {
         --font-opacity: 1;
-        color: $yellow-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
   }
 }
 
-@each $o-color, $orange-color in $orange {
-  @if str-slice($o-color, $slice-color-start--8, $slice-color-end--11) == 'dark'
+@each $generic, $color in $orange {
+  @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:font-orange#{str-slice($o-color, $slice-color-class--12)} {
+      .xs\:font-orange#{str-slice($generic, $slice-color-class--12)} {
         --font-opacity: 1;
-        color: $orange-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
@@ -76,7 +76,7 @@
     @media (min-width: 31.25rem) {
       .xs\:font-orange {
         --font-opacity: 1;
-        color: $orange-color;
+        color: $color;
         opacity: var(--font-opacity);
       }
     }
