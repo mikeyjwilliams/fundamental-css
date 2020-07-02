@@ -144,30 +144,30 @@
     }
   }
 }
-@each $w-color, $white-color in $white {
-  @if str-slice($w-color, $slice-color-start--7, $slice-color-end--10) == 'dark'
+@each $generic, $color in $white {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
   {
-    .xs\:font-white#{str-slice($w-color, $slice-color-class--11)} {
+    .xs\:font-white#{str-slice($generic, $slice-color-class--11)} {
       --font-opacity: 1;
-      color: $white-color;
+      color: $color;
       opacity: var(--font-opacity);
     }
   } @else {
     .xs\:font-white {
       --font-opacity: 1;
-      color: $white-color;
+      color: $color;
       opacity: var(--font-opacity);
     }
   }
 }
 
-@each $g-color, $green-color in $green {
-  @if str-slice($g-color, $slice-color-start--7, $slice-color-end--10) == 'dark'
+@each $generic, $color in $green {
+  @if str-slice($generic, $slice-color-start--7, $slice-color-end--10) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:bg-green#{str-slice($g-color, $slice-color-class--11)} {
+      .xs\:bg-green#{str-slice($generic, $slice-color-class--11)} {
         --bg-opacity: 1;
-        background-color: $green-color;
+        background-color: $color;
         opacity: var(--bg-opacity);
       }
     }
@@ -175,20 +175,20 @@
     @media (min-width: 31.25rem) {
       .xs\:bg-green {
         --bg-opacity: 1;
-        background-color: $green-color;
+        background-color: $color;
         opacity: var(--bg-opacity);
       }
     }
   }
 }
 
-@each $b-color, $blue-color in $blue {
-  @if str-slice($b-color, $slice-color-start--6, $slice-color-end--9) == 'dark'
+@each $generic, $color in $blue {
+  @if str-slice($generic, $slice-color-start--6, $slice-color-end--9) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:bg-blue#{str-slice($b-color, $slice-color-class--10)} {
+      .xs\:bg-blue#{str-slice($generic, $slice-color-class--10)} {
         --bg-opacity: 1;
-        background-color: $blue-color;
+        background-color: $color;
         opacity: var(--bg-opacity);
       }
     }
@@ -196,7 +196,7 @@
     @media (min-width: 31.25rem) {
       .xs\:bg-blue {
         --bg-opacity: 1;
-        background-color: $blue-color;
+        background-color: $color;
         opacity: var(--bg-opacity);
       }
     }
