@@ -202,13 +202,13 @@
     }
   }
 }
-@each $y-color, $yellow-color in $yellow {
-  @if str-slice($y-color, $slice-color-start--8, $slice-color-end--11) == 'dark'
+@each $generic, $color in $yellow {
+  @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:bg-yellow#{str-slice($y-color, $slice-color-class--12)} {
+      .xs\:bg-yellow#{str-slice($generic, $slice-color-class--12)} {
         --bg-opacity: 1;
-        background-color: $yellow-color;
+        background-color: $color;
         opacity: var(--bg-opacity);
       }
     }
@@ -216,19 +216,19 @@
     @media (min-width: 31.25rem) {
       .xs\:bg-yellow {
         --bg-opacity: 1;
-        background-color: $yellow-color;
+        background-color: $color;
         opacity: var(--bg-opacity);
       }
     }
   }
 }
-@each $o-color, $orange-color in $orange {
-  @if str-slice($o-color, $slice-color-start--8, $slice-color-end--11) == 'dark'
+@each $generic, $color in $orange {
+  @if str-slice($generic, $slice-color-start--8, $slice-color-end--11) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:bg-orange#{str-slice($o-color, $slice-color-class--12)} {
+      .xs\:bg-orange#{str-slice($generic, $slice-color-class--12)} {
         --bg-opacity: 1;
-        background-color: $orange-color;
+        background-color: $color;
         opacity: var(--bg-opacity);
       }
     }
@@ -236,19 +236,19 @@
     @media (min-width: 31.25rem) {
       .xs\:bg-orange {
         --bg-opacity: 1;
-        background-color: $orange-color;
+        background-color: $color;
         opacity: var(--bg-opacity);
       }
     }
   }
 }
-@each $r-color, $red-color in $red {
-  @if str-slice($r-color, $slice-color-start--5, $slice-color-end--8) == 'dark'
+@each $generic, $color in $red {
+  @if str-slice($generic, $slice-color-start--5, $slice-color-end--8) == 'dark'
   {
     @media (min-width: 31.25rem) {
-      .xs\:bg-red#{str-slice($r-color, $slice-color-class--9)} {
+      .xs\:bg-red#{str-slice($generic, $slice-color-class--9)} {
         --bg-opacity: 1;
-        background-color: $red-color;
+        background-color: $color;
         opacity: var(--bg-opacity);
       }
     }
@@ -256,7 +256,7 @@
     @media (min-width: 31.25rem) {
       .xs\:bg-red {
         --bg-opacity: 1;
-        background-color: $red-color;
+        background-color: $color;
         opacity: var(--bg-opacity);
       }
     }
