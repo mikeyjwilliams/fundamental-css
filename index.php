@@ -8,12 +8,12 @@
         <main class='three-4th'>
             <section class="home__header">
                 <div class="home__side box-red">
-                    <h2 class="text--3xl header font-red-d--400">
+                    <h2 class="text--3xl header font-red">
                         <span>Fundamental Css</span>,<br /> come build a library
                         with us.
                     </h2>
                     <div class='display-box'>
-                    <p class="font-d-black--200">
+                    <p class="font-black--200">
                         Fundamental.css is a customizable sass driven project. As a free
                         free open source library. It is always in progress, and can always
                         be contributed too if asked how. Fundamental Css builds off of
@@ -29,7 +29,7 @@
                         0.5.0 or so it it will be useable but till then it will just be a
                         project in progress.
                     </p>
-                    <p class="font-d-black--200">
+                    <p class="font-black--200">
                         This project has a lot of inspiration from many other frameworks
                         and
                         libraries. To help create ideas on what direction to go in,
@@ -42,11 +42,11 @@
                     </div>
                 </div>
                 <div class="home__side box-red">
-                    <h2 class="text--3xl font-red-d--600 header">
+                    <h2 class="text--3xl font-red--100 header">
                         Why Fundamental Css...
                     </h2>
                     <div class='display-box'>
-                    <p class="font-d-black--200">The PVD goal is to provide</p>
+                    <p class="font-black--200">The PVD goal is to provide</p>
                     <ol>
 
                         <li>a low level utility library</li>
@@ -57,7 +57,7 @@
                         <li>it has enough documentation to customize it</li>
                     </ol>
 
-                    <p class="font-d-black--200">
+                    <p class="font-black--200">
                         With this project, I am exploring new sass functions, build tools,
                         exploring css styles I have not thought about for a long while,
                         and
@@ -72,7 +72,7 @@
                     </div>
                 </div>
             </section>
-            <section class="homepage bg-red-l--900 mx--a homepage__top">
+            <section class="homepage mx--a homepage__top">
                 <div>
                     <h2 class="text--2xl px--2" id="hp-utility-first">
                         Most CSS Frameworks work too hard
@@ -178,7 +178,7 @@
                             </header>
                             <div class='example-show-code'>
 
-                                <p class='font-l-gray--200'>variables.scss; </p><br />
+                                <p class='font-gray--200'>variables.scss; </p><br />
 
                                 <p class='font-green'>$bright-green: #5be206;</p>
                                 <br />
@@ -229,7 +229,7 @@
     
     </main>
     <aside class="one-4th">
-        <h3 class="text--lg font-gray-l--200 sidebar__title">ON PAGE</h3>
+        <h3 class="text--lg font-gray--200 sidebar__title">ON PAGE</h3>
         <ul>
             <li>
                 <a href="#hp-utility-first">Utility First</a>
