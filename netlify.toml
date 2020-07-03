@@ -1,0 +1,43 @@
+[build]
+
+base = '/'
+
+publish = '/'
+
+command = "npm run build:prod"
+
+[context.production]
+    publish = '/'
+    NODE_ENV = "production"
+    command = 'npm run build:scss'
+
+[context.deploy-preview]
+    publish = '/'
+    NODE_ENV = 'dev'
+    command = "npm run build:scss"
+
+[context.staging]
+    NODE_ENV = 'test'
+    command = 'npm run build:scss'
+    base = 'staging'
+
+[context."feat/branch"]
+    NODE_ENV = 'feat'
+    command = 'npm run build:scss'
+    base = 'branch'
+
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Content-Security-Policy = "frame-ancestors https://www.facebook.com"
+
+    # Multi-value headers are expressed with multi-line strings.
+	cache-control = '''
+	max-age=0,
+	no-cache,
+	no-store,
+	must-revalidate'''
