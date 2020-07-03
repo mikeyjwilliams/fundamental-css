@@ -83,41 +83,25 @@
                 </div>
             </section>
             <section class="homepage mx--a homepage__top">
-                <div>
+                <div class='mb--6'>
                     <h2 class="text--2xl px--2" id="hp-utility-first">
-                        Most CSS Frameworks work too hard
+                        Sometimes it is about the destination this time the ride
                     </h2>
                     <p>
-                        They arrive with every component prebuilt just how they want it
-                        which makes your site look very cookie cutter. So you move fast,
-                        but
-                        look the same, then when it comes time to do custom work brings
-                        headaches to the table how to name things.
-                    </p>
-                    <p>Fundamental Css tries to keep this to a minimum.</p>
-                    <p>
-                        Instead of giving you a bunch of prebuilt components, we supply
-                        you
-                        the low level utility classes that you build your own custom
-                        designs
-                        with. You do what your good at, we do our best to supply the css
-                        to
-                        make the magic happen with.
-                    </p>
-                    <p>
-                        For those who want to customize and build out classes, we try to
-                        provide all the needed placeholder styles or mixin styles to get
-                        the
-                        job done. While we do provide these, if not used they do not
-                        increase your css build.
-                    </p>
-                    <p>
-                        <b>Note, we are a work in progress</b> continually building more
-                        utilities, trying to give a large selection of helper classes. So
-                        you do not have to override unwanted styles, or battle specificity
-                        wars, we just want to provide an easily customizable, sass
-                        developer
-                        friendly utility class.
+                        Some things occur complete when you get to the end goal line, this
+                        is not one of them.
+                        It is not truly about the project, nor is it truly about finishing
+                        the project even
+                        though it would be cool to use this in a project. It has a larger
+                        goal and use case,
+                        practicing some of the harder things to focus on. Really thinking
+                        about when everything
+                        else is getting thrown at you. Agile development, user stories,
+                        refactoring code,
+                        explaining the whys of certain things. So I am mocking a project
+                        of building a tailwindcss
+                        clone. With it I will be creating user stories and running it off
+                        those user stories.
                     </p>
                 </div>
                 <div>
@@ -132,7 +116,7 @@
                         going into the sass files and changing the naming conventions if
                         that is what you wish to do.
                     </p>
-                    <p>
+                    <p class='mb--4'>
                         Fundamental Css is more than a library, it is built to help create
                         design systems.
                     </p>
