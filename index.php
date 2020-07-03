@@ -13,32 +13,38 @@
                         with us.
                     </h2>
                     <div class='display-box'>
-                    <p class="font-black--200">
-                        Fundamental.css is a customizable sass driven project. As a free
-                        free open source library. It is always in progress, and can always
-                        be contributed too if asked how. Fundamental Css builds off of
-                        <a href="http://necolas.github.io/normalize.css/">
-                            Normalize.css
-                        </a>
-                        to get a flat surface no matter which browser your working on
-                        gives
-                        you the same start. At the moment this project is not ready for
-                        any
-                        coding projects without a lot of customization. Hopefully by
-                        version
-                        0.5.0 or so it it will be useable but till then it will just be a
-                        project in progress.
-                    </p>
-                    <p class="font-black--200">
-                        This project has a lot of inspiration from many other frameworks
-                        and
-                        libraries. To help create ideas on what direction to go in,
-                        learning
-                        more advanced skills from, and to help create user stories. Any
-                        works that this is a derivative of knowingly are MIT Licensed. If
-                        any works are used there name and what work they built that is
-                        included in the MIT license with their work and email.
-                    </p>
+                        <p class="font-black--200">
+                            Fundamental.css is a customizable sass driven project. As a
+                            free
+                            free open source library. It is always in progress, and can
+                            always
+                            be contributed too if asked how. Fundamental Css builds off of
+                            <a href="http://necolas.github.io/normalize.css/">
+                                Normalize.css
+                            </a>
+                            to get a flat surface no matter which browser your working on
+                            gives
+                            you the same start. At the moment this project is not ready
+                            for
+                            any
+                            coding projects without a lot of customization. Hopefully by
+                            version
+                            0.5.0 or so it it will be useable but till then it will just
+                            be a
+                            project in progress.
+                        </p>
+                        <p class="font-black--200">
+                            This project has a lot of inspiration from many other
+                            frameworks
+                            and
+                            libraries. To help create ideas on what direction to go in,
+                            learning
+                            more advanced skills from, and to help create user stories.
+                            Any
+                            works that this is a derivative of knowingly are MIT
+                            Licensed.An MIT license is attached to this work in its github
+                            repository.
+                        </p>
                     </div>
                 </div>
                 <div class="home__side box-red">
@@ -46,29 +52,33 @@
                         Why Fundamental Css...
                     </h2>
                     <div class='display-box'>
-                    <p class="font-black--200">The PVD goal is to provide</p>
-                    <ol>
+                        <p class="font-black--200">The PVD goal is to provide</p>
+                        <ol>
 
-                        <li>a low level utility library</li>
-                        <li>the ability to be turned into a custom framework</li>
-                        <li>turn it into a framework</li>
-                        <li>it is easy to create documentation for it</li>
-                        <li>it has enough documentation to use it</li>
-                        <li>it has enough documentation to customize it</li>
-                    </ol>
+                            <li>a low level utility library</li>
+                            <li>the ability to be turned into a custom framework</li>
+                            <li>turn it into a framework</li>
+                            <li>it has enough documentation to use it</li>
+                            <li>it has enough documentation to customize it</li>
+                        </ol>
 
-                    <p class="font-black--200">
-                        With this project, I am exploring new sass functions, build tools,
-                        exploring css styles I have not thought about for a long while,
-                        and
-                        much more. I wanted a fun side project so I thought this would be
-                        an
-                        interesting one to have running. Many opportunities to explore css
-                        and sass functions and modularizing it and learning more dry
-                        programming skills. As my skills grow in CSS and SCSS I hope to
-                        add
-                        some interesting things to this project.
-                    </p>
+                        <p class="font-black--200">
+                            Although the PVD goals inside this bubble aim towards that.
+                            They are in a bubble of the true PVD goals which are:
+                        </p>
+                        <ol>
+                            <li>agile development practice</li>
+                            <li>user stories</li>
+                            <li>creating build systems</li>
+                            <li>researching tooling for build system</li>
+                            <li>clean, neat, DRY code</li>
+                            <li>code has had time to sit some weeks</li>
+                            <li>after time then checked over again for refactoring
+                                purposes</li>
+                            <li>Able to explain code</li>
+                            <li>able to customize code easily</li>
+                            <li>able to explain how to customize easily</li>
+                        </ol>
                     </div>
                 </div>
             </section>
@@ -226,22 +236,22 @@
                     colors. More on how to customize is discussed in the customization
                     page for that module. {/* link to customization page */}
                 </p>
-    
-    </main>
-    <aside class="one-4th">
-        <h3 class="text--lg font-gray--200 sidebar__title">ON PAGE</h3>
-        <ul>
-            <li>
-                <a href="#hp-utility-first">Utility First</a>
-            </li>
-            <li>
-                <a href="#hp-built-for-customization">Custom Builds</a>
-            </li>
-            <li>
-                <a href="#hp-example-block">Example</a>
-            </li>
-        </ul>
-    </aside>
+
+        </main>
+        <aside class="one-4th">
+            <h3 class="text--lg font-gray--200 sidebar__title">ON PAGE</h3>
+            <ul>
+                <li>
+                    <a href="#hp-utility-first">Utility First</a>
+                </li>
+                <li>
+                    <a href="#hp-built-for-customization">Custom Builds</a>
+                </li>
+                <li>
+                    <a href="#hp-example-block">Example</a>
+                </li>
+            </ul>
+        </aside>
 
     </div>
     <?php include('./components/script.php'); ?>
