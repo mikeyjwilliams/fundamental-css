@@ -1,84 +1,101 @@
 {
-	"name": "fundamental-css",
-	"version": "0.0.2",
-	"description": "sass based utility library",
-	"main": "index.js",
-	"scripts": {
-		"server": "php -S localhost:8080",
-		"build:scss": "sass sass/base.scss css/build.css",
-		"scss:watch": "sass --watch sass/base.scss css/build.css",
-		"build:prod": "gulp qa",
-		"gulp:stats": "gulp stats",
-		"gulp:prod": "gulp production",
-		"gulp:dev": "gulp dev",
-		"gulp:test": "gulp test",
-		"gulp:qa": "gulp qa",
-		"production": "cross-env NOD_ENV=production npm run gulp:qa",
-		"start": "npm run server",
-		"build:tail": "npx tailwind build tail/tail.css -o tail/tailwind.css"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/mikeyjwilliams/fundamental-css.git"
-	},
-	"keywords": [
-		"scss",
-		"css",
-		"utility-library"
-	],
-	"author": "Michael Williams",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/mikeyjwilliams/fundamental-css/issues"
-	},
-	"homepage": "https://github.com/mikeyjwilliams/fundamental-css#readme",
-	"devDependencies": {
-		"autoprefixer": "^9.8.4",
-		"concurrently": "^5.2.0",
-		"cross-env": "^7.0.2",
-		"csscomb": "^4.3.0",
-		"cssnano": "^4.1.10",
-		"cssstats": "^3.4.1",
-		"gulp": "^4.0.2",
-		"gulp-bytediff": "^1.0.0",
-		"gulp-crass": "^0.2.2",
-		"gulp-csscss": "^0.1.2",
-		"gulp-cssnano": "^2.1.3",
-		"gulp-csso": "^4.0.1",
-		"gulp-dart-sass": "^1.0.2",
-		"gulp-filter": "^6.0.0",
-		"gulp-flatten": "^0.4.0",
-		"gulp-postcss": "^8.0.0",
-		"gulp-rename": "^2.0.0",
-		"gulp-sass": "^4.1.0",
-		"gulp-sizereport": "^1.2.1",
-		"gulp-sourcemaps": "^2.6.5",
-		"gulp-strip-css-comments": "^2.0.0",
-		"gulp-stylestats": "^3.1.0",
-		"pixrem": "^5.0.0",
-		"postcss": "^7.0.32",
-		"postcss-cli": "^7.1.1",
-		"postcss-combine-media-query": "^1.0.1",
-		"postcss-pxtorem": "^5.1.1",
-		"prettier": "^2.0.5",
-		"sass": "^1.26.7",
-		"tailwindcss": "^1.4.6"
-	},
-	"dependencies": {
-		"highlight.js": "^10.1.1",
-		"http-server": "^0.12.3"
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version",
-			"last 1 ie version"
-		]
-	}
+  "name": "fundamental-css",
+  "version": "0.0.2",
+  "description": "sass based utility library portfolio project",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "start": "cross-env NODE_ENV=development gulp",
+    "lint": "cross-env NODE_ENV=production eslint --fix /",
+    "develop": "cross-env NODE_ENV=development gulp",
+    "build": "cross-env NODE_ENV=production gulp build",
+    "preflight": "cross-env NODE_ENV=production gulp deploy",
+    "deploy": "cross-env NODE_ENV=production gulp deploy",
+    "serve": "cross-env NODE_ENV=production gulp serve",
+    "server": "php -S localhost:8080",
+    "production": "cross-env NODE_ENV=production npm run gulp:qa",
+    "build:tail": "npx tailwind build tail/tail.css -o tail/tailwind.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikeyjwilliams/fundamental-css.git"
+  },
+  "keywords": [
+    "scss",
+    "css",
+    "utility-library",
+    "portfolio project"
+  ],
+  "author": "Michael Williams",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikeyjwilliams/fundamental-css/issues"
+  },
+  "homepage": "https://github.com/mikeyjwilliams/fundamental-css#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.4",
+    "ansi-colors": "^4.1.1",
+    "autoprefixer": "^9.8.4",
+    "concurrently": "^5.2.0",
+    "cross-env": "^7.0.2",
+    "css-mqpacker": "^7.0.0",
+    "csscomb": "^4.3.0",
+    "cssnano": "^4.1.10",
+    "cssstats": "^3.4.1",
+    "del": "^5.1.0",
+    "eslint": "^7.4.0",
+    "ghooks": "^2.0.4",
+    "gulp": "^4.0.2",
+    "gulp-bytediff": "^1.0.0",
+    "gulp-crass": "^0.2.2",
+    "gulp-csscss": "^0.1.2",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-csso": "^4.0.1",
+    "gulp-dart-sass": "^1.0.2",
+    "gulp-filter": "^6.0.0",
+    "gulp-flatten": "^0.4.0",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sizereport": "^1.2.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-strip-css-comments": "^2.0.0",
+    "gulp-stylestats": "^3.1.0",
+    "merge2": "^1.4.1",
+    "node-notifier": "^7.0.1",
+    "pixrem": "^5.0.0",
+    "postcss": "^7.0.32",
+    "postcss-cli": "^7.1.1",
+    "postcss-combine-media-query": "^1.0.1",
+    "postcss-pxtorem": "^5.1.1",
+    "postcss-svgo": "^4.0.2",
+    "postcss-url": "^8.0.0",
+    "prettier": "^2.0.5",
+    "sass": "^1.26.7",
+    "tailwindcss": "^1.4.6"
+  },
+  "dependencies": {
+    "highlight.js": "^10.1.1",
+    "http-server": "^0.12.3"
+  },
+  "ghooks": {
+    "pre-commit": "npm test"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "last 1 ie version"
+    ]
+  }
 }
