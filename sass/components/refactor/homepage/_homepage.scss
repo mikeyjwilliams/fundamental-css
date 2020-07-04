@@ -11,14 +11,14 @@
 }
 .flex-container {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 }
 
 .three-4th {
 	width: 85%;
 }
 .one-4th {
-	width: 15%;
+	width: 100%;
 }
 
 .box-black {
