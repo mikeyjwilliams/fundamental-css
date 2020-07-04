@@ -1,18 +1,32 @@
 /** @format */
 
+.container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
 .nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  height: 82px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	height: 82px;
+}
+
+.navigation {
+	// display: flex;
+	// flex-direction: column;
+	// justify-content: center
+	width: fit-content;
+	height: 100%;
 }
 
 .nav__link {
-  font-size: 1.8rem;
+	font-size: 1.8rem;
 }
 
 .nav--main {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
