@@ -4,9 +4,12 @@
 
 <body>
     <?php require('./components/home_header.php'); ?>
+
+    <?php include('./components/main_nav.php'); ?>
     <div class='main-section mt--10'>
-        <?php include('./components/main_nav.php'); ?>
-        <div class='flex-container'>
+
+
+        <div>
             <main>
                 <section class="home__header">
                     <div class="home__side box-red">

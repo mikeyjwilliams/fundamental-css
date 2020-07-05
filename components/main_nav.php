@@ -36,8 +36,48 @@
             <li class='pt--2'>
                 <a href='#'>Adding Base Styles</a>
             </li>
-            <li class='mt--2'>
+            <li class='pt--2'>
                 <a href='#'>Extracting Components</a>
+            </li>
+            <li class='pt--2 text--2xl'>LAYOUT</p>
+            <li class='pt--2'>
+                <hr />
+            </li>
+            <li class='pt--2'>
+                <a href='#'>Container</a>
+            </li>
+            <li class='pt--3'>
+                <a href='#'>Box Sizing</a>
+            </li>
+            <li class='pt--3'>
+                <a href='#'>Display</a>
+            </li>
+            <li class='pt--3'>
+                <a href='#'>Float</a>
+            </li>
+            <li class='pt--3'>
+                <a href='#'>Clear</a>
+            </li>
+            <li class='pt--3'>
+                <a href='#'>Object Fit</a>
+            </li>
+            <li class='pt--3'>
+                <a href='#'>Object Position</a>
+            </li>
+            <li class='pt--3'>
+                <a href='#'>Overflow</a>
+            </li>
+            <li class='pt--3'>
+                <a href='#'>Position</a>
+            </li>
+            <li class='pt--3'>
+                <a href='#'>Top/Right/Bottom/Left</a>
+            </li>
+            <li class='pt--3'>
+                <a href="#">Visibility</a>
+            </li>
+            <li class='pt--3'>
+                <a href="#">Z-index</a>
             </li>
         </ul>
     </nav>
