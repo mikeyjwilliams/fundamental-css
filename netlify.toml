@@ -1,8 +1,8 @@
 [build]
 
-base = "_site"
+base = "./"
 
-publish = "./public"
+publish = "public"
 
 command = "gulp qa"
 
