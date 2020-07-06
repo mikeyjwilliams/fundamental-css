@@ -41,6 +41,7 @@
     "csscomb": "^4.3.0",
     "cssnano": "^4.1.10",
     "cssstats": "^3.4.1",
+    "dotenv": "^8.2.0",
     "eslint": "^7.4.0",
     "ghooks": "^2.0.4",
     "gulp": "^4.0.2",
@@ -69,6 +70,7 @@
     "tailwindcss": "^1.4.6"
   },
   "dependencies": {
+    "gulp-netlify": "^1.1.0",
     "highlight.js": "^10.1.1",
     "http-server": "^0.12.3"
   },
