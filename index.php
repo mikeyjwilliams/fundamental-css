@@ -4,9 +4,9 @@
 
 <body>
     <?php require('./components/home_header.php'); ?>
-    <div class='container'>
+    <div class='main-container'>
         <?php include('./components/main_nav.php'); ?>
-        <div class='flex-container'>
+        <div class='main-section mt--10'>
             <main>
                 <section class="home__header">
                     <div class="home__side box-red">
@@ -16,22 +16,29 @@
                         </h2>
                         <div class='display-box'>
                             <p class="font-black--200">
-                                Fundamental.css is a customizable sass driven project. As a
+                                Fundamental.css is a customizable sass driven project. As
+                                a
                                 free
-                                free open source library. It is always in progress, and can
+                                free open source library. It is always in progress, and
+                                can
                                 always
-                                be contributed too if asked how. Fundamental Css builds off of
+                                be contributed too if asked how. Fundamental Css builds
+                                off of
                                 <a href="http://necolas.github.io/normalize.css/">
                                     Normalize.css
                                 </a>
-                                to get a flat surface no matter which browser your working on
+                                to get a flat surface no matter which browser your working
+                                on
                                 gives
-                                you the same start. At the moment this project is not ready
+                                you the same start. At the moment this project is not
+                                ready
                                 for
                                 any
-                                coding projects without a lot of customization. Hopefully by
+                                coding projects without a lot of customization. Hopefully
+                                by
                                 version
-                                0.5.0 or so it it will be useable but till then it will just
+                                0.5.0 or so it it will be useable but till then it will
+                                just
                                 be a
                                 project in progress.
                             </p>
@@ -39,12 +46,15 @@
                                 This project has a lot of inspiration from many other
                                 frameworks
                                 and
-                                libraries. To help create ideas on what direction to go in,
+                                libraries. To help create ideas on what direction to go
+                                in,
                                 learning
-                                more advanced skills from, and to help create user stories.
+                                more advanced skills from, and to help create user
+                                stories.
                                 Any
                                 works that this is a derivative of knowingly are MIT
-                                Licensed.An MIT license is attached to this work in its github
+                                Licensed.An MIT license is attached to this work in its
+                                github
                                 repository.
                             </p>
                         </div>
@@ -65,7 +75,8 @@
                             </ol>
 
                             <p class="font-black--200">
-                                Although the PVD goals inside this bubble aim towards that.
+                                Although the PVD goals inside this bubble aim towards
+                                that.
                                 They are in a bubble of the true PVD goals which are:
                             </p>
                             <ol>
@@ -90,32 +101,41 @@
                             Sometimes it is about the destination this time the ride
                         </h2>
                         <p>
-                            Some things occur complete when you get to the end goal line, this
+                            Some things occur complete when you get to the end goal line,
+                            this
                             is not one of them.
-                            It is not truly about the project, nor is it truly about finishing
+                            It is not truly about the project, nor is it truly about
+                            finishing
                             the project even
-                            though it would be cool to use this in a project. It has a larger
+                            though it would be cool to use this in a project. It has a
+                            larger
                             goal and use case,
-                            practicing some of the harder things to focus on. Really thinking
+                            practicing some of the harder things to focus on. Really
+                            thinking
                             <aside class="one-4th">
-                                <h3 class="text--lg font-gray--200 sidebar__title">ON PAGE</h3>
+                                <h3 class="text--lg font-gray--200 sidebar__title">ON PAGE
+                                </h3>
                                 <ul>
                                     <li>
                                         <a href="#hp-utility-first">Utility First</a>
                                     </li>
                                     <li>
-                                        <a href="#hp-built-for-customization">Custom Builds</a>
+                                        <a href="#hp-built-for-customization">Custom
+                                            Builds</a>
                                     </li>
                                     <li>
                                         <a href="#hp-example-block">Example</a>
                                     </li>
                                 </ul>
                             </aside> about when everything
-                            else is getting thrown at you. Agile development, user stories,
+                            else is getting thrown at you. Agile development, user
+                            stories,
                             refactoring code,
-                            explaining the whys of certain things. So I am mocking a project
+                            explaining the whys of certain things. So I am mocking a
+                            project
                             of building a tailwindcss
-                            clone. With it I will be creating user stories and running it off
+                            clone. With it I will be creating user stories and running it
+                            off
                             those user stories.
                         </p>
                     </div>
@@ -125,14 +145,18 @@
                         </h2>
                         <p>
                             Being built in SCSS, Fundamental Css is highly customizable.
-                            Fundamental aims to let you truly customize just about anything to
+                            Fundamental aims to let you truly customize just about
+                            anything to
                             make it
-                            yours. Whether this is fonts, colors, or more to come. Even up to
-                            going into the sass files and changing the naming conventions if
+                            yours. Whether this is fonts, colors, or more to come. Even up
+                            to
+                            going into the sass files and changing the naming conventions
+                            if
                             that is what you wish to do.
                         </p>
                         <p class='mb--4'>
-                            Fundamental Css is more than a library, it is built to help create
+                            Fundamental Css is more than a library, it is built to help
+                            create
                             design systems.
                         </p>
                         <div class="display">
@@ -210,9 +234,11 @@
                                         $color-name variables</span>
                                     <br />
                                     <br />
-                                    <p class='font-green'> $color-green: $bright-green; </p>
+                                    <p class='font-green'> $color-green: $bright-green;
+                                    </p>
                                     <br />
-                                    <p class='font-blue'> $color-blue: $robins-egg-blue; </p>
+                                    <p class='font-blue'> $color-blue: $robins-egg-blue;
+                                    </p>
                                     <br />
                                     <p class='font-yellow'> $color-yellow $corn;</p>
                                     <br />
@@ -220,7 +246,8 @@
                                     <br />
                                     <p class='font-red'>$color-red: $milano-red;</p>
                                     <br />
-                                    <p class='font-black bg--white'>$color-black: $swamp;</p>
+                                    <p class='font-black bg--white'>$color-black: $swamp;
+                                    </p>
                                     <br />
                                     <p class='font-gray'>$color-gray: $bali-hai;</p>
                                     <br />
@@ -237,21 +264,21 @@
                     </p>
 
             </main>
+            <aside class="one-4th">
+                <h3 class="text--lg font-gray--200 sidebar__title">ON PAGE</h3>
+                <ul>
+                    <li>
+                        <a href="#hp-utility-first">Utility First</a>
+                    </li>
+                    <li>
+                        <a href="#hp-built-for-customization">Custom Builds</a>
+                    </li>
+                    <li>
+                        <a href="#hp-example-block">Example</a>
+                    </li>
+                </ul>
+            </aside>
         </div>
-        <aside class="one-4th">
-            <h3 class="text--lg font-gray--200 sidebar__title">ON PAGE</h3>
-            <ul>
-                <li>
-                    <a href="#hp-utility-first">Utility First</a>
-                </li>
-                <li>
-                    <a href="#hp-built-for-customization">Custom Builds</a>
-                </li>
-                <li>
-                    <a href="#hp-example-block">Example</a>
-                </li>
-            </ul>
-        </aside>
     </div>
     <?php include('./components/script.php'); ?>
 </body>
