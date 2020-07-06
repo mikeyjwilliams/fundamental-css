@@ -121,7 +121,7 @@ gulp.task("sassy", () => {
  * @description gives a stylesheet info on size, gzip size, and many more key factors.
  * @implements gulp-stylestats
  */
-function stats() {
+gulp.task("stats", () => {
     return gulp
         .src(paths.dest.cssBase)
         .pipe(
@@ -131,7 +131,7 @@ function stats() {
             })
         )
         .pipe(gulp.dest(paths.dest.stats));
-}
+});
 
 /**
  * @name pixeltorem
@@ -351,20 +351,21 @@ gulp.task("qa", () => {
         .pipe(gulp.dest(paths.dest.compressedOptimized));
 });
 
-exports.compact = compact; // builds the compressed folder with source map.
-
 // exports.production = production;
 /**
  * ./sass/base.scss
  * ./css
  * ./
  */
-// exports.dev = dev;
-// exports.test = test;
-exports.qa = qa;
+gulp.task("compact");
+gulp.task("stats");
+gulp.task("qa");
+
 // exports.build = qa;
 // exports.liveReload = liveReload; // reloads pages when things in css folder change.
 // exports.default = build;
 // stats is not in the series run yourself
-exports.stats = stats;
-exports.check = check;
+gulp.task("default", (done) => {
+    gulp.task("qa");
+    done();
+});
