@@ -1,8 +1,8 @@
 [build]
 
-base = "./"
+base = "."
 
-publish = "public/"
+publish = "./public"
 
 command = "gulp qa"
 
@@ -13,5 +13,5 @@ command = "gulp qa"
   minify = false
 [build.processing.html]
   pretty_urls = true
-  
+
 
