@@ -41,10 +41,10 @@ const paths = {
         tComponent: "./builds/base/tail-components.css",
         tUtilities: "./builds/base/tailwind-utilities.css",
         sassBase: "./_site/sass/*.scss",
-        buildsBuildbase: "._site/builds/build/*.css",
-        stylesSassbuildBase: "._site/styles/sass-build/*.css",
+        buildsBuildbase: "./_site/builds/build/*.css",
+        stylesSassbuildBase: "./_site/styles/sass-build/*.css",
 
-        cssBuildBuild: "._site/public/css/build.css",
+        cssBuildBuild: "./_site/public/css/build.css",
         map: "./",
     },
     dest: {
