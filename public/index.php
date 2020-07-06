@@ -2,6 +2,7 @@
 
 <?php require('./components/head.php'); ?>
 
+
 <body>
     <?php require('./components/home_header.php'); ?>
     <div class='main-container'>
@@ -280,7 +281,7 @@
             </aside>
         </div>
     </div>
-    <?php include('./components/script.php'); ?>
+    <!-- <?php include('./components/script.php'); ?> -->
 </body>
 
 

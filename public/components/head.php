@@ -9,8 +9,9 @@
     <!-- <link rel="stylesheet" href="../css/base.css" />' -->
     <link rel="stylesheet" href="../css/build.css" />
     <link rel="stylesheet"
-        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js">
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/default.min.css">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js">
     </script>
 
     <title><?php echo isset($title) ?  $title : 'Fundamental.css'; ?></title>

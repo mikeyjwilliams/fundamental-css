@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run lint",
-    "scss:watch": "sass --watch sass/base.scss css/build.css",
+    "scss:watch": "sass --watch sass/base.scss public/css/build.css",
     "start": "cross-env NODE_ENV=development gulp",
     "lint": "cross-env NODE_ENV=production eslint --fix /",
     "develop": "cross-env NODE_ENV=development gulp",

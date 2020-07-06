@@ -44,14 +44,14 @@ const paths = {
         buildsBuildbase: "./builds/build/*.css",
         stylesSassbuildBase: "./styles/sass-build/*.css",
 
-        cssBuildBuild: "./css/build/build.css",
+        cssBuildBuild: "./public/css/build.css",
         map: "./",
     },
     dest: {
         buildMap: "./",
-        css: "./css/",
-        cssBase: "./css/*.css",
-        cssMini: "./css/mini/",
+        css: "./public/css/",
+        cssBase: "./public/css/*.css",
+        cssMini: "./public/css/mini/",
         miniMap: "./",
         uncompressedCss: "./uncompressed-css/",
         compressedCss: "./compressed-css/",
