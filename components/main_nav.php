@@ -1,5 +1,5 @@
 <div class='navigation'>
-    <nav>
+    <nav class='nav'>
         <ul>
             <li>
                 <p class='text--3xl'>Documentation</p>

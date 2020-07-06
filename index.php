@@ -4,12 +4,9 @@
 
 <body>
     <?php require('./components/home_header.php'); ?>
-
-    <?php include('./components/main_nav.php'); ?>
-    <div class='main-section mt--10'>
-
-
-        <div>
+    <div class='main-container'>
+        <?php include('./components/main_nav.php'); ?>
+        <div class='main-section mt--10'>
             <main>
                 <section class="home__header">
                     <div class="home__side box-red">
@@ -267,21 +264,21 @@
                     </p>
 
             </main>
+            <aside class="one-4th">
+                <h3 class="text--lg font-gray--200 sidebar__title">ON PAGE</h3>
+                <ul>
+                    <li>
+                        <a href="#hp-utility-first">Utility First</a>
+                    </li>
+                    <li>
+                        <a href="#hp-built-for-customization">Custom Builds</a>
+                    </li>
+                    <li>
+                        <a href="#hp-example-block">Example</a>
+                    </li>
+                </ul>
+            </aside>
         </div>
-        <aside class="one-4th">
-            <h3 class="text--lg font-gray--200 sidebar__title">ON PAGE</h3>
-            <ul>
-                <li>
-                    <a href="#hp-utility-first">Utility First</a>
-                </li>
-                <li>
-                    <a href="#hp-built-for-customization">Custom Builds</a>
-                </li>
-                <li>
-                    <a href="#hp-example-block">Example</a>
-                </li>
-            </ul>
-        </aside>
     </div>
     <?php include('./components/script.php'); ?>
 </body>
