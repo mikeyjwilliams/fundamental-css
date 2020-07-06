@@ -1,10 +1,10 @@
 [build]
 
-base = "_site"
+base = "./"
 
-publish = "./public"
+publish = "public"
 
-command = "gulp qa"
+command = "npm run gulp:qa"
 
 [build.processing]
   skip_processing = false
