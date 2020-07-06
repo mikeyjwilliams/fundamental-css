@@ -1,7 +1,9 @@
 <!-- @format -->
 
 <?php require('./components/head.php'); ?>
-
+<?php echo dirname('./'); ?>
+<br>
+<?php echo 'mike'; ?>
 
 <body>
     <?php require('./components/home_header.php'); ?>
