@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "sass based utility library",
   "main": "index.js",
+  "engines": {"node" : "~11.12.0"},
   "scripts": {
     "server": "php -S localhost:8080",
     "build:scss": "sass sass/base.scss css/build.css",
