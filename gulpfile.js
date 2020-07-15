@@ -3,9 +3,11 @@
 // const { series, parallel, src, dest, watch } = require('gulp');
 const gulp = require('gulp');
 const autoprefixer = require('autoprefixer');
+const browserSync = require('browser-sync');
 const chalk = require('chalk');
 const cssStats = require('cssstats');
 const bytediff = require('gulp-bytediff');
+const connect = require('gulp-connect-php');
 const crass = require('gulp-crass');
 const cssnano = require('gulp-cssnano');
 const csscss = require('gulp-csscss');
@@ -57,6 +59,7 @@ const paths = {
 		compressedCss: './compressed-css/',
 		unoptimized: './unoptimized',
 		optimized: './optimized',
+		uncompressedUnoptimized: './uncompressed-unoptimized',
 		uncompressedOptimized: './uncompressed-optimized',
 		compressedOptimized: './compressed-optimized',
 
@@ -108,12 +111,33 @@ function formatByteMessage(source, data) {
  * @implements gulp-sass
  */
 gulp.task('sassy', function () {
+	const processors = [
+		pxtorem({
+			exclude: /node_modules/i,
+			rootValue: 16,
+			unitPrecision: 5,
+			propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
+			mediaQuery: true,
+			minPixelValue: 0,
+			replace: true
+		}),
+		combineMediaQuery(),
+		autoprefixer()
+	];
+
+	const cssFilter = filter('**/*.css', { restore: true });
+
 	return gulp
 		.src(paths.styles.sassBase)
-		.pipe(sourcemaps.init())
+
 		.pipe(sass().on('error', sass.logError))
-		.pipe(sourcemaps.write(paths.dest.buildMap))
-		.pipe(gulp.dest(paths.dest.publicCss));
+		.pipe(gulp.dest(paths.dest.uncompressedUnoptimized))
+		.pipe(cssFilter)
+		.pipe(flatten())
+		.pipe(stripComments())
+		.pipe(postcss(processors))
+		.pipe(gulp.dest(paths.dest.publicCss))
+		.pipe(gulp.dest(paths.dest.optimized));
 });
 
 /**
@@ -436,17 +460,15 @@ function qa() {
 		.pipe(gulp.dest(paths.dest.publicCssMini))
 		.pipe(gulp.dest(paths.dest.compressedOptimized));
 }
-// exports.compact = compact; // builds the compressed folder with source map.
 
-// exports.production = production;
-/**
- * ./sass/base.scss
- * ./css
- * ./
- */
-// exports.dev = dev;
-// exports.test = test;
-// exports.build = qa;
-// exports.liveReload = liveReload; // reloads pages when things in css folder change.
-// exports.default = build;
-// stats is not in the series run yoursel
+gulp.task('connect-sync', function () {
+	connect.server({}, function () {
+		browserSync({
+			proxy: '127.0.0.1:8000'
+		});
+	});
+
+	gulp.watch('**/*.php').on('change', function () {
+		browserSync.reload();
+	});
+});

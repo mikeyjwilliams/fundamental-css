@@ -34,6 +34,7 @@
 	"homepage": "https://github.com/mikeyjwilliams/fundamental-css#readme",
 	"devDependencies": {
 		"autoprefixer": "^9.8.4",
+		"browser-sync": "^2.26.7",
 		"concurrently": "^5.2.0",
 		"cross-env": "^7.0.2",
 		"csscomb": "^4.3.0",
@@ -41,6 +42,7 @@
 		"cssstats": "^3.4.1",
 		"gulp": "^3.9.1",
 		"gulp-bytediff": "^1.0.0",
+		"gulp-connect-php": "^1.0.3",
 		"gulp-crass": "^0.2.2",
 		"gulp-csscss": "^0.1.2",
 		"gulp-cssnano": "^2.1.3",
