@@ -3,9 +3,11 @@
 // const { series, parallel, src, dest, watch } = require('gulp');
 const gulp = require("gulp");
 const autoprefixer = require("autoprefixer");
+const browserSync = require("browser-sync");
 const chalk = require("chalk");
 const cssStats = require("cssstats");
 const bytediff = require("gulp-bytediff");
+const connect = require("gulp-connect-php");
 const crass = require("gulp-crass");
 const cssnano = require("gulp-cssnano");
 const csscss = require("gulp-csscss");
@@ -27,7 +29,7 @@ const pixrem = require("pixrem")({
 const pxtorem = require("postcss-pxtorem");
 const combineMediaQuery = require("postcss-combine-media-query");
 
-const { watch } = require("gulp");
+const { watch, task } = require("gulp");
 const postcss = require("gulp-postcss");
 const dartSass = require("gulp-dart-sass"); // will refactor in in another branch feature.
 const sass = require("gulp-sass");
@@ -44,21 +46,22 @@ const paths = {
         buildsBuildbase: "./builds/build/*.css",
         stylesSassbuildBase: "./styles/sass-build/*.css",
 
-        cssBuildBuild: "./public/css/build.css",
+        cssBuildBuild: "./css/build/build.css",
         map: "./",
     },
     dest: {
         buildMap: "./",
-        css: "./public/css/",
-        cssBase: "./public/css/*.css",
-        cssMini: "./public/css/mini/",
+        publicCss: "./public/css",
+        cssBase: "./css/*.css",
+        publicCssMini: "./public/css/mini",
         miniMap: "./",
         uncompressedCss: "./uncompressed-css/",
         compressedCss: "./compressed-css/",
-        unoptimized: "./unoptimized/",
-        optimized: "./optimized/",
-        uncompressedOptimized: "./uncompressed-optimized/",
-        compressedOptimized: "./compressed-optimized/",
+        unoptimized: "./unoptimized",
+        optimized: "./optimized",
+        uncompressedUnoptimized: "./uncompressed-unoptimized",
+        uncompressedOptimized: "./uncompressed-optimized",
+        compressedOptimized: "./compressed-optimized",
 
         stats: "./stats/",
     },
@@ -107,13 +110,34 @@ function formatByteMessage(source, data) {
  * @description converts sass files to css
  * @implements gulp-sass
  */
-gulp.task("sassy", () => {
+gulp.task("sassy", function () {
+    const processors = [
+        pxtorem({
+            exclude: /node_modules/i,
+            rootValue: 16,
+            unitPrecision: 5,
+            propList: ["font", "font-size", "line-height", "letter-spacing"],
+            mediaQuery: true,
+            minPixelValue: 0,
+            replace: true,
+        }),
+        combineMediaQuery(),
+        autoprefixer(),
+    ];
+
+    const cssFilter = filter("**/*.css", { restore: true });
+
     return gulp
         .src(paths.styles.sassBase)
-        .pipe(sourcemaps.init())
+
         .pipe(sass().on("error", sass.logError))
-        .pipe(sourcemaps.write(paths.dest.buildMap))
-        .pipe(gulp.dest(paths.dest.css));
+        .pipe(gulp.dest(paths.dest.uncompressedUnoptimized))
+        .pipe(cssFilter)
+        .pipe(flatten())
+        .pipe(stripComments())
+        .pipe(postcss(processors))
+        .pipe(gulp.dest(paths.dest.publicCss))
+        .pipe(gulp.dest(paths.dest.optimized));
 });
 
 /**
@@ -121,7 +145,7 @@ gulp.task("sassy", () => {
  * @description gives a stylesheet info on size, gzip size, and many more key factors.
  * @implements gulp-stylestats
  */
-gulp.task("stats", () => {
+gulp.task("stats", function () {
     return gulp
         .src(paths.dest.cssBase)
         .pipe(
@@ -138,7 +162,7 @@ gulp.task("stats", () => {
  * @description puts fallbacks for specific rem cases in px
  * @implements gulp-postcss, gulp-autoprefixer, postcss-pxtorem
  */
-gulp.task("pixeltorem", () => {
+gulp.task("pixeltorem", function () {
     const processors = [
         pxtorem({
             exclude: /node_modules/i,
@@ -151,13 +175,100 @@ gulp.task("pixeltorem", () => {
         }),
         autoprefixer(),
     ];
+    const query = [combineMediaQuery()];
 
-    return gulp
-        .src(paths.styles.stylesSassbuildBase)
-        .pipe(postcss(processors))
-        .pipe(gulp.dest(paths.dest.css))
-        .pipe(gulp.dest(paths.dest.uncompressedCss));
+    const cssFilter = filter("**/*.css", { restore: true });
+
+    return (
+        gulp
+            .src(paths.styles.sassBase)
+            .pipe(sourcemaps.init())
+            .pipe(sass().on("error", sass.logError))
+            .pipe(postcss(processors))
+            // .pipe(bytediff.start())
+            // .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
+            .pipe(sourcemaps.write(paths.styles.map))
+            .pipe(flatten())
+            .pipe(gulp.dest(paths.dest.unoptimized))
+            // .pipe(cssFilter)
+            .pipe(stripComments())
+            .pipe(postcss(query))
+            // .pipe(crass())
+            .pipe(gulp.dest(paths.dest.uncompressedOptimized))
+            .pipe(gulp.dest(paths.dest.css))
+            // .pipe(cssFilter)
+            .pipe(rename({ suffix: ".min" }), console.log("rename"))
+            // .pipe(stripComments())
+            .pipe(csso())
+            // .pipe(bytediff.start())
+            .pipe(gulp.dest(paths.dest.publicCssMini), console.log("cssmini"))
+            .pipe(gulp.dest(paths.dest.compressedOptimized))
+        // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
+    );
 });
+
+//   function production() {
+//     const processors = [
+//       pxtorem({
+//         exclude: /node_modules/i,
+//         rootValue: 16,
+//         unitPrecision: 5,
+//         propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
+//         mediaQuery: true,
+//         minPixelValue: 0,
+//         replace: true,
+//       }),
+//       autoprefixer(),
+//     ];
+//     const query = [combineMediaQuery()];
+
+//     const cssFilter = filter('**/*.css', { restore: true });
+
+//     return (
+//       gulp
+//         .src(paths.styles.sassBase)
+//         .pipe(sourcemaps.init())
+//         .pipe(sass().on('error', sass.logError))
+//         .pipe(postcss(processors))
+//         // .pipe(bytediff.start())
+//         // .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
+//         .pipe(sourcemaps.write(paths.styles.map))
+//         .pipe(flatten())
+//         .pipe(gulp.dest(paths.dest.unoptimized))
+//         // .pipe(cssFilter)
+//         .pipe(stripComments())
+//         .pipe(postcss(query))
+//         // .pipe(crass())
+//         .pipe(gulp.dest(paths.dest.uncompressedOptimized))
+//         .pipe(gulp.dest(paths.dest.css))
+//         // .pipe(cssFilter)
+//         .pipe(rename({ suffix: '.min' }), console.log('rename'))
+//         // .pipe(stripComments())
+//         .pipe(csso())
+//         // .pipe(bytediff.start())
+//         .pipe(gulp.dest(paths.dest.cssMini), console.log('cssmini'))
+//         .pipe(gulp.dest(paths.dest.compressedOptimized))
+//       // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
+//     );
+//   }
+// 		pxtorem({
+// 			exclude: /node_modules/i,
+// 			rootValue: 16,
+// 			unitPrecision: 5,
+// 			propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
+// 			mediaQuery: true,
+// 			minPixelValue: 0,
+// 			replace: true
+// 		}),
+// 		autoprefixer()
+// 	];
+
+// 	return gulp
+// 		.src(paths.styles.stylesSassbuildBase)
+// 		.pipe(postcss(processors))
+// 		.pipe(gulp.dest(paths.dest.css))
+// 		.pipe(gulp.dest(paths.dest.uncompressedCss));
+// });
 
 /**
  * @name renameMini
@@ -180,8 +291,7 @@ gulp.task("pixeltorem", () => {
  * @description minify css styles
  * @implements gulp-sourcemaps, gulp-cssnano
  */
-
-gulp.task("compact", () => {
+gulp.task("compact", function () {
     return gulp
         .src(paths.styles.buildsBuildbase)
         .pipe(sourcemaps.init())
@@ -190,54 +300,56 @@ gulp.task("compact", () => {
         .pipe(gulp.dest(paths.dest.compressedCss));
 });
 
-gulp.task("check", () => {
+gulp.task("check", function () {
     return gulp.src(paths.dest.css).pipe(csscss());
 });
-// not working properly
-// function production() {
-//   const processors = [
-//     pxtorem({
-//       exclude: /node_modules/i,
-//       rootValue: 16,
-//       unitPrecision: 5,
-//       propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
-//       mediaQuery: true,
-//       minPixelValue: 0,
-//       replace: true,
-//     }),
-//     autoprefixer(),
-//   ];
-//   const query = [combineMediaQuery()];
 
-//   const cssFilter = filter('**/*.css', { restore: true });
+gulp.task("production", function () {
+    const processors = [
+        pxtorem({
+            exclude: /node_modules/i,
+            rootValue: 16,
+            unitPrecision: 5,
+            propList: ["font", "font-size", "line-height", "letter-spacing"],
+            mediaQuery: true,
+            minPixelValue: 0,
+            replace: true,
+        }),
+        autoprefixer(),
+    ];
+    const query = [combineMediaQuery()];
 
-//   return (
-//     gulp
-//       .src(paths.styles.sassBase)
-//       .pipe(sourcemaps.init())
-//       .pipe(sass().on('error', sass.logError))
-//       .pipe(postcss(processors))
-//       // .pipe(bytediff.start())
-//       // .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
-//       .pipe(sourcemaps.write(paths.styles.map))
-//       .pipe(flatten())
-//       .pipe(gulp.dest(paths.dest.unoptimized))
-//       // .pipe(cssFilter)
-//       .pipe(stripComments())
-//       .pipe(postcss(query))
-//       // .pipe(crass())
-//       .pipe(gulp.dest(paths.dest.uncompressedOptimized))
-//       .pipe(gulp.dest(paths.dest.css))
-//       // .pipe(cssFilter)
-//       .pipe(rename({ suffix: '.min' }), console.log('rename'))
-//       // .pipe(stripComments())
-//       .pipe(csso())
-//       // .pipe(bytediff.start())
-//       .pipe(gulp.dest(paths.dest.cssMini), console.log('cssmini'))
-//       .pipe(gulp.dest(paths.dest.compressedOptimized))
-//     // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
-//   );
-// }
+    const cssFilter = filter("**/*.css", { restore: true });
+
+    return (
+        gulp
+            .src(paths.styles.sassBase)
+            .pipe(sourcemaps.init())
+            .pipe(sass().on("error", sass.logError))
+            .pipe(postcss(processors))
+            .pipe(bytediff.start())
+            .pipe(
+                bytediff.stop((data) => formatByteMessage("autoprefixer", data))
+            )
+            .pipe(sourcemaps.write(paths.styles.map))
+            .pipe(flatten())
+            .pipe(gulp.dest(paths.dest.unoptimized))
+            // .pipe(cssFilter)
+            .pipe(stripComments())
+            .pipe(postcss(query))
+            // .pipe(crass())
+            .pipe(gulp.dest(paths.dest.uncompressedOptimized))
+            .pipe(gulp.dest(paths.dest.publicCss))
+            .pipe(cssFilter)
+            .pipe(rename({ suffix: ".min" }), console.log("rename"))
+            .pipe(stripComments())
+            .pipe(csso())
+            .pipe(bytediff.start())
+            .pipe(gulp.dest(paths.dest.publicCssMini), console.log("cssmini"))
+            .pipe(gulp.dest(paths.dest.compressedOptimized))
+            .pipe(sizereport({ gzip: true, total: true, title: "SIZE REPORT" }))
+    );
+});
 // not working properly
 // function dev() {
 //   const processors = [
@@ -317,7 +429,7 @@ gulp.task("check", () => {
 //     // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
 //   );
 // }
-gulp.task("qa", () => {
+function qa() {
     const processors = [
         pxtorem({
             exclude: /node_modules/i,
@@ -342,30 +454,23 @@ gulp.task("qa", () => {
         .pipe(flatten())
         .pipe(gulp.dest(paths.dest.unoptimized))
         .pipe(stripComments())
-        .pipe(gulp.dest(paths.dest.css))
+        .pipe(gulp.dest(paths.dest.publicCss))
         .pipe(filter("**/*.css"))
         .pipe(stripComments())
         .pipe(rename({ suffix: ".min" }))
         .pipe(cssnano())
-        .pipe(gulp.dest(paths.dest.cssMini))
+        .pipe(gulp.dest(paths.dest.publicCssMini))
         .pipe(gulp.dest(paths.dest.compressedOptimized));
-});
+}
 
-// exports.production = production;
-/**
- * ./sass/base.scss
- * ./css
- * ./
- */
-gulp.task("compact");
-gulp.task("stats");
-gulp.task("qa");
+gulp.task("connect-sync", function () {
+    connect.server({}, function () {
+        browserSync({
+            proxy: "127.0.0.1:8000",
+        });
+    });
 
-// exports.build = qa;
-// exports.liveReload = liveReload; // reloads pages when things in css folder change.
-// exports.default = build;
-// stats is not in the series run yourself
-gulp.task("default", (done) => {
-    gulp.task("qa");
-    done();
+    gulp.watch("**/*.php").on("change", function () {
+        browserSync.reload();
+    });
 });
