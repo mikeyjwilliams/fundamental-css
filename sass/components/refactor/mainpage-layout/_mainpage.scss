@@ -5,11 +5,22 @@
 //** custom sizing for layout
 //**********************************
 
+.main-container {
+    display: flex;
+    flex-direction: row;
+}
+
 .main-page-layout {
-	@include flex-row;
-	width: 100%;
+    @include flex-row;
+    width: 100%;
+}
+
+.main-section {
+    display: flex;
+    flex-direction: row;
+    width: 85%;
 }
 
 .homepage {
-	width: 75%;
+    width: 75%;
 }
