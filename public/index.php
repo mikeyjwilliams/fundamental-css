@@ -257,56 +257,28 @@
                             </section>
                         </div>
                     </div>
-                    <<<<<<< HEAD:public/index.php </div>
-                        <p>
-                            By changing the color to your preference and running the sass
-                            compiler you can fully customize your own swatches to be your own
-                            colors. More on how to customize is discussed in the customization
-                            page for that module. {/* link to customization page */}
-                        </p>
-
-            </main>
-            <aside class="one-4th">
-                <h3 class="text--lg font-gray-l--200 sidebar__title">ON PAGE</h3>
-                <ul>
-                    <li>
-                        <a href="#hp-utility-first">Utility First</a>
-                    </li>
-                    <li>
-                        <a href="#hp-built-for-customization">Custom Builds</a>
-                    </li>
-                    <li>
-                        <a href="#hp-example-block">Example</a>
-                    </li>
-                </ul>
-            </aside>
-            =======
-            <p>
-                By changing the color to your preference and running the sass
-                compiler you can fully customize your own swatches to be your own
-                colors. More on how to customize is discussed in the customization
-                page for that module. {/* link to customization page */}
-            </p>
-            >>>>>>> 628234eb36ae423656e8abc8bf1cb70c60287fe9:index.php
-
-            </main>
-            <aside class="one-4th">
-                <h3 class="text--lg font-gray--200 sidebar__title">ON PAGE</h3>
-                <ul>
-                    <li>
-                        <a href="#hp-utility-first">Utility First</a>
-                    </li>
-                    <li>
-                        <a href="#hp-built-for-customization">Custom Builds</a>
-                    </li>
-                    <li>
-                        <a href="#hp-example-block">Example</a>
-                    </li>
-                </ul>
-            </aside>
         </div>
+
+
+        </main>
+        </main>
+        <aside class="one-third mr--5">
+            <h3 class="text--lg font-gray--200 sidebar__title">ON PAGE</h3>
+            <ul>
+                <li>
+                    <a href="#hp-utility-first">Utility First</a>
+                </li>
+                <li>
+                    <a href="#hp-built-for-customization">Custom Builds</a>
+                </li>
+                <li>
+                    <a href="#hp-example-block">Example</a>
+                </li>
+            </ul>
+        </aside>
     </div>
-    <!-- <?php include('./components/script.php'); ?> -->
+    </div>
+    <?php include('./components/script.php'); ?>
 </body>
 
 

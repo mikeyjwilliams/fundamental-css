@@ -1,6 +1,6 @@
-<div class='navigation'>
+<div>
     <nav class='nav'>
-        <ul>
+        <ul class='navigation'>
             <li>
                 <p class='text--3xl'>Documentation</p>
             </li>

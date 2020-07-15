@@ -429,7 +429,7 @@ gulp.task("production", function () {
 //     // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
 //   );
 // }
-function qa() {
+gulp.task("qa", function () {
     const processors = [
         pxtorem({
             exclude: /node_modules/i,
@@ -461,7 +461,7 @@ function qa() {
         .pipe(cssnano())
         .pipe(gulp.dest(paths.dest.publicCssMini))
         .pipe(gulp.dest(paths.dest.compressedOptimized));
-}
+});
 
 gulp.task("connect-sync", function () {
     connect.server({}, function () {
@@ -473,4 +473,8 @@ gulp.task("connect-sync", function () {
     gulp.watch("**/*.php").on("change", function () {
         browserSync.reload();
     });
+
+    gulp.watch("./sass/build.scss", sassy);
 });
+
+gulp.task("default", ["qa"]);
