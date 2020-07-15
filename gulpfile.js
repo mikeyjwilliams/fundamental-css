@@ -49,9 +49,9 @@ const paths = {
 	},
 	dest: {
 		buildMap: './',
-		css: './public/css',
+		publicCss: './public/css',
 		cssBase: './css/*.css',
-		cssMini: './public/css/mini',
+		publicCssMini: './public/css/mini',
 		miniMap: './',
 		uncompressedCss: './uncompressed-css/',
 		compressedCss: './compressed-css/',
@@ -113,7 +113,7 @@ gulp.task('sassy', function () {
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(sourcemaps.write(paths.dest.buildMap))
-		.pipe(gulp.dest(paths.dest.css));
+		.pipe(gulp.dest(paths.dest.publicCss));
 });
 
 /**
@@ -139,50 +139,49 @@ gulp.task('stats', function () {
  * @implements gulp-postcss, gulp-autoprefixer, postcss-pxtorem
  */
 gulp.task('pixeltorem', function () {
-	
-    const processors = [
-      pxtorem({
-        exclude: /node_modules/i,
-        rootValue: 16,
-        unitPrecision: 5,
-        propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
-        mediaQuery: true,
-        minPixelValue: 0,
-        replace: true,
-      }),
-      autoprefixer(),
-    ];
-    const query = [combineMediaQuery()];
-  
-    const cssFilter = filter('**/*.css', { restore: true });
-  
-    return (
-      gulp
-        .src(paths.styles.sassBase)
-        .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(postcss(processors))
-        // .pipe(bytediff.start())
-        // .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
-        .pipe(sourcemaps.write(paths.styles.map))
-        .pipe(flatten())
-        .pipe(gulp.dest(paths.dest.unoptimized))
-        // .pipe(cssFilter)
-        .pipe(stripComments())
-        .pipe(postcss(query))
-        // .pipe(crass())
-        .pipe(gulp.dest(paths.dest.uncompressedOptimized))
-        .pipe(gulp.dest(paths.dest.css))
-        // .pipe(cssFilter)
-        .pipe(rename({ suffix: '.min' }), console.log('rename'))
-        // .pipe(stripComments())
-        .pipe(csso())
-        // .pipe(bytediff.start())
-        .pipe(gulp.dest(paths.dest.cssMini), console.log('cssmini'))
-        .pipe(gulp.dest(paths.dest.compressedOptimized))
-      // .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
-    );
-  }
+	const processors = [
+		pxtorem({
+			exclude: /node_modules/i,
+			rootValue: 16,
+			unitPrecision: 5,
+			propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
+			mediaQuery: true,
+			minPixelValue: 0,
+			replace: true
+		}),
+		autoprefixer()
+	];
+	const query = [combineMediaQuery()];
+
+	const cssFilter = filter('**/*.css', { restore: true });
+
+	return (
+		gulp
+			.src(paths.styles.sassBase)
+			.pipe(sourcemaps.init())
+			.pipe(sass().on('error', sass.logError))
+			.pipe(postcss(processors))
+			// .pipe(bytediff.start())
+			// .pipe(bytediff.stop((data) => formatByteMessage('autoprefixer', data)))
+			.pipe(sourcemaps.write(paths.styles.map))
+			.pipe(flatten())
+			.pipe(gulp.dest(paths.dest.unoptimized))
+			// .pipe(cssFilter)
+			.pipe(stripComments())
+			.pipe(postcss(query))
+			// .pipe(crass())
+			.pipe(gulp.dest(paths.dest.uncompressedOptimized))
+			.pipe(gulp.dest(paths.dest.css))
+			// .pipe(cssFilter)
+			.pipe(rename({ suffix: '.min' }), console.log('rename'))
+			// .pipe(stripComments())
+			.pipe(csso())
+			// .pipe(bytediff.start())
+			.pipe(gulp.dest(paths.dest.publicCssMini), console.log('cssmini'))
+			.pipe(gulp.dest(paths.dest.compressedOptimized))
+		// .pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
+	);
+});
 
 //   function production() {
 //     const processors = [
@@ -198,9 +197,9 @@ gulp.task('pixeltorem', function () {
 //       autoprefixer(),
 //     ];
 //     const query = [combineMediaQuery()];
-  
+
 //     const cssFilter = filter('**/*.css', { restore: true });
-  
+
 //     return (
 //       gulp
 //         .src(paths.styles.sassBase)
@@ -314,13 +313,13 @@ gulp.task('production', function () {
 			.pipe(postcss(query))
 			// .pipe(crass())
 			.pipe(gulp.dest(paths.dest.uncompressedOptimized))
-			.pipe(gulp.dest(paths.dest.css))
+			.pipe(gulp.dest(paths.dest.publicCss))
 			.pipe(cssFilter)
 			.pipe(rename({ suffix: '.min' }), console.log('rename'))
 			.pipe(stripComments())
 			.pipe(csso())
 			.pipe(bytediff.start())
-			.pipe(gulp.dest(paths.dest.cssMini), console.log('cssmini'))
+			.pipe(gulp.dest(paths.dest.publicCssMini), console.log('cssmini'))
 			.pipe(gulp.dest(paths.dest.compressedOptimized))
 			.pipe(sizereport({ gzip: true, total: true, title: 'SIZE REPORT' }))
 	);
@@ -429,12 +428,12 @@ function qa() {
 		.pipe(flatten())
 		.pipe(gulp.dest(paths.dest.unoptimized))
 		.pipe(stripComments())
-		.pipe(gulp.dest(paths.dest.css))
+		.pipe(gulp.dest(paths.dest.publicCss))
 		.pipe(filter('**/*.css'))
 		.pipe(stripComments())
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(cssnano())
-		.pipe(gulp.dest(paths.dest.cssMini))
+		.pipe(gulp.dest(paths.dest.publicCssMini))
 		.pipe(gulp.dest(paths.dest.compressedOptimized));
 }
 // exports.compact = compact; // builds the compressed folder with source map.
