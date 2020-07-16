@@ -2,7 +2,7 @@
 
 base = "./"
 
-publish = "public"
+publish = "./public"
 
 command = "grunt"
 
