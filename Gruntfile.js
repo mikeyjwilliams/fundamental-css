@@ -40,6 +40,7 @@ module.exports = function (grunt) {
                 },
             },
         },
+
         postcss: {
             options: {
                 // map: true, // inline sourcemaps
@@ -47,18 +48,51 @@ module.exports = function (grunt) {
                 // or
                 map: {
                     inline: false, // save all sourcemaps as separate files...
-                    annotation: "public/css/maps/", // ...to the specified directory
+                    annotation: "public/css/mini/maps/", // ...to the specified directory
                 },
 
                 processors: [
                     require("pixrem")(), // add fallbacks for rem units
-                    require("autoprefixer")({ browsers: "last 2 versions" }), // add vendor prefixes
-                    // require("cssnano")(), // minify the result
+                    require("autoprefixer"), // add vendor prefixes
+                    require("cssnano")(), // minify the result
                 ],
             },
             dist: {
-                src: "./public/css/*.css",
+                src: "./uncompressed-optimized/build.css",
+                dest: "./public/css/mini/build.css",
             },
+        },
+        php: {
+            dist: {
+                options: {
+                    port: 9000,
+                    base: "public", // Project root
+                },
+            },
+        },
+        browserSync: {
+            dist: {
+                bsFiles: {
+                    src: ["./public/*.php"],
+                },
+                options: {
+                    proxy:
+                        "<%= php.dist.options.hostname %>:<%= php.dist.options.port %>",
+                    watchTask: true,
+                    notify: true,
+                    open: true,
+                    logLevel: "silent",
+                    ghostMode: {
+                        clicks: true,
+                        scroll: true,
+                        links: true,
+                        forms: true,
+                    },
+                },
+            },
+        },
+        watch: {
+            src: ["sass", "stripCssComments", "cmq", "postcss", "serve"],
         },
     });
 
@@ -70,5 +104,11 @@ module.exports = function (grunt) {
         "stripCssComments",
         "cmq",
         "postcss",
+    ]);
+
+    grunt.registerTask("serve", [
+        "php:dist", // Start PHP Server
+        "browserSync:dist", // Using the PHP instance as a proxy
+        "watch", // Any other watch tasks you want to run
     ]);
 };
