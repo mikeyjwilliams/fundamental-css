@@ -48,7 +48,7 @@ module.exports = function (grunt) {
                 // or
                 map: {
                     inline: false, // save all sourcemaps as separate files...
-                    annotation: "public/css/mini/maps/", // ...to the specified directory
+                    annotation: "dist/css/mini/maps/", // ...to the specified directory
                 },
 
                 processors: [
@@ -59,7 +59,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: "./uncompressed-optimized/build.css",
-                dest: "./public/css/mini/build.css",
+                dest: "./dist/css/mini/build.css",
             },
         },
         php: {
