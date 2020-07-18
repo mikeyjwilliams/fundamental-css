@@ -52,9 +52,9 @@ module.exports = function (grunt) {
                 },
 
                 processors: [
-                    require("pixrem")(), // add fallbacks for rem units
+                    require("pixrem"), // add fallbacks for rem units
                     require("autoprefixer"), // add vendor prefixes
-                    require("cssnano")(), // minify the result
+                    require("cssnano"), // minify the result
                 ],
             },
             dist: {
@@ -65,39 +65,32 @@ module.exports = function (grunt) {
         php: {
             dist: {
                 options: {
-                    port: 9000,
-                    base: "public", // Project root
+                    base: "./",
                 },
             },
         },
         browserSync: {
-            dist: {
+            dev: {
                 bsFiles: {
-                    src: ["./public/*.php"],
+                    src: ["./css/build.css", "./*.php", "./sass/build.scss"],
                 },
                 options: {
-                    proxy:
-                        "<%= php.dist.options.hostname %>:<%= php.dist.options.port %>",
                     watchTask: true,
-                    notify: true,
-                    open: true,
-                    logLevel: "silent",
-                    ghostMode: {
-                        clicks: true,
-                        scroll: true,
-                        links: true,
-                        forms: true,
-                    },
+                    server: "./public",
                 },
             },
-        },
-        watch: {
-            src: ["sass", "stripCssComments", "cmq", "postcss", "serve"],
+            watch: {
+                sass: {
+                    files: "sass/build.scss",
+                    tasks: ["sass", "stripCssComments", "cmq", "postcss"],
+                },
+            },
         },
     });
 
     grunt.loadNpmTasks("grunt-combine-media-queries");
     grunt.loadNpmTasks("grunt-postcss");
+    grunt.loadNpmTasks("grunt-browser-sync");
 
     grunt.registerTask("default", [
         "sass",
@@ -106,9 +99,5 @@ module.exports = function (grunt) {
         "postcss",
     ]);
 
-    grunt.registerTask("serve", [
-        "php:dist", // Start PHP Server
-        "browserSync:dist", // Using the PHP instance as a proxy
-        "watch", // Any other watch tasks you want to run
-    ]);
+    grunt.registerTask("serve", ["browserSync", "watch"]);
 };
