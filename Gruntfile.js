@@ -92,12 +92,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-postcss");
     grunt.loadNpmTasks("grunt-browser-sync");
 
-    grunt.registerTask("default", [
-        "sass",
-        "stripCssComments",
-        "cmq",
-        "postcss",
-    ]);
+    grunt.registerTask("build", ["sass", "stripCssComments", "cmq", "postcss"]);
 
     grunt.registerTask("serve", ["browserSync", "watch"]);
 };
