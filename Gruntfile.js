@@ -14,18 +14,85 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     "./unoptimized/build.css": "./sass/build.scss",
-                    "./public/css/build.css": "./sass/build.scss",
                 },
             },
         },
         stripCssComments: {
             dist: {
                 files: {
-                    "./public/css/build.css": "./public/css/build.css",
+                    "./uncompressed-optimized/build.css":
+                        "./unoptimized/build.css",
+                },
+            },
+        },
+        cmq: {
+            options: {
+                log: false,
+            },
+            css: {
+                files: {
+                    "./compressed-optimized": [
+                        "./uncompressed-optimized/*.css",
+                    ],
+                    "./public/css/build.css": [
+                        "./uncompressed-optimized/*.css",
+                    ],
+                },
+            },
+        },
+
+        postcss: {
+            options: {
+                // map: true, // inline sourcemaps
+
+                // or
+                map: {
+                    inline: false, // save all sourcemaps as separate files...
+                    annotation: "public/css/mini/maps/", // ...to the specified directory
+                },
+
+                processors: [
+                    require("pixrem"), // add fallbacks for rem units
+                    require("autoprefixer"), // add vendor prefixes
+                    require("cssnano"), // minify the result
+                ],
+            },
+            dist: {
+                src: "./uncompressed-optimized/build.css",
+                dest: "./public/css/mini/build.css",
+            },
+        },
+        php: {
+            dist: {
+                options: {
+                    base: "./",
+                },
+            },
+        },
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src: ["./css/build.css", "./*.php", "./sass/build.scss"],
+                },
+                options: {
+                    watchTask: true,
+                    server: "./public",
+                },
+            },
+            watch: {
+                sass: {
+                    files: "sass/build.scss",
+                    tasks: ["sass", "stripCssComments", "cmq", "postcss"],
                 },
             },
         },
     });
 
-    grunt.registerTask("default", ["sass", "stripCssComments"]);
+    grunt.loadNpmTasks("grunt-combine-media-queries");
+    grunt.loadNpmTasks("grunt-postcss");
+    grunt.loadNpmTasks("grunt-browser-sync");
+
+    grunt.registerTask("build", ["sass", "stripCssComments", "cmq", "postcss"]);
+
+    grunt.registerTask("serve", ["browserSync", "watch"]);
 };
