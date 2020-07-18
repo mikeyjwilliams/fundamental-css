@@ -34,9 +34,7 @@ module.exports = function (grunt) {
                     "./compressed-optimized": [
                         "./uncompressed-optimized/*.css",
                     ],
-                    "./public/css/build.css": [
-                        "./uncompressed-optimized/*.css",
-                    ],
+                    "./dist/css/build.css": ["./uncompressed-optimized/*.css"],
                 },
             },
         },
@@ -76,7 +74,7 @@ module.exports = function (grunt) {
                 },
                 options: {
                     watchTask: true,
-                    server: "./public",
+                    server: "./dist",
                 },
             },
             watch: {
