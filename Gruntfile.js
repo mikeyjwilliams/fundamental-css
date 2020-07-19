@@ -65,34 +65,22 @@ module.exports = function (grunt) {
         php: {
             dist: {
                 options: {
-                    base: "./",
+                    port: 5000,
                 },
             },
         },
-        browserSync: {
-            dev: {
-                bsFiles: {
-                    src: ["./css/build.css", "./*.php", "./sass/build.scss"],
-                },
-                options: {
-                    watchTask: true,
-                    server: "./public",
-                },
-            },
-            watch: {
-                sass: {
-                    files: "sass/build.scss",
-                    tasks: ["sass", "stripCssComments", "cmq", "postcss"],
-                },
+        watch: {
+            php: {
+                files: ["**/*.php", "*.php"],
+                task: ["php"],
             },
         },
     });
 
     grunt.loadNpmTasks("grunt-combine-media-queries");
     grunt.loadNpmTasks("grunt-postcss");
-    grunt.loadNpmTasks("grunt-browser-sync");
 
     grunt.registerTask("build", ["sass", "stripCssComments", "cmq", "postcss"]);
 
-    grunt.registerTask("serve", ["browserSync", "watch"]);
+    grunt.registerTask("serve", ["php", "watch:php"]);
 };
