@@ -67,20 +67,29 @@ module.exports = function (grunt) {
                 task: ["php"],
             },
         },
-        browserSync: {
-            bsFiles: {
-                src: ["/css/*.css", "/*.html", "/**/*.html"],
-            },
-            options: {
-                server: {
-                    baseDir: "./dist",
+        php: {
+            dev: {
+                options: {
+                    hostname: "0.0.0.0",
+                    open: true,
                 },
             },
         },
+        // browserSync: {
+        //     bsFiles: {
+        //         src: ["/css/*.css", "/*.html", "/**/*.html"],
+        //     },
+        //     options: {
+        //         server: {
+        //             baseDir: "./dist",
+        //         },
+        //     },
+        // },
     });
 
     grunt.loadNpmTasks("grunt-combine-media-queries");
     grunt.loadNpmTasks("grunt-postcss");
+    grunt.loadNpmTasks("grunt-php2html");
     grunt.loadNpmTasks("grunt-browser-sync");
 
     grunt.registerTask("build", ["sass", "stripCssComments", "cmq", "postcss"]);
