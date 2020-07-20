@@ -1,37 +1,29 @@
 {
-  "name": "fundamental-css",
-  "version": "0.0.2",
-  "description": "sass based utility library",
+  "name": "phpbuild",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "php -S localhost:8080",
-    "build:scss": "sass sass/build.scss public/css/build.css",
-    "scss:watch": "sass --watch sass/build.scss public/css/build.css",
-    "build:tail": "npx tailwind build tail/tail.css -o tail/tailwind.css"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "bash build.sh && grunt build",
+    "server": "http-server -o dist",
+    "watch": "npm-watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikeyjwilliams/fundamental-css.git"
+    "url": "git+https://github.com/mikeyjwilliams/phpbuild.git"
   },
-  "keywords": [
-    "scss",
-    "css",
-    "utility-library"
-  ],
-  "author": "Michael Williams",
+  "author": "m.w",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mikeyjwilliams/fundamental-css/issues"
+    "url": "https://github.com/mikeyjwilliams/phpbuild/issues"
   },
-  "homepage": "https://github.com/mikeyjwilliams/fundamental-css#readme",
+  "homepage": "https://github.com/mikeyjwilliams/phpbuild#readme",
   "devDependencies": {
-    "autoprefixer": "^9.8.4",
-    "browser-sync": "^2.26.7",
+    "autoprefixer": "^9.8.5",
     "concurrently": "^5.2.0",
     "cross-env": "^7.0.2",
-    "csscomb": "^4.3.0",
     "cssnano": "^4.1.10",
-    "cssstats": "^3.4.1",
     "grunt": "^1.2.1",
     "grunt-browser-sync": "^2.2.0",
     "grunt-combine-media-queries": "^1.0.20",
@@ -40,20 +32,18 @@
     "grunt-postcss": "^0.9.0",
     "grunt-sass": "^3.1.0",
     "grunt-strip-css-comments": "^1.3.0",
-    "grunt-stripcomments": "^0.7.2",
     "load-grunt-tasks": "^5.1.0",
     "node-sass": "^4.14.1",
     "pixrem": "^5.0.0",
     "postcss": "^7.0.32",
     "postcss-cli": "^7.1.1",
     "postcss-combine-media-query": "^1.0.1",
-    "postcss-pxtorem": "^5.1.1",
     "prettier": "^2.0.5",
-    "sass": "^1.26.7",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.5.1"
   },
   "dependencies": {
-    "highlight.js": "^10.1.1"
+    "highlight.js": "^10.1.1",
+    "npm-watch": "^0.6.0"
   },
   "browserslist": {
     "production": [
@@ -67,5 +57,23 @@
       "last 1 safari version",
       "last 1 ie version"
     ]
+  },
+  "watch": {
+    "php_watch": {
+      "patterns": [
+        "./",
+        "./partials/",
+        "./**"
+      ],
+      "extensions": "php",
+      "quiet": false
+    },
+    "sass_watch": {
+      "patterns": [
+        "./sass/"
+      ],
+      "extensions": "scss",
+      "quiet": "false"
+    }
   }
 }

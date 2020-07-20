@@ -34,9 +34,7 @@ module.exports = function (grunt) {
                     "./compressed-optimized": [
                         "./uncompressed-optimized/*.css",
                     ],
-                    "./public/css/build.css": [
-                        "./uncompressed-optimized/*.css",
-                    ],
+                    "./dist/css/build.css": ["./uncompressed-optimized/*.css"],
                 },
             },
         },
@@ -48,7 +46,7 @@ module.exports = function (grunt) {
                 // or
                 map: {
                     inline: false, // save all sourcemaps as separate files...
-                    annotation: "public/css/mini/maps/", // ...to the specified directory
+                    annotation: "dist/css/mini/maps/", // ...to the specified directory
                 },
 
                 processors: [
@@ -59,30 +57,23 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: "./uncompressed-optimized/build.css",
-                dest: "./public/css/mini/build.css",
+                dest: "./dist/css/mini/build.css",
             },
         },
-        php: {
-            dist: {
-                options: {
-                    base: "./",
-                },
+
+        watch: {
+            php: {
+                files: ["**/*.php", "*.php"],
+                task: ["php"],
             },
         },
         browserSync: {
-            dev: {
-                bsFiles: {
-                    src: ["./css/build.css", "./*.php", "./sass/build.scss"],
-                },
-                options: {
-                    watchTask: true,
-                    server: "./public",
-                },
+            bsFiles: {
+                src: ["/css/*.css", "/*.html", "/**/*.html"],
             },
-            watch: {
-                sass: {
-                    files: "sass/build.scss",
-                    tasks: ["sass", "stripCssComments", "cmq", "postcss"],
+            options: {
+                server: {
+                    baseDir: "./dist",
                 },
             },
         },
