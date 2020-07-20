@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "bash build.sh && grunt build",
     "server": "http-server -o dist",
-    "watch": "npm-watch"
+    "scss:watch": "sass --watch sass/build.scss:dist/css/build.scss"
   },
   "repository": {
     "type": "git",
@@ -59,23 +59,5 @@
       "last 1 safari version",
       "last 1 ie version"
     ]
-  },
-  "watch": {
-    "php_watch": {
-      "patterns": [
-        "./",
-        "./partials/",
-        "./**"
-      ],
-      "extensions": "php",
-      "quiet": false
-    },
-    "sass_watch": {
-      "patterns": [
-        "./sass/"
-      ],
-      "extensions": "scss",
-      "quiet": "false"
-    }
   }
 }
