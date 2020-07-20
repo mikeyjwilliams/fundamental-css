@@ -89,8 +89,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks("grunt-combine-media-queries");
     grunt.loadNpmTasks("grunt-postcss");
-    grunt.loadNpmTasks("grunt-php2html");
-    grunt.loadNpmTasks("grunt-browser-sync");
+    // grunt.loadNpmTasks("grunt-browser-sync");
 
     grunt.registerTask("build", ["sass", "stripCssComments", "cmq", "postcss"]);
 

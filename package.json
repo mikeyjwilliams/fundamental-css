@@ -6,19 +6,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "bash build.sh && grunt build",
-    "server": "http-server -o dist",
-    "scss:watch": "sass --watch sass/build.scss:dist/css/build.scss"
+    "prod:test": "http-server -o dist",
+    "serve": "php -S localhost:8080",
+    "scss:watch": "sass --watch sass/build.scss:dist/css/build.scss",
+    "scss:build": "sass sass/build.scss:dist/css/build.scss",
+    "dev:test": "npm run scss:build && npm run prod:test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikeyjwilliams/phpbuild.git"
+    "url": "git+https://github.com/mikeyjwilliams/fundamental-css.git"
   },
-  "author": "m.w",
+  "author": "Michael Williams",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mikeyjwilliams/phpbuild/issues"
+    "url": "https://github.com/mikeyjwilliams/fundamental-css/issues"
   },
-  "homepage": "https://github.com/mikeyjwilliams/phpbuild#readme",
+  "homepage": "https://github.com/mikeyjwilliams/fundamental-css#readme",
   "devDependencies": {
     "autoprefixer": "^9.8.5",
     "concurrently": "^5.2.0",
