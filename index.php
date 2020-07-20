@@ -8,10 +8,9 @@
         <?php include('./partials/main_nav.php'); ?>
         <div class='main-section mt--10'>
             <main>
-                <p>hello</p>
                 <section class="home__header">
                     <div class="home__side box-red">
-                        <h2 class="text--3xl header font-gray">
+                        <h2 class="text--3xl header font-red">
                             <span>Fundamental Css</span>,<br /> come build a library
                             with us.
                         </h2>
