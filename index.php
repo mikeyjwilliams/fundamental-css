@@ -165,7 +165,7 @@
                             </header>
                             <pre id="hp-example-block" class="mb--3">
 
-      <code class='language-html'>&lt;p class='font-l-gray--200'&gt;variables.scss; &lt;/p&gt;<br/>
+      <code class='language-html'>&lt;p class='font-gray--200'&gt;variables.scss; &lt;/p&gt;<br/>
 
 &lt;p class='color-green'&gt;$bright-green: #5be206;&lt;/p&gt;
 <br/>
