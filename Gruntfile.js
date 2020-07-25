@@ -75,23 +75,34 @@ module.exports = function (grunt) {
                 },
             },
         },
-        // browserSync: {
-        //     bsFiles: {
-        //         src: ["/css/*.css", "/*.html", "/**/*.html"],
-        //     },
-        //     options: {
-        //         server: {
-        //             baseDir: "./dist",
-        //         },
-        //     },
-        // },
+        php2html: {
+            options: {
+                processLinks: false,
+            },
+            files: [
+                // Target-specific file lists and/or options go here.
+                {
+                    expand: true,
+                    src: ["*.php"],
+                    dest: "dist",
+                    ext: ".html",
+                },
+            ],
+        },
     });
 
     grunt.loadNpmTasks("grunt-combine-media-queries");
     grunt.loadNpmTasks("grunt-postcss");
+    grunt.loadNpmTasks("grunt-php2html");
     // grunt.loadNpmTasks("grunt-browser-sync");
 
-    grunt.registerTask("build", ["sass", "stripCssComments", "cmq", "postcss"]);
+    grunt.registerTask("build", [
+        "sass",
+        "stripCssComments",
+        "cmq",
+        "postcss",
+        "php2html",
+    ]);
 
-    grunt.registerTask("serve", ["browserSync", "watch"]);
+    grunt.registerTask("serve", ["php2html", "watch"]);
 };
