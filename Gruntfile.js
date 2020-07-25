@@ -96,13 +96,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-php2html");
     // grunt.loadNpmTasks("grunt-browser-sync");
 
-    grunt.registerTask("build", [
-        "sass",
-        "stripCssComments",
-        "cmq",
-        "postcss",
-        "php2html",
-    ]);
+    grunt.registerTask("build", ["sass", "stripCssComments", "cmq", "postcss"]);
 
-    grunt.registerTask("serve", ["php2html", "watch"]);
+    grunt.registerTask("serve", ["php", "watch"]);
 };
