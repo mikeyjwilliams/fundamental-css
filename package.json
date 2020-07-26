@@ -8,8 +8,8 @@
     "prod": "bash build.sh && grunt build",
     "prod:test": "http-server -o dist",
     "serve": "php -S localhost:8080",
-    "scss:watch": "sass --watch sass/build.scss:dist/css/build.scss",
-    "scss:build": "sass sass/build.scss:dist/css/build.scss",
+    "scss:watch": "sass --watch sass/build.scss:dist/css/build.css",
+    "scss:build": "sass sass/build.scss:dist/css/build.css",
     "dev:test": "npm run scss:build && npm run prod:test"
   },
   "repository": {
