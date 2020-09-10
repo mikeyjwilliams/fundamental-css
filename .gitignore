@@ -1,3 +1,10 @@
+# ignore build folders
+compressed-optimized/
+uncompressed-unoptimized/
+uncompressed-optimized/
+unoptimized/
+dist/
+
 # Logs
 logs
 *.log
