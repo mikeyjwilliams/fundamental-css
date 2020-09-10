@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "bash build.sh && grunt build",
     "prod:test": "http-server -o dist",
     "serve": "php -S localhost:8080",
-    "scss:watch": "sass --watch sass/build.scss:dist/css/build.scss",
-    "scss:build": "sass sass/build.scss:dist/css/build.scss",
+    "scss:watch": "sass --watch sass/build.scss:dist/css/build.css",
+    "scss:build": "sass sass/build.scss:dist/css/build.css",
     "dev:test": "npm run scss:build && npm run prod:test"
   },
   "repository": {
@@ -33,6 +32,7 @@
     "grunt-concurrent": "^3.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-php": "^3.0.0",
+    "grunt-php2html": "^0.3.0",
     "grunt-postcss": "^0.9.0",
     "grunt-sass": "^3.1.0",
     "grunt-strip-css-comments": "^1.3.0",
