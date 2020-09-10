@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "bash build.sh && grunt build",
     "prod:test": "http-server -o dist",
     "serve": "php -S localhost:8080",
