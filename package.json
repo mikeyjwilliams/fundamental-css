@@ -46,7 +46,7 @@
     "tailwindcss": "^1.5.1"
   },
   "dependencies": {
-    "highlight.js": "^10.1.1",
+    "highlight.js": "^10.1.2",
     "npm-watch": "^0.6.0"
   },
   "browserslist": {
